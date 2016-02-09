@@ -1,15 +1,33 @@
 .foodSelection {
-	position: relative;
-
+    position: relative;
     height: auto;
-    width: 200px;
-    height: 200px;
-        border-style: outset;
+    width: 120px;
+    height: 120px;
+    border-style: outset;
     border-width: 5px;
-
 }
 
-#foodLog{
-	background-color: #ececec;
-	height:20vh;
+#foodLog {
+    background-color: #FCFFCD;
+    height: 70vh;
+}
+
+.blue{
+    color:#4F6CFF;
+}
+p {
+    margin-top: 5vh;
+    text-align: center;
+    font-size: 20px;
+}
+
+legend {
+    font-size: 30px;
+    position: relative;
+}
+
+button {
+    position: absolute;
+    bottom: 10px;
+    margin-left: 40%
 }
