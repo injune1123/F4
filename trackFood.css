@@ -1,0 +1,15 @@
+.foodSelection {
+	position: relative;
+
+    height: auto;
+    width: 200px;
+    height: 200px;
+        border-style: outset;
+    border-width: 5px;
+
+}
+
+#foodLog{
+	background-color: #ececec;
+	height:20vh;
+}
