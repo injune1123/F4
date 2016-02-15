@@ -1,0 +1,26 @@
+.loginPanel{
+
+
+max-width: 330px;
+    margin: 100px auto;
+
+}
+
+.loginPanel h1{
+	text-align: center;
+}
+
+.loginPanel input{
+	margin-bottom: 20px;
+}
+
+/*
+.login_result{
+	height: 100px;
+}*/
+
+.signinButton{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	text-align: center
+}
