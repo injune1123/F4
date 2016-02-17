@@ -30,6 +30,7 @@ $('#signup').click(function(event) {
             success: function(user) {
                 // Hooray! Let them use the app now.
                 console.log('user signup')
+                clearForm();
             },
             error: function(user, error) {
                 // Show the error message somewhere and let the user try again.
