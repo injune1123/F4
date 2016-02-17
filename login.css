@@ -24,3 +24,11 @@
 	margin-bottom: 20px;
 	text-align: center
 }
+
+
+.errorMessage{
+	color:red;
+	font-size: 18px;
+		height: 30px;
+
+}
