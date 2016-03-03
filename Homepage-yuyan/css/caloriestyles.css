@@ -1,0 +1,72 @@
+body {
+	width:100%;
+	margin: auto;
+}
+
+.header .container {
+	width: auto;
+	margin: auto;
+}
+
+.header {
+	background: #f8f8f8;
+	border-color: #e7e7e7;
+	width:100%;
+	top:0;
+	position: fixed;
+	z-index: 99;
+}
+
+.logo{
+	float:left;
+	font-family: "Helvetica";
+	font-size: 15px;
+	color:black;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+li {
+	list-style: none;
+	float: left;
+	margin: 15px;
+	padding-top: 15px;
+}
+
+#mainnav {
+	float: right;
+}
+
+.jumbotron {
+	text-align: center;
+	height: 400px;
+}
+
+.jumbotron .h1{
+	text-align: center;
+	font-size: 100px;
+}
+
+.jumbotron {
+	background-image: url("http://www.color-hex.com/palettes/10153.png");
+}
+
+.jumbotron .container {
+	z-index: 1;
+  	opacity: 0.7;
+  	background-color: white;
+	margin-top: 60px;
+}
+
+#calorienav {
+	width:100%;
+	margin: auto;
+}
+
+#calorienav li a {
+	padding-left: 90px;
+	padding-right: 55px;
+}
