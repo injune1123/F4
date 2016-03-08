@@ -1,64 +1,48 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
     <script src="//mbostock.github.com/d3/d3.v2.js" charset="utf-8"></script>
-
-
-
-    <style>
-        /* tell the SVG path to be a thin blue line without any area fill */
-        path {
-            stroke: steelblue;
-            stroke-width: 1;
-            fill: none;
-        }
-
-        .axis {
-            shape-rendering: crispEdges;
-        }
-        .x.axis line {
-            stroke: lightgrey;
-        }
-        .x.axis .minor {
-            stroke-opacity: .5;
-        }
-        .x.axis path {
-            display: none;
-        }
-        .y.axis line, .y.axis path {
-            fill: none;
-            stroke: #000;
-        }
-    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.2/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script defer src="https://code.getmdl.io/1.1.2/material.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 </head>
+
+<style>
+    body{
+    background-color: #eff1f4;
+
+    }
+
+</style>
 <body>
-<dashboard></dashboard>
+    
+
+    <br>    
+    <br>    
+    <br>    
+    <br>
+    <weightInput ></weightInput>
 
 
-
-
-
-
-
-
-
-<script src="./tags/weightInput.tag" type="riot/tag"></script>
-<script src="./tags/line.tag" type="riot/tag"></script>
-<script src="./tags/grid.tag" type="riot/tag"></script>
-<script src="./tags/dashboard.tag" type="riot/tag"></script>
-<script src="https://cdn.jsdelivr.net/riot/2.3/riot+compiler.min.js"></script>
-<script src="https://code.jquery.com/jquery-2.2.0.js"></script>
-
-<script>
+    <dashboard></dashboard>
+    <script src="./tags/weightInput.tag" type="riot/tag"></script>
+    <script src="./tags/line.tag" type="riot/tag"></script>
+    <script src="./tags/grid.tag" type="riot/tag"></script>
+    <script src="./tags/dashboard.tag" type="riot/tag"></script>
+    <script src="https://cdn.jsdelivr.net/riot/2.3/riot+compiler.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.0.js"></script>
+    <script>
     riot.mount('*');
-</script>
-
-
-<footer>
-    created with 💗 by Jun
-</footer>
+    </script>
+    <footer>
+        created with 💗 by Jun
+    </footer>
 </body>
+
 </html>

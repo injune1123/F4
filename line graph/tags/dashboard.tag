@@ -1,10 +1,19 @@
 <dashboard>
-    <div>
+    <div center>
         <h1>Welcome to your dashboard</h1>
         
-        <weightInput></weightInput>
+
         <grid></grid>
     </div>
 
+
+
+  <style scoped>
+    :scope 
+    h1{
+      text-align : center !important;
+    }
+
+  </style>
 
 </dashboard>
