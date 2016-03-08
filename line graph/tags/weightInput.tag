@@ -1,5 +1,10 @@
 <weightInput>
-    <div>
+
+  <br>    
+    <br>    
+    <br>    
+    <br>
+    <div if={ has_finished }>
         <div class="weight-input-card-wide mdl-card mdl-shadow--2dp center">
           <div class="mdl-card__title">
             <h2 class="mdl-card__title-text"><b>See up your goal</b></h2>
@@ -12,27 +17,45 @@
 
           <div class="mdl-card__actions mdl-card--border">
             <label for="currentWeight"> Current Weight : </label>
-            <input type="text" name="currentWeight" placeholder = "current weight">
+            <input type="text" name="currentWeight" placeholder = "current weight (lb)">
             <br>
             <br>
 
 
-            <label for="targetWeight"> target Weight : </label>
-            <input type="text" name="targetWeight" placeholder = "target weight">
+            <label for="targetWeight"> Target Weight : </label>
+            <input type="text" name="targetWeight" placeholder = "target weight (lb)">
             <br>
             <br>
 
-            <label for="targetWeight"> Time duration : </label>
-            <input type="text" placeholder = "time you have">
+            <label for="timeDuration"> Time duration : </label>
+            <input type="text" name="timeDuration" placeholder = "time you have (month)">
             <br>
             <br>
              <!-- Accent-colored raised button with ripple -->
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick={getGoalData}>
               Go!
             </button>
           </div>
         </div>
+
     </div>
+
+
+
+    <script>
+        this.has_finished = true;
+        this.getGoalData = function(e){
+          goalInfo = {};
+          goalInfo.currentWeight = this.currentWeight.value;
+          goalInfo.targetWeight = this.targetWeight.value;
+          goalInfo.timeDuration = this.timeDuration.value;
+          
+          this.has_finished = false;
+
+        }
+
+
+    </script>
 
 
   <style scoped>
@@ -83,8 +106,4 @@
 
   </style>
 
-
-    <script>
-        this.title = "Your dashboard"
-    </script>
 </weightInput>

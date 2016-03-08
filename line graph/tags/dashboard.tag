@@ -1,11 +1,16 @@
-<dashboard>
+<dashboard >
     <div center>
-        <h1>Welcome to your dashboard</h1>
         
+        <weightInput if={this.has_finished}></weightInput>
 
-        <grid></grid>
+        <grid if={this.has_finished}></grid>
     </div>
 
+
+    <script>
+          this.has_finished = true;
+
+    </script>
 
 
   <style scoped>
@@ -13,6 +18,8 @@
     h1{
       text-align : center !important;
     }
+
+
 
   </style>
 
