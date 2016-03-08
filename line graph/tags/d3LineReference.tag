@@ -1,13 +1,6 @@
-<line>
-    <div>
-        <h4> {line} </h4>
-
-         <div id="graph" class="aGraph"></div>
-
-    </div>
+d3reference.js
 
 
-    <script>
     /* implementation heavily influenced by http://bl.ocks.org/1166403 */
 
     this.on('updated', function(){
@@ -18,24 +11,17 @@
     var h = 400 - m[0] - m[2]; // height
 
     // create a simple data array that we'll plot with a line (this array represents only the Y values, X will just be the index location)
-    var data = [120,110];
+    var data = [3, 6, 2, 7, 5, 2, 0, 3, 8, 9, 2, 5, 9, 3, 6, 3, 6, 2, 7, 5, 2, 1, 3, 8, 9, 2, 5, 9, 2, 7];
     // X scale will fit all values from data[] within pixels 0-w
-    var x = d3.scale.linear().domain([0, 12]).range([0, w]);
+    var x = d3.scale.linear().domain([0, data.length]).range([0, w]);
     // Y scale will fit values from 0-10 within pixels h-0 (Note the inverted domain for the y-scale: bigger is up!)
-    var y = d3.scale.linear().domain([110, 120]).range([h, 0]);
+    var y = d3.scale.linear().domain([0, 10]).range([h, 0]);
     // automatically determining max range can work something like this
     // var y = d3.scale.linear().domain([0, d3.max(data)]).range([h, 0]);
     // create a line function that can convert data[] into x and y points
     var line = d3.svg.line()
     // assign the X function to plot our line as we wish
     .x(function(d,i) {
-
-        if (i==0){
-            return 0;
-        }
-        else if( i==1 ){
-            return w
-        }
     // verbose logging to show what's actually being done
     console.log('Plotting X value for data point: ' + d + ' using index: ' + i + ' to be at: ' + x(i) + ' using our xScale.');
     // return the X coordinate where we want to plot this datapoint
@@ -146,8 +132,61 @@
     .attr("class", "y axis")
     .call(yAxis);
 
+
+
+
+
+
+
+
+
+
+
+
+/****
+//d3.svg.line()
+this.on('updated', function(){
+
+
+    // get the raw data that is input by user
+    var rawData = {
+        starTime: 1, 
+        startWeight: 150,
+        idealWeight: 100,
+        time: "3month"}
+
+    // convert the raw data into a simple data array that we'll plot with a line (this array represents only the Y values, X will just be the index location)
+    var weightData = [ 120, 100]
+    // convert the raw data into a simple data array that we'll plot with a line (this array represents only the Y values, X will just be the index location)
+    var xScaleData = [0, 12]
+
+
+     // define dimensions of graph, including margin, width and height
+    var m = [80, 80, 80, 80]; // margins
+    var w = 1000 - m[1] - m[3]; // width
+    var h = 400 - m[0] - m[2]; // height
+
+    
+    // X scale will fit all values from data[] within pixels 0-w
+    var x = d3.scale.linear().domain(xScaleData).range([0, w]);
+    // Y scale will fit values from the current weight to the ideal weight within pixels h-0 (Note the inverted domain for the y-scale: bigger is up!)
+
+    var y = d3.scale.linear().domain([d3.min(weightData), d3.max(weightData)]).range([h, 0]);
+   
+
+    var line = d3.svg.line()
+    // assign the X function to plot our line as we wish
+    .x(function(d,i) {
+    // verbose logging to show what's actually being done
+    console.log('Plotting X value for data point: ' + d + ' using index: ' + i + ' to be at: ' + x(i) + ' using our xScale.');
+    // return the X coordinate where we want to plot this datapoint
+    return x(i);
+    })
+    .y(function(d) {
+    // verbose logging to show what's actually being done
+    console.log('Plotting Y value for data point: ' + d + ' to be at: ' + y(d) + " using our yScale.");
+    // return the Y coordinate where we want to plot this datapoint
+    return y(d);
+    })
     });
-
-    </script>
-
-</line>
+****/
