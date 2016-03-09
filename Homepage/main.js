@@ -1,5 +1,5 @@
-
-            var imagecount = 1;
+//main js
+var imagecount = 1;
             var total = 6;
                         
             // var with links and first image link is set directly in a tag
@@ -8,7 +8,7 @@
             var link3 = '#';
             var link4 = '#';
             var link5 = '#';
-            var link5 = '#';
+            var link6 = '#';
             
             function slide(x) {
                 var Image = document.getElementById('img');
@@ -43,3 +43,30 @@
                 if(imagecount == 5){hyperLink.href = link5;}
                 if(imagecount == 6){hyperLink.href = link6;}
             },5000);
+//-------------------------------------------//
+
+riot.route('/calorieCal',function(){
+    var query = new Parse.Query('Foods');
+    query.equalTo('recommend',true);
+    query.find().then(function(result){
+    riot.mount('#toMount','calorie',{recom:result});
+
+    })
+    
+})
+
+riot.route('/prediction',function(){
+    riot.mount('#toMount','dashboard');
+})
+
+riot.route('/logsign',function(){
+    riot.mount('#toMount','logsign')
+})
+
+riot.route(function(){
+    riot.mount('#toMount','homepage');
+})
+
+riot.route.start(true)
+
+
