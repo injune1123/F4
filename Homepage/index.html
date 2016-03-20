@@ -10,7 +10,7 @@
 
     <body>
         <navbar></navbar>
-        <div id="toMount"></div>
+        <div id="Mount"></div>
         <footer></footer>
         <!-- ! -->
         <!-- link tags -->
@@ -53,7 +53,16 @@
         }
         var chosen = new chosenFood();
 
-        riot.mount('navbar');
+        //a variable suggest log in or not
+        
+        if(Parse.User.current()){
+            riot.mount('navbar',{loggedIn:true})
+        }
+        else{
+
+            riot.mount('navbar',{loggedIn:false});
+        }
+        
         riot.mount('footer');
         // riot.mount('*');
         </script>

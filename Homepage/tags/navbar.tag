@@ -12,11 +12,12 @@
 		      <a class="mdl-navigation__link" href="#calorieCal">Calorie Calculator</a>
 		      <a class="mdl-navigation__link" href="#prediction">Weight Prediction</a>
 		      <!-- <a class="mdl-navigation__link" href="">knowledge</a> -->
-		      <a class="mdl-navigation__link" href="#logsign">Log In | Sign Up</a>
+		      <a if={!loggedIn} class="mdl-navigation__link" href="#logsign">Log In | Sign Up</a>
+		      <a if={loggedIn} class="mdl-navigation__link" href="#" onclick={logOut}>Log Out</a>
 	      </nav>
 	    </div>
 	  </header>
-	  <div class="mdl-layout__drawer">
+	  <div class="mdl-layout__drawer" >
 	    <span class="mdl-layout-title">F4</span>
 	    <nav class="mdl-navigation">
 	      <a class="mdl-navigation__link" href="">Calorie Calculator</a>
@@ -28,7 +29,17 @@
 	  
 	</div>
 
+	<script>
+	var that = this;
+	that.loggedIn = that.opts.loggedIn;
+	console.log(that.loggedIn)
 
+	that.logOut = function(e){
+		Parse.User.logOut();
+		that.loggedIn = !that.loggedIn;
+	}
+
+	</script>
   <style scoped>
     :scope 
     .mdl-layout__header{
