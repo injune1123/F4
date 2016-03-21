@@ -1,4 +1,3 @@
-
 <footer class="mdl-mega-footer">
   <div class="mdl-mega-footer__middle-section">
 
@@ -45,7 +44,9 @@
       </ul>
     </div>
 
-  </div>
+© Copyright 2016 F4. “Fitness Four."
+
+  </div> 
 
   <!-- <div class="mdl-mega-footer__bottom-section">
     <div class="mdl-logo">Title</div>
