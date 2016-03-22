@@ -44,9 +44,13 @@
       </ul>
     </div>
 
-© Copyright 2016 F4. “Fitness Four."
+
 
   </div> 
+
+<div id="left">
+<p>©Copyright 2016 F4. “Fitness Four."</p>
+</div>
 
   <!-- <div class="mdl-mega-footer__bottom-section">
     <div class="mdl-logo">Title</div>
@@ -55,6 +59,20 @@
       <li><a href="#">Privacy & Terms</a></li>
     </ul>
   </div> -->
+
+<style scoped>
+    :scope 
+    .copyright {
+      position: relative;
+      top:70%;
+      left:10%;
+    }
+    #left{
+
+      color: white;
+      float: clear;
+    }
+</style>  
 
 </footer>
 

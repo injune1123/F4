@@ -1,28 +1,28 @@
 <homepage>
-    <div class="container">
-        <a href="#" id="link"><img src="Images/fitness.jpg"></a>
+    <div>
+        <!-- <a href="#"> --><img id="wierdImg" src="Images/fitness4.jpg"><!-- </a> -->
+        <h1 id="slogan">EFFECTIVE, FIT AND FUN</h1>
+        <h2 id="slogan2">CHECK OUT OUR TOOLS</h2>
+        <img id="arrow" src="Images/arrow.png">
     </div>
 
     <div class="jumbotron">
-        <h1>Tools to use</h1>
-        <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </h4>
+        <h2 id="FitnessTools">FITNESS TOOLS</h1>
         <div class="lists">
-            <div class="col-xs-2 col-sm-2 col-md-2">
-                <!-- <div class="sections"><img src="Images/img11.jpg"></div> -->
-                <a class="btn-default" href="#">CALORIE CALCULATOR</a>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <div class="circle">
+                    <a href="#">CALORIE CALCULATOR</a><p></p>
+                </div>
             </div>
-            <div class="col-xs-2 col-sm-2 col-md-2">
-                <!-- <div class="sections"><img src="Images/img11.jpg"></div> -->
-                <a class="btn-default" href="#">FOOD NUTRITION WIKI</a>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <div class="circle">
+                    <a href="#">WEIGHT PREDICTION</a><p></p>
+                </div>
             </div>
-            <div class="col-xs-2 col-sm-2 col-md-2">
-                <!-- <div class="sections"><img src="Images/img11.jpg"></div> -->
-                <a class="btn-default" href="#">STANDARD WEIGHT CHART</a>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <div class="circle">
+                    <a href="#">SOMETHING ELSE</a><p></p>
+                </div>
             </div>
 
         </div>
@@ -32,22 +32,64 @@
 
 <style scoped>
     :scope
-
-    .container{
-        height:380px;
-        width:1050px;
-        margin: 20px auto;
-        margin-top: 40px;
-        margin-bottom: 100px;
+    
+    #wierdImg{
+        height:auto;
+        width:100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
         position:relative;
     }
     
-height:380px;
-    width:1050px;
-    margin: 20px auto;
-    margin-top: 40px;
-    margin-bottom: 100px;
-    position:relative;
+    h1#slogan{
+        font-family:times;
+        font-size:38px;
+        text-align:left;
+        position:absolute;
+        top:27%;
+        left:7%;
+        color:white;
+    }
+    
+    h2#slogan2 {
+        font-family: arial;
+        font-size: 20px;
+        text-align: left;
+        position: absolute;
+        top: 32%;
+        left: 17%;
+        color: white;
+    }
+    
+    #arrow {
+        top: 41%;
+        left: 28%;
+        position: absolute;
+        width: 14px;
+        height: 50px;
+    }
+    
+    .jumbotron {
+        background-color: #ef2e6c;
+        height:350px;
+    }
+    
+    h2#FitnessTools{
+        text-align:center;
+        margin:0px;
+    }
+
+    .circle {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: #f374a1;
+        margin-left: auto;
+        margin-right: auto;
+        line-height:200px;
+        text-align: center;
+    }
 
 </style>
 

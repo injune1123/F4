@@ -1,7 +1,7 @@
 <navbar>
 	<!-- Always shows a header, even in smaller screens. -->
 	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-	  <header class="mdl-layout__header">
+	  <header class="mdl-layout__header my-header">
 	    <div class="mdl-layout__header-row">
 	      <!-- Title -->
 	      <span class="mdl-layout-title"><a href="#">F4</a></span>
@@ -31,11 +31,15 @@
 
   <style scoped>
     :scope 
-    .mdl-layout__header{
-		background-color: #424242 !important; 
-	}
+    /*.mdl-layout__header{
+		background-color: red !important; 
+	}*/
 	.mdl-layout--fixed-header{
 		height: 70px !important;
+	}
+
+	.my-header{
+		background-color: black;
 	}
 
   </style>
