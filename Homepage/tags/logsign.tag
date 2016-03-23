@@ -63,6 +63,10 @@
 
 	<script>
 
+	if(Parse.User.current()){
+		window.location.replace("/#");
+	}
+
 	this.signup= true;
 	this.login = false;
 

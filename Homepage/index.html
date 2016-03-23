@@ -10,7 +10,7 @@
 
     <body>
         <navbar></navbar>
-        <div id="toMount"></div>
+        <div id="Mount"></div>
         <footer></footer>
         <!-- ! -->
         <!-- link tags -->
@@ -19,9 +19,15 @@
         <script type="riot/tag" src="./tags/navbar.tag"></script>
         <script type="riot/tag" src="./tags/calorie.tag"></script>
         <script type="riot/tag" src="./tags/singleFood.tag"></script>
+
+        <script type="riot/tag" src="./tags/footer.tag"></script>
+        <script src="./tags/personal.tag" type="riot/tag"></script>
+        <script src="./tags/weightInput.tag" type="riot/tag"></script>
+
         <script src="./tags/setGoal.tag" type="riot/tag"></script>
         <script src="./tags/recordWeight.tag" type="riot/tag"></script>
         <script src="./tags/BMI.tag" type="riot/tag"></script>
+
         <script src="./tags/line.tag" type="riot/tag"></script>
         <script src="./tags/dashboard.tag" type="riot/tag"></script>
         <script src="./tags/logsign.tag" type="riot/tag"></script>
@@ -53,7 +59,16 @@
         }
         var chosen = new chosenFood();
 
-        riot.mount('navbar');
+        //a variable suggest log in or not
+        
+        if(Parse.User.current()){
+            riot.mount('navbar',{loggedIn:true})
+        }
+        else{
+
+            riot.mount('navbar',{loggedIn:false});
+        }
+        
         riot.mount('footer');
         // riot.mount('*');
         </script>
