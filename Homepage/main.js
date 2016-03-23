@@ -63,8 +63,8 @@ riot.route('/personal',function(){
     var query = new Parse.Query('Info');
     query.equalTo('email',Parse.User.current().get('username'));
     query.first().then(function(result){
-        var data = result.toJSON();
-        riot.mount('#Mount','personal',{info:data})
+        // var data = result.toJSON();
+        riot.mount('#Mount','personal',{info:result})
     })
     
 })
