@@ -33,7 +33,7 @@
     <script>
     
      // create the WeightTrack 
-     var  WeightTrack = Prase.Object.extend('WeightTrack');
+     //var  WeightTrack = Parse.Object.extend('WeightTrack');
 
 
     </script>
