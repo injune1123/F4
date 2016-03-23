@@ -39,36 +39,48 @@
 
     <script>
 
+    var Goal = Parse.Object.extend('Goal');
+
+    // this is the helper function that helps to set the date to current date
     function setDateToToday (el) {
           var today = new Date();
           var dd = today.getDate();
           var mm = today.getMonth()+1; //January is 0!
           var yyyy = today.getFullYear();
 
-          if(dd<10) {
-              dd='0'+dd // format the date
-          } 
-
-          if(mm<10) {
-              mm='0'+mm // format the month
-          } 
+          if(dd<10) { dd='0'+dd} // format the date 
+          if(mm<10) {mm='0'+mm}  // format the month
 
           today = yyyy + '-' + mm+'-'+dd;
           el.value = today;
     }
+
+    // set the date of the input box with a name of currentDate
     setDateToToday(this.currentDate);
 
-
-
     this.saveGoalData = function(e){
-      goalInfo = {};
-      goalInfo.currentWeight = this.currentWeight.value;
-      goalInfo.targetWeight = this.targetWeight.value;
-      goalInfo.timeDuration = this.currentDate.value;
-      goalInfo.timeDuration = this.idealDate.value;
-      goalInfo.user = Parse.User.current();
-    }
+      // get the info of the current user
+      var currentUser = Parse.User.current();
+      // create a variable callled goalInfo and store all the information into the object
+      // var goalInfo = {};
+      //   goalInfo.currentWeight = this.currentWeight.value;
+      //   goalInfo.targetWeight = this.targetWeight.value;
+      //   goalInfo.timeDuration = this.currentDate.value;
+      //   goalInfo.timeDuration = this.idealDate.value;
+      //   goalInfo.user = currentUser;
 
+       // create the parse object-goal
+      var goal = new Goal({
+        currentWeight : this.currentWeight.value,
+        targetWeight : this.targetWeight.value,
+        currentDate : this.currentDate.value,
+        idealDate : this.idealDate.value,
+        user : currentUser
+      });
+      
+      goal.save().then(function(data){console.log("hahahah, the goal is saved into the database:"+data)},function(err){alert(err)});    
+      }
+     
 
     </script>
 
