@@ -55,6 +55,14 @@ riot.route('/calorieCal',function(){
     
 })
 
+var q=
+
+this.on.update(
+    if ()
+     q= q 
+
+    )
+
 riot.route('/prediction',function(){
     riot.mount('#Mount','dashboard');
 })
