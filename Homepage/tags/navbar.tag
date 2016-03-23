@@ -54,6 +54,7 @@
 
 	.my-header{
 		background-color: black;
+	}
 	.head-icon{
 		border-radius: 50%;
 		width:30px;
