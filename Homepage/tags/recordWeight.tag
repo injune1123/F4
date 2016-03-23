@@ -31,6 +31,7 @@
 
 </div>
     <script>
+    
      // create the WeightTrack 
      var  WeightTrack = Prase.Object.extend('WeightTrack');
 
