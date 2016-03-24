@@ -53,7 +53,7 @@
 	}
 
 	.my-header{
-		background-color: black;
+		background-color: #424242;
 	}
 	.head-icon{
 		border-radius: 50%;
