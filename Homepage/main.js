@@ -28,6 +28,7 @@ riot.route('/personal',function(){
 })
 
 riot.route('/logsign',function(){
+    
     riot.mount('#Mount','logsign')
 })
 

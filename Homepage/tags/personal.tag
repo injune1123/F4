@@ -39,10 +39,20 @@
 
 	that.finish = function(e){
 		that.editing = !that.editing;
-		that.opts.info.save({first:that.firstName.value || that.data.first,last:that.lastName.value || that.data.last,age:that.age.value || that.data.age, objective:that.objective.value || that.data.objective,period:that.period.value || that.data.period}).then(function(){
-			console.log(that)
-			that.update()})
+		that.opts.info.save({
+			first:that.firstName.value || that.data.first,
+			last:that.lastName.value || that.data.last,
+			age:that.age.value || that.data.age, 
+			objective:that.objective.value || that.data.objective,
+			period:that.period.value || that.data.period
+		}).then(function(){
+			
+			that.update()
+		})
 		
+		this.on('update', function(){
+	  		this.data = this.opts.info.toJSON()
+		});
 		//update stored value in database
 		
 
