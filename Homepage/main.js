@@ -27,10 +27,10 @@ riot.route('/personal',function(){
     
 })
 
-riot.route('/logsign',function(){
+// riot.route('/logsign',function(){
     
-    riot.mount('#Mount','logsign')
-})
+//     riot.mount('#Login','logsign')
+// })
 
 riot.route(function(){
     riot.mount('#Mount','homepage');
