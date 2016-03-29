@@ -9,15 +9,11 @@
 	<style scoped>
 		:scope
 
-		h5{
-		   margin-top: 100px
-			};
 
 		img{
 			width: 200px;
 			display: block;
 		    margin-left: auto;
-		    margin-right: auto;
 		};
 		div{
 			margin: 0 auto; 
