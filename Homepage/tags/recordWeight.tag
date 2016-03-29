@@ -1,87 +1,65 @@
 <record-weight>
-<div>
-        <!-- the input value card -->
-        <div class="weight-input-card-wide mdl-card mdl-shadow--2dp center">
-          <div class="mdl-card__title">
-            <h2 class="mdl-card__title-text"><b>Track your steps</b></h2>
-          </div>
-
-          <div class="mdl-card__supporting-text">
-            <p>You are getting here.</p>
-            <p>Enter your current wieight.</p>
-          </div>
-
-          <div class="mdl-card__actions mdl-card--border">
-            <p>
-				On  <input type="date" name="idealDate">
-				</p>
-			<p>
-				I wieigh             <input type="number" name="targetWeight" placeholder = "target weight (lb)">
-
-				</p>
-
-                        
-
-             <!-- Accent-colored raised button with ripple -->
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick={saveGoalData}>
-              Yeah!
-            </button>
-          </div>
-        </div>
-
-</div>
-    <script>
-    
-     // create the WeightTrack 
-     //var  WeightTrack = Parse.Object.extend('WeightTrack');
 
 
-    </script>
-
-  <style scoped>
-    :scope 
-
-    .weight-input-card-wide.mdl-card {
-      width: 512px;
-      padding-top: 20px;
-                margin: 0 auto;
-
-    }
-    .weight-input-card-wide > .mdl-card__title {
-      color: #33691E;
-      height: 176px;
-      background: url('http://img2.3lian.com/2014/f2/35/d/7.jpg') center / cover;
-    }
-    .weight-input-card-wide .mdl-card__title-text {
-    margin-left: 250px
-    }
-    .mdl-card__actions{
-        text-align: center        
-    }
-    .mdl-card__supporting-text{
-        text-align: center;
-    }
-
-    .mdl-card__supporting-text>p{
-        font-size: 16px !important;
-        color: #558B2F
-
-    }
+   <p id="Weightrecord">On  
+      <input type="date" name="dateInput">
+	  I weigh
+	  <input type="number" name="weightInput" placeholder = "target weight (lb)">
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick={saveWeightRecord}>Yeah!</button>
+    </p>
 
 
-    input{
-        border: 2px solid #9CCC65;
-        border-radius: 6px;
-        padding: 5px 10px;
-        width: 10em;
-    }
+<style>
+	#Weightrecord{
+		text-align: center;
+	}
 
-    button{
-        width:20%;
-        background-color: #CD5C5C !important;
-
-    }
 </style>
 
+    <script>
+
+    // this is the helper function that helps to set the date to current date
+    function setDateToToday (el) {
+          var today = new Date();
+          var dd = today.getDate();
+          var mm = today.getMonth()+1; //January is 0!
+          var yyyy = today.getFullYear();
+
+          if(dd<10) { dd='0'+dd} // format the date 
+          if(mm<10) {mm='0'+mm}  // format the month
+
+          today = yyyy + '-' + mm+'-'+dd;
+          el.value = today;
+    }
+
+    // set the date of the input box with a name of currentDate
+    setDateToToday(this.dateInput);
+
+    this.saveWeightRecord = function(e){
+      // get the info of the current user
+      var currentUser = Parse.User.current();
+
+      // get the weight log of current user
+      var weightLog = [];
+
+      // create a variable callled goalInfo and store all the information into the 
+      var newRecord = {
+      	date: this.dateInput.value,
+      	weight: this.weightInput.value
+      }
+
+      weightLog.push(newRecord);
+
+      // update the parese object
+
+
+      
+		window.location.reload();
+      }
+
+</script>
+
+
+recordWeight
 
 </record-weight>

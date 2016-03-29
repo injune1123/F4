@@ -13,7 +13,7 @@ riot.route('/calorieCal',function(){
 
 
 
-riot.route('/prediction',function(){
+riot.route('/dashboard',function(){
     riot.mount('#Mount','dashboard');
 })
 

@@ -10,7 +10,7 @@
 	      <!-- Navigation. We hide it in small screens. -->
 	      <nav class="mdl-navigation mdl-layout--large-screen-only">
 		      <a class="mdl-navigation__link" href="#calorieCal">Calorie Calculator</a>
-		      <a class="mdl-navigation__link" href="#prediction">Weight Prediction</a>
+		      <a class="mdl-navigation__link" href="#dashboard">Dashboard</a>
 		      <!-- <a class="mdl-navigation__link" href="">knowledge</a> -->
 		      <a if={!loggedIn} class="mdl-navigation__link" href="#" onclick={showLogin}>Log In | Sign Up</a>
 		      <a if={loggedIn} class="mdl-navigation__link" href="#" onclick={logOut}>Log Out</a>
