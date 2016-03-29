@@ -61,7 +61,13 @@
 	                    </div>
 	                </fieldset>
 	            </form>
+
+	            <div class="sign-up">
+	        	Not a member yet? Become a <a href="/#register" onclick={goRegister}>member</a> today!
+	        	</div>
 	        </div>
+
+	        
 
 	    </div>
 
@@ -188,6 +194,11 @@
 		return true;
 	};
 	
+	this.goRegister = function(e){
+		this.unmount();
+		return true;
+	}
+
 	</script>
 
     <style scoped>
@@ -213,13 +224,21 @@
 			top:0;
 			left:0;
 			right:0;
-			bottom: -5;
+			
 			z-index: 10;
 			max-width: 330px;
 			margin: 100px auto 100px auto;
 
 
 
+		}
+
+		.sign-up{
+			background-color: rgb(245, 213, 164);
+			padding:10px;
+			margin:-16px;
+			border-radius: 8px;
+			color:rgb(128, 53, 53);
 		}
 		
 		.panel-heading>div{

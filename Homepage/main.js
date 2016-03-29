@@ -36,6 +36,10 @@ riot.route(function(){
     riot.mount('#Mount','homepage');
 })
 
+riot.route(function(){
+    riot.mount('#Mount','register')
+})
+
 riot.route.start(true)
 
 
