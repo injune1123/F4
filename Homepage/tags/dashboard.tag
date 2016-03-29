@@ -2,40 +2,38 @@
 
 <!-- No header, and the drawer stays open on larger screens (fixed drawer). -->
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+<!-- Side nav bar -->
   <div class="mdl-layout__drawer">
     <nav class="mdl-navigation">
-
-      <a class="mdl-navigation__link" href="">
+      <a class="mdl-navigation__link" href=""  onclick={showWeightTrack}>
         <i class="material-icons mdl-list__item-avatar color-set-peach">create</i>
-        <span>Record  weight</span>
-
+        <span>Record </span>
       </a>
       <a class="mdl-navigation__link" href="#calorieCal">
-
         <i class="material-icons mdl-list__item-avatar color-set-blue">exposure</i>
-        <span>Calculate  Carolie</span>
+        <span>Calculate  </span>
       </a>
-
-      
     </nav>
   </div>
-  <main class="mdl-layout__content">
-    <div class="page-content">
-    <!--  content goes here -->
 
+  <main class="mdl-layout__content">
+    <div class="page-content" >
+    <!--  content goes here -->
     <h3 class="text-center " > Dashboard</h3>
 
 
+
+      <div id="recordWeight"></div>
       <div class='col-md-3'>
             <BMI></BMI>
-        </div>  
-    <div class="row">
+      </div>  
 
-    
-                <line></line>
 
-     
-    </div> 
+      <div class="row">
+           <line></line>    
+      </div> 
+
+
 
 
     </div>
@@ -44,8 +42,10 @@
 
 
     <script>
-          this.has_finished = true;
-          console.log(123);
+          console.log("I am in the dashboard");
+          this.showWeightTrack = function(e){
+            riot.mount('#recordWeight','record-weight');
+          }
     </script>
 
 
@@ -64,9 +64,7 @@
     .mdl-layout--fixed-drawer{
         margin-top: -5px;
     }
-    .mdl-layout__drawer{
-        width: 280px;
-    }
+
 
 
 

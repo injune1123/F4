@@ -12,11 +12,12 @@
         <navbar></navbar>
         <div id="Mount"></div>
         <div id="Login"></div>
+
+
         <footer></footer>
         <!-- ! -->
         <!-- link tags -->
         <script type="riot/tag" src="./tags/homepage.tag"></script>
-        <!-- <script type="riot/tag" src="./tags/mainnav.tag"></script> -->
         <script type="riot/tag" src="./tags/navbar.tag"></script>
         <script type="riot/tag" src="./tags/calorie.tag"></script>
         <script type="riot/tag" src="./tags/singleFood.tag"></script>
@@ -41,8 +42,8 @@
         <!-- tag cdn -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/riot/2.3.15/riot+compiler.min.js"></script>
         <script src="//mbostock.github.com/d3/d3.v2.js" charset="utf-8"></script>
-        <script defer src="https://code.getmdl.io/1.1.2/material.min.js"></script>
         <script src="main.js"></script>
+        <script defer src="https://code.getmdl.io/1.1.2/material.min.js"></script>
         <script>
         // riot.mount('homepage');
         //add remove function to array prototype
@@ -60,12 +61,10 @@
         var chosen = new chosenFood();
 
         //a variable suggest log in or not
-        
         if(Parse.User.current()){
             riot.mount('navbar',{loggedIn:true})
         }
         else{
-
             riot.mount('navbar',{loggedIn:false});
         }
         

@@ -8,8 +8,6 @@
 
 	<style scoped>
 		:scope
-
-
 		img{
 			width: 200px;
 			display: block;
@@ -17,7 +15,7 @@
 		};
 		div{
 			margin: 0 auto; 
-		}
+		};
 
 		
 	</style>
