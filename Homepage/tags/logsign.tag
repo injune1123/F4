@@ -72,7 +72,11 @@
 	    </div>
 
 	<script>
+$(document).ready(function(){
+	alert("hahahahahha")
 
+	
+})
 	if(Parse.User.current()){
 		this.unmount();
 		window.location.replace("/#");
