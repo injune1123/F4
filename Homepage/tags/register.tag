@@ -14,7 +14,7 @@
 			    <input type="text" name="email" placeholder="Email" />
 			    <input type="password" name="pass" placeholder="Password" />
 			    <input type="password" name="cpass" placeholder="Confirm Password" />
-			    <input type="button" name="next" class="next action-button" value="Next" onclick={next}/>
+			    <input type="button" name="next" class="next action-button" value="Next" id="register"/>
 			</fieldset >
 			
 			<fieldset>
@@ -27,7 +27,7 @@
 			    	<option value="male">Male</option>
 			    	<option value="other">Other</option>
 			    </select>
-			    <input type="button" name="next" class="next action-button" value="Next" />
+			    <input type="button" name="next" class="next action-button" value="Next" id="personal"/>
 			</fieldset>
 
 			<fieldset>
@@ -37,7 +37,7 @@
 			    <input type="text" name="objective" placeholder="Objective Weight" />
 			    <input type="text" name="period" placeholder="Achivable Period in terms of month" />
 			    
-			    <input type="button" name="next" class="next action-button" value="Finish" />
+			    <input type="button" name="next" class="next action-button" value="Finish" id="setgoal"/>
 			</fieldset>
 
 
@@ -46,16 +46,7 @@
 	</div>
 	
 	<script>
-	// this.on('update', function(){
-	// 		$(document).ready(function(){
-	// 	alert("haaa");
-	// 	console.log("i am jQ")
-	// })
-
-
-	// })
-
-
+	
 	var that = this;
 
 	if(Parse.User.current()){
@@ -74,7 +65,7 @@
      
 	};
 
-	that.register = function(e){
+	that.register = function(callback){
 		
 		var usrname = that.email.value;
 
@@ -91,11 +82,12 @@
 					user.signUp(null, {
 			            success: function(user) {
 			                // Hooray! Let them use the app now.
-			                window.location.reload();
+			                callback(a,b);
 			            },
 			            error: function(user, error) {
 			                // Show the error message somewhere and let the user try again.
 			                alert("Error: " + error.code + " " + error.message);
+			                return false;
 			            }
 		        	});	
 				}
@@ -103,6 +95,9 @@
 					that.errorMessage = "Two passwards not confirm.";
 					that.pass.value = that.cpass.value = "";
 					riot.update();
+					return false;
+					
+
 				}
 
 			}
@@ -110,77 +105,175 @@
 				that.errorMessage = "Email address aleady exists."
 				that.email.value = that.pass.value = that.cpass.value = "";
 				riot.update();
+				return false;
 			}
 
 		});
 	};
 
-	that.registerKey = function(event){
-		if (event.which === 13){
-			that.register(event);
-		}
-		return true;
-	};
+	// Press enter to forward
 
+	// that.registerKey = function(event){
+	// 	if (event.which === 13){
+	// 		that.register(event);
+	// 	}
+	// 	return true;
+	// };
 
-	// here are change step animation, jQuery code
-	//jQuery time
-
-	that.next = function(e){
-		var current_fs, next_fs, previous_fs; //fieldsets
+	that.moveToNext = function(current_fs,next_fs){
 		var left, opacity, scale; //fieldset properties which we will animate
 		var animating; //flag to prevent quick multi-click glitches
-    
 
-    
-        console.log(123);
-        if(animating) return false;
-        animating = true;
-        
-        current_fs = $(this).parent();
-        next_fs = $(this).parent().next();
-        
-        //activate next step on progressbar using the index of next_fs
-        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-        
-        //show the next fieldset
-        next_fs.show(); 
-        //hide the current fieldset with style
-        current_fs.animate({opacity: 0}, {
-            step: function(now, mx) {
-                //as the opacity of current_fs reduces to 0 - stored in "now"
-                //1. scale current_fs down to 80%
-                scale = 1 - (1 - now) * 0.2;
-                //2. bring next_fs from the right(50%)
-                left = (now * 50)+"%";
-                //3. increase opacity of next_fs to 1 as it moves in
-                opacity = 1 - now;
-                current_fs.css({
-            'transform': 'scale('+scale+')',
-            'position': 'absolute'
-          });
-                next_fs.css({'left': left, 'opacity': opacity});
-            }, 
-            duration: 800, 
-            complete: function(){
-                current_fs.hide();
-                animating = false;
-            }, 
-            //this comes from the custom easing plugin
-            easing: 'easeInOutBack'
-        });
-    
-	}
+		//activate next step on progressbar using the index of next_fs
+		$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 	
+		//show the next fieldset
+		next_fs.show(); 
+		//hide the current fieldset with style
+		current_fs.animate({opacity: 0}, {
+			step: function(now, mx) {
+				//as the opacity of current_fs reduces to 0 - stored in "now"
+				//1. scale current_fs down to 80%
+				scale = 1 - (1 - now) * 0.2;
+				//2. bring next_fs from the right(50%)
+				left = (now * 50)+"%";
+				//3. increase opacity of next_fs to 1 as it moves in
+				opacity = 1 - now;
+				current_fs.css({
+	        'transform': 'scale('+scale+')',
+	        'position': 'absolute'
+	      	});
+				next_fs.css({'left': left, 'opacity': opacity});
+			}, 
+			duration: 800, 
+			complete: function(){
+				current_fs.hide();
+				animating = false;
+			}, 
+			//this comes from the custom easing plugin
+			easing: 'easeInOutBack'
+		});
+	}
 
+	that.one('updated',function(){
 
+		//jQuery has to go into updated function
+		//first need to check which step is currently on
+		$(".next").click(function(){
+			//if user is registering account
+			if($(this).attr('id') == 'register'){
+				//register. use deffered
+				
+				that.register(that.moveToNext($(this).parent(),$(this).parent().next()))
+					
+					// that.moveToNext($(this).parent(),$(this).parent().next())
+					
+				
 
+			}
+			else if ($(this).attr('id') == 'personal') {
+				console.log(222);
+				that.moveToNext($(this).parent(),$(this).parent().next())
+			}
+			else{
+				console.log(333);
+				that.moveToNext($(this).parent(),$(this).parent().next())
+			}
+		})
+		//jQuery time
+		// var current_fs, next_fs, previous_fs; //fieldsets
+		// var left, opacity, scale; //fieldset properties which we will animate
+		// var animating; //flag to prevent quick multi-click glitches
 
-		
+		// $(".next").click(function(){
+		// 	// if(that.register(event)){
+		// 		if(animating) {return false};
+		// 		animating = true;
+			
+		// 		console.log($(this).attr('id'))
+
+		// 		current_fs = $(this).parent();
+		// 		next_fs = $(this).parent().next();
+			
+		// 		//activate next step on progressbar using the index of next_fs
+		// 		$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+			
+		// 		//show the next fieldset
+		// 		next_fs.show(); 
+		// 		//hide the current fieldset with style
+		// 		current_fs.animate({opacity: 0}, {
+		// 			step: function(now, mx) {
+		// 				//as the opacity of current_fs reduces to 0 - stored in "now"
+		// 				//1. scale current_fs down to 80%
+		// 				scale = 1 - (1 - now) * 0.2;
+		// 				//2. bring next_fs from the right(50%)
+		// 				left = (now * 50)+"%";
+		// 				//3. increase opacity of next_fs to 1 as it moves in
+		// 				opacity = 1 - now;
+		// 				current_fs.css({
+		// 	        'transform': 'scale('+scale+')',
+		// 	        'position': 'absolute'
+		// 	      	});
+		// 				next_fs.css({'left': left, 'opacity': opacity});
+		// 			}, 
+		// 			duration: 800, 
+		// 			complete: function(){
+		// 				current_fs.hide();
+		// 				animating = false;
+		// 			}, 
+		// 			//this comes from the custom easing plugin
+		// 			easing: 'easeInOutBack'
+		// 		});
+			// };
+
+		// $(".previous").click(function(){
+		// 	if(animating) return false;
+		// 	animating = true;
+			
+		// 	current_fs = $(this).parent();
+		// 	previous_fs = $(this).parent().prev();
+			
+		// 	//de-activate current step on progressbar
+		// 	$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+			
+		// 	//show the previous fieldset
+		// 	previous_fs.show(); 
+		// 	//hide the current fieldset with style
+		// 	current_fs.animate({opacity: 0}, {
+		// 		step: function(now, mx) {
+		// 			//as the opacity of current_fs reduces to 0 - stored in "now"
+		// 			//1. scale previous_fs from 80% to 100%
+		// 			scale = 0.8 + (1 - now) * 0.2;
+		// 			//2. take current_fs to the right(50%) - from 0%
+		// 			left = ((1-now) * 50)+"%";
+		// 			//3. increase opacity of previous_fs to 1 as it moves in
+		// 			opacity = 1 - now;
+		// 			current_fs.css({'left': left});
+		// 			previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
+		// 		}, 
+		// 		duration: 800, 
+		// 		complete: function(){
+		// 			current_fs.hide();
+		// 			animating = false;
+		// 		}, 
+		// 		//this comes from the custom easing plugin
+		// 		easing: 'easeInOutBack'
+		// 	});
+		// });
+
+		// $(".submit").click(function(){
+		// 	return false;
+		// })
+			
+		// })
+			
+
+	})
+
 
 
 	</script>
-
+	
 	<style scoped>
 	:scope{
 		/*background-image: url('http://www.pixeden.com/media/k2/galleries/165/003-subtle-light-pattern-background-texture-vol5.jpg');*/
