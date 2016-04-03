@@ -24,51 +24,36 @@
 
     <div class="mdl-mega-footer__drop-down-section">
       <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
-      <h1 class="mdl-mega-footer__heading">Technology</h1>
+      <div class="col-md-10">
+      <h1 class="mdl-mega-footer__heading">CONNECT</h1>
       <ul class="mdl-mega-footer__link-list">
-        <li><a href="#">How it works</a></li>
-        <li><a href="#">Patterns</a></li>
-        <li><a href="#">Usage</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">Contracts</a></li>
+        <p>Let’s get social. Tap, like, and join the F4 community for event news, special offers, and exclusive fitness tips to help keep you motivated. We can’t wait to connect with you.</p>
       </ul>
+      </div>
     </div>
 
     <div class="mdl-mega-footer__drop-down-section">
       <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
-      <h1 class="mdl-mega-footer__heading">FAQ</h1>
+      <div class="col-md-10">
+      <h1 class="mdl-mega-footer__heading">NEWSLETTER</h1>
       <ul class="mdl-mega-footer__link-list">
-        <li><a href="#">Questions</a></li>
-        <li><a href="#">Answers</a></li>
-        <li><a href="#">Contact us</a></li>
+        <p>Sign up and receive exclusive offers, behind-the-scenes sneak peeks, wellness expert tips, and more.</p>
       </ul>
+      </div>
     </div>
 
 
 
   </div> 
 
-<div id="left">
+<div id="copyright">
 <p>©Copyright 2016 F4. “Fitness Four."</p>
 </div>
 
-  <!-- <div class="mdl-mega-footer__bottom-section">
-    <div class="mdl-logo">Title</div>
-    <ul class="mdl-mega-footer__link-list">
-      <li><a href="#">Help</a></li>
-      <li><a href="#">Privacy & Terms</a></li>
-    </ul>
-  </div> -->
 
 <style scoped>
     :scope 
-    .copyright {
-      position: relative;
-      top:70%;
-      left:10%;
-    }
-    #left{
-
+    #copyright{
       color: white;
       float: clear;
     }
