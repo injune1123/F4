@@ -234,11 +234,11 @@
 		}
 
 		.sign-up{
-			background-color: rgb(245, 213, 164);
+			background-color: rgb(217, 237, 247);
 			padding:10px;
 			margin:-16px;
 			border-radius: 8px;
-			color:rgb(128, 53, 53);
+			color:rgb(49, 112, 143);
 		}
 		
 		.panel-heading>div{
