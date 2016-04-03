@@ -1,6 +1,6 @@
 <homepage>
     <div>
-        <!-- <a href="#"> --><img id="wierdImg" src="Images/fitness4.jpg"><!-- </a> -->
+        <img id="wierdImg" src="Images/fitness4.jpg">
         <h1 id="slogan">EFFECTIVE, FIT AND FUN</h1>
         <h2 id="slogan2">CHECK OUT OUR TOOLS</h2>
         <img id="arrow" src="Images/arrow.png">
@@ -71,13 +71,14 @@
 
 <style scoped>
     :scope
-    
+
     #wierdImg{
         height:auto;
         width:100%;
         display: block;
         margin-left: auto;
         margin-right: auto;
+        padding-top: 50px;
         position:relative;
     }
     
