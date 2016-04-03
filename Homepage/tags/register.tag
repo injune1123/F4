@@ -53,72 +53,52 @@
 		window.location.replace("/#");
 	}
 
-	that.checkUserExistance = function(username,callback){	
-	    	var query = new Parse.Query(Parse.User);
-		    query.equalTo("username", username);
-		    query.find().then(function(result){callback(result)});
-		};
+	//redundant. don't need anymore
+	// that.checkUserExistance = function(username,callback){	
+	//     	var query = new Parse.Query(Parse.User);
+	// 	    query.equalTo("username", username);
+	// 	    query.find().then(function(result){callback(result)});
+	// 	};
 
-	that.checkPassword = function() {
-		if(that.pass.value == ""|| that.cpass.value == ""){return false;}
-		else{ return (that.pass.value == that.cpass.value); }
+	// that.checkPassword = function() {
+	// 	if(that.pass.value == ""|| that.cpass.value == ""){return false;}
+	// 	else{ return (that.pass.value == that.cpass.value); }
      
-	};
+	// };
 
 	that.register = function(callback){
-		
+		//create a Parse promise object
+		var promise = new Parse.Promise();
 		var usrname = that.email.value;
 
-		that.checkUserExistance(usrname,function(response){
+		
+		
+		if(that.pass.value == that.cpass.value){
+		
+			var user = new Parse.User();
 
-			if(!response.length){
-				if(that.pass.value == that.cpass.value){
-				
-					var user = new Parse.User();
+	        user.set("username", that.email.value);
+	        user.set("password", that.pass.value);
+	        user.set("email", that.email.value);
+			user.signUp().then(function(user){
+				promise.resolve(user);
+			}, function(error){
+				promise.reject(error);
+			})	
+		}
+		else{
+			that.errorMessage = "Two passwards not confirm.";
+			that.pass.value = that.cpass.value = "";
+			riot.update();
+			promise.reject(that.errorMessage);
+			
 
-			        user.set("username", that.email.value);
-			        user.set("password", that.pass.value);
-			        user.set("email", that.email.value);
-					user.signUp(null, {
-			            success: function(user) {
-			                // Hooray! Let them use the app now.
-			                callback(a,b);
-			            },
-			            error: function(user, error) {
-			                // Show the error message somewhere and let the user try again.
-			                alert("Error: " + error.code + " " + error.message);
-			                return false;
-			            }
-		        	});	
-				}
-				else{
-					that.errorMessage = "Two passwards not confirm.";
-					that.pass.value = that.cpass.value = "";
-					riot.update();
-					return false;
-					
+		}
 
-				}
+		return promise;
 
-			}
-			else{
-				that.errorMessage = "Email address aleady exists."
-				that.email.value = that.pass.value = that.cpass.value = "";
-				riot.update();
-				return false;
-			}
-
-		});
+		
 	};
-
-	// Press enter to forward
-
-	// that.registerKey = function(event){
-	// 	if (event.which === 13){
-	// 		that.register(event);
-	// 	}
-	// 	return true;
-	// };
 
 	that.moveToNext = function(current_fs,next_fs){
 		var left, opacity, scale; //fieldset properties which we will animate
@@ -160,15 +140,18 @@
 		//jQuery has to go into updated function
 		//first need to check which step is currently on
 		$(".next").click(function(){
+			var $pane = $(this);
 			//if user is registering account
-			if($(this).attr('id') == 'register'){
+			if($pane.attr('id') == 'register'){
 				//register. use deffered
 				
-				that.register(that.moveToNext($(this).parent(),$(this).parent().next()))
-					
-					// that.moveToNext($(this).parent(),$(this).parent().next())
-					
-				
+				that.register().then(function(user){
+					that.moveToNext($pane.parent(),$pane.parent().next())
+					}, function(error){
+			      		that.errorMessage = "Email address aleady exists."
+			      		that.email.value = that.pass.value = that.cpass.value = "";
+			      		riot.update();
+				});
 
 			}
 			else if ($(this).attr('id') == 'personal') {
