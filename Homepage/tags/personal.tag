@@ -51,7 +51,7 @@
 		})
 		
 		this.on('update', function(){
-	  		this.data = this.opts.info.toJSON()
+	  		// this.data = this.opts.info.toJSON()
 		});
 		//update stored value in database
 		

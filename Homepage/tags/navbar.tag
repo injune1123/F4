@@ -38,7 +38,7 @@
 
 	that.logOut = function(e){
 		Parse.User.logOut();
-		window.location.reload();
+		document.location.href="/";
 
 	}
 
