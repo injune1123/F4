@@ -49,6 +49,7 @@
 	
 	var that = this;
 
+
 	if(Parse.User.current()){
 		window.location.replace("/#");
 	}
@@ -155,12 +156,31 @@
 
 			}
 			else if ($(this).attr('id') == 'personal') {
-				console.log(222);
-				that.moveToNext($(this).parent(),$(this).parent().next())
+				var currentUser = Parse.User.current();
+				currentUser.set('infos',
+					{nickname:that.nickname.value,
+						age:that.age.value,
+						sex:$('select option:selected').val()
+					});
+				currentUser.save().then(
+					that.moveToNext($(this).parent(),$(this).parent().next()),
+					function(error){
+						//some errors here
+					})
+				
 			}
 			else{
-				console.log(333);
-				that.moveToNext($(this).parent(),$(this).parent().next())
+				var currentUser = Parse.User.current();
+				var info = currentUser.get('infos')
+				info.current = that.current.value;
+				info.objective = that.objective.value;
+				info.period = that.period.value;
+				currentUser.set('infos',info);
+				currentUser.save().then(function(){
+					that.moveToNext($(this).parent(),$(this).parent().next());
+					window.location.reload();
+				});
+				
 			}
 		})
 		//jQuery time
