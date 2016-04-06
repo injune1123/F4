@@ -1,82 +1,94 @@
 <personal>
-	
-	<div class="container">
-		<div class="row">
-			<h3>Personal Information</h3>
-			<div class="col-sm-offset-3 col-sm-6">
-				
-				<div class="info" if={!editing}>
-					<p>First Name: {data.first}</p>
-					<p>Last Name: {lastName.value ? lastName.value : data.last}</p>
-					<p>Age: {age.value ? age.value : data.age} </p>
-					<p>Objective Weight: {objective.value ? objective.value : data.objective} lb</p>
-					<p>Weight Loss Period: {period.value ? period.value : data.period} month</p>
 
+	<div class="container main-wrapper">
+		<h2>Basic Information</h2>
+		<form>
+			<div class="form-group">
+				<label for="user-name">Name</label>
+				<input type="text" class="form-control" name="nickname" placeholder={data.nickname}>
+				<label for="age">Age</label>
+				<input type="text" class="form-control" name="age" placeholder="{data.age} years old">
+				<label>Sex</label>
+				<div class="radio">
+					<label>
+						<input type="radio" name="sexradio" value="male" id="radio1" checked={data.sex==radio1.value}>
+						Male
+					</label>
+					
 				</div>
-				<div class="edit-info" if={editing}>
-					<input type="text" placeholder={data.first} name="firstName">
-					<input type="text" placeholder={data.last} name="lastName">
-					<input type="text" placeholder={data.age} name="age">
-					<input type="text" placeholder={data.objective} name="objective">
-					<input type="text" placeholder={data.period} name="period">
+				<div class="radio">
+					<label>
+						<input type="radio" name="sexradio" value="female" id="radio2" checked={data.sex==radio2.value}>
+						Female
+					</label>
 				</div>
+				<div class="radio">
+					<label>
+						<input type="radio" name="sexradio" value="other" id="radio3" checked={data.sex==radio3.value}>
+						Other
+					</label>
+				</div>
+				<label for="current">Current Weight</label>
+				<input type="text" class="form-control" name="current" placeholder="{data.current} pound">
+				<label for="objective">Objective Weight</label>
+				<input type="text" class="form-control" name="objective" placeholder="{data.objective} pound">
+				<label for="period">Losing Period</label>
+				<input type="text" class="form-control" name="period" placeholder="{data.period} months">
 			</div>
-		</div>
-		<div class="btn btn-info edit-btn" onclick={editInfo} if={!editing}>Edit</div>
-		<div class="btn btn-info edit-btn" onclick={finish} if={editing}>Finish</div>
+			<input type="button" class="btn btn-default" value="Update" onclick={updateInfo}>
+		</form>
 	</div>
 
-	
-	<script>
-	//parse query find all related user information.
-	var that = this;
-	that.data = that.opts.info.toJSON();
-	that.editing = false;
-	that.editInfo = function(e){
-		that.editing = !that.editing;
-
-	}
-
-	that.finish = function(e){
-		that.editing = !that.editing;
-		that.opts.info.save({
-			first:that.firstName.value || that.data.first,
-			last:that.lastName.value || that.data.last,
-			age:that.age.value || that.data.age, 
-			objective:that.objective.value || that.data.objective,
-			period:that.period.value || that.data.period
-		}).then(function(){
-			
-			that.update()
-		})
+	<script>	
+		var that = this;
+		that.data = Parse.User.current().toJSON().infos;
 		
-		this.on('update', function(){
-	  		// this.data = this.opts.info.toJSON()
-		});
-		//update stored value in database
-		
+		that.updateInfo = function(e){
+			Parse.User.current().set('infos',{
+				nickname:that.nickname.value || that.data.nickname,
+				age:that.age.value || that.data.age, 
+				objective:that.objective.value || that.data.objective,
+				period:that.period.value || that.data.period,
+				sex:$('input[name=sexradio]:checked').val() || that.data.sex
+			}).save().then(function(){
+				that.data = Parse.User.current().toJSON().infos;
+				that.update();
+			})
 
-	}
 
-	// firstName.value ? firstName.value : 
+			console.log(that.nickname.value || that.data.nickname )
+		}
 
 	</script>
 
-
-
-
-
 	<style scoped>
-		h3{
-			text-align: center;
+		
+		/*placeholder style*/
+		::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+		    color:    black;
 		}
+		:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+		   color:    black;
+		   opacity:  1;
+		}
+		::-moz-placeholder { /* Mozilla Firefox 19+ */
+		   color:    black;
+		   opacity:  1;
+		}
+		:-ms-input-placeholder { /* Internet Explorer 10-11 */
+		   color:    black;
+		}
+		/*~~~~~~~~~~~~~~~~~~~~~~*/
 	
-		.edit-btn{
-			margin:0 0 30px 50%;
+		h2{
+			font-size: 25px;
+			line-height: 20px;
+		}
+
+		.main-wrapper{
+			width:500px;
+			float: left;
 		}
 
 	</style>
-
-
-
 </personal>
