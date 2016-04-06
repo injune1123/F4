@@ -61,7 +61,13 @@
 	                    </div>
 	                </fieldset>
 	            </form>
+
+	            <div class="sign-up">
+	        	Not a member yet? Become a <a href="/#register" onclick={goRegister}>member</a> today!
+	        	</div>
 	        </div>
+
+	        
 
 	    </div>
 
@@ -98,53 +104,53 @@
      
 	};
 
-	this.register = function(e){
+	// this.register = function(e){
 		
-		var usrname = this.Email.value;
+	// 	var usrname = this.Email.value;
 
-		this.checkUserExistance(usrname,function(response){
+	// 	this.checkUserExistance(usrname,function(response){
 
-			if(!response.length){
-				if(this.Password.value == this.ReinputPassword.value){
+	// 		if(!response.length){
+	// 			if(this.Password.value == this.ReinputPassword.value){
 				
-					var user = new Parse.User();
+	// 				var user = new Parse.User();
 
-			        user.set("username", this.Email.value);
-			        user.set("password", this.Password.value);
-			        user.set("email", this.Email.value);
-					user.signUp(null, {
-			            success: function(user) {
-			                // Hooray! Let them use the app now.
-			                window.location.reload();
-			            },
-			            error: function(user, error) {
-			                // Show the error message somewhere and let the user try again.
-			                alert("Error: " + error.code + " " + error.message);
-			            }
-		        	});	
-				}
-				else{
-					this.errorMessage = "Two passwards not confirm.";
-					this.Password.value = this.ReinputPassword.value = "";
-					riot.update();
-				}
+	// 		        user.set("username", this.Email.value);
+	// 		        user.set("password", this.Password.value);
+	// 		        user.set("email", this.Email.value);
+	// 				user.signUp(null, {
+	// 		            success: function(user) {
+	// 		                // Hooray! Let them use the app now.
+	// 		                window.location.reload();
+	// 		            },
+	// 		            error: function(user, error) {
+	// 		                // Show the error message somewhere and let the user try again.
+	// 		                alert("Error: " + error.code + " " + error.message);
+	// 		            }
+	// 	        	});	
+	// 			}
+	// 			else{
+	// 				this.errorMessage = "Two passwards not confirm.";
+	// 				this.Password.value = this.ReinputPassword.value = "";
+	// 				riot.update();
+	// 			}
 
-			}
-			else{
-				this.errorMessage = "Email address aleady exists."
-				this.Email.value = this.Password.value = this.ReinputPassword.value = "";
-				riot.update();
-			}
+	// 		}
+	// 		else{
+	// 			this.errorMessage = "Email address aleady exists."
+	// 			this.Email.value = this.Password.value = this.ReinputPassword.value = "";
+	// 			riot.update();
+	// 		}
 
-		});
-	};
+	// 	});
+	// };
 
-	this.registerKey = function(event){
-		if (event.which === 13){
-			this.register(event);
-		}
-		return true;
-	};
+	// this.registerKey = function(event){
+	// 	if (event.which === 13){
+	// 		this.register(event);
+	// 	}
+	// 	return true;
+	// };
 			
 
 	this.Signin = function(e){
@@ -188,6 +194,11 @@
 		return true;
 	};
 	
+	this.goRegister = function(e){
+		this.unmount();
+		return true;
+	}
+
 	</script>
 
     <style scoped>
@@ -213,13 +224,21 @@
 			top:0;
 			left:0;
 			right:0;
-			bottom: -5;
+			
 			z-index: 10;
 			max-width: 330px;
 			margin: 100px auto 100px auto;
 
 
 
+		}
+
+		.sign-up{
+			background-color: rgb(217, 237, 247);
+			padding:10px;
+			margin:-16px;
+			border-radius: 8px;
+			color:rgb(49, 112, 143);
 		}
 		
 		.panel-heading>div{

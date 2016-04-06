@@ -1,4 +1,6 @@
 
+
+
 //-------------------------------------------//
 
 riot.route('/calorieCal',function(){
@@ -32,11 +34,15 @@ riot.route('/personal',function(){
 //     riot.mount('#Login','logsign')
 // })
 
+riot.route('/register',function(){
+    riot.mount('#Mount','register')
+})
+
 riot.route(function(){
     riot.mount('#Mount','homepage');
 })
 
-riot.route.start(true)
 
+riot.route.start(true)
 
 

@@ -13,39 +13,33 @@
         <i class="material-icons mdl-list__item-avatar color-set-blue">exposure</i>
         <span>Calculate  </span>
       </a>
+      <a class="mdl-navigation__link" href="" onclick={showInfo}>
+        <i class="material-icons mdl-list__item-avatar">sentiment_satisfied</i>
+        <span>Information  </span>
+      </a>
     </nav>
   </div>
 
   <main class="mdl-layout__content">
-    <div class="page-content" >
-    <!--  content goes here -->
-    <h3 class="text-center " > Dashboard</h3>
-
-
-
-      <div id="recordWeight"></div>
-      <div class='col-md-3'>
-            <BMI></BMI>
-      </div>  
-
-
-      <div class="row">
-           <line></line>    
-      </div> 
-
-
-
-
+    <div class="page-content" id="Mount-dashboard" >
     </div>
   </main>
 </div>
 
 
     <script>
+          var that = this;
           console.log("I am in the dashboard");
-          this.showWeightTrack = function(e){
-            riot.mount('#recordWeight','record-weight');
+          that.showWeightTrack = function(e){
+            riot.mount('#Mount-dashboard','record');
           }
+
+          that.showInfo = function(e){
+            riot.mount('#Mount-dashboard','personal')
+          }
+
+
+
     </script>
 
 
@@ -91,6 +85,11 @@
     .color-set-blue{
     background-color:#00BBD6;
     color: #A0F4FF;
+    }
+
+    .color-set-green{
+      background-color: #9FDC80;
+      color:white;
     }
 
     .material-icons{
