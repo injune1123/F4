@@ -1,90 +1,84 @@
 <homepage>
     <div>
-        <!-- <a href="#"> --><img id="wierdImg" src="Images/fitness4.jpg"><!-- </a> -->
+        <img id="wierdImg" src="Images/fitness4.jpg">
         <h1 id="slogan">EFFECTIVE, FIT AND FUN</h1>
         <h2 id="slogan2">CHECK OUT OUR TOOLS</h2>
         <img id="arrow" src="Images/arrow.png">
     </div>
 
 
-    <div class="introduction">
+    <div class="introductionNew">
         <div class="container">
-            <div class="logo" id="logo1">
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="http://www.myoexercise.com/uploads/5/7/1/0/57100025/2623732_orig.png" alt="">
-                    </div>
-                    <div class="col-md-4">
-                        <div class="circle">
-                            <h3>More than 1000 users choose F4 for weight control!</h3>
-                        </div>
-                    </div>
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <img id="ad1" src="Images/ad1.jpg">
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <h3>More than 1000 users choose F4 for weight control!</h3>
+                    <img id="ad11" src="Images/adwhite.jpg">
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <img id="ad2" src="Images/ad2.jpg">
+                </div>
+                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <h3>With F4, it's impossible for you to give up halfway! </h3>
+                    <img id="ad22" src="Images/adwhite.jpg">
                 </div>
             </div>
-            <div class="logo" id="logo2">
-                <div class="row">
-                    <div class="col-md-4">    
-                    </div>
-                    <div class="col-md-4">
-                        <div class="circle">
-                            <h3>With F4, it's impossible for you to give up halfway! </h3>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <img src="http://www.doctorkweightloss.com/wp-content/uploads/2014/03/checklist-300x198.jpg" alt="">
-                    </div>
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <h3>F4, the simplest way to track calorie and weight!</h3>
+                    <img id="ad33" src="Images/adwhite.jpg">
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <img id="ad3" src="Images/ad3.jpg">
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <h3>F4, check your celendar and see the results!</h3>
+                    <img id="ad44" src="Images/adwhite.jpg">
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <img id="ad4" src="Images/ad4.jpg">
                 </div>
             </div>
-            <div class="logo" id="logo3">
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="http://www.fitnessexpert4u.com/images/Nutrient_Fitness.jpg" alt="">
-                    </div>
-                    <div class="col-md-4">
-                        <div class="circle">
-                            <h3>F4, the simplest way to track calorie and weight!</h3>   
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>            
+        </div>
     </div>
-    
 
-        <div class="jumbotron">
-        <h2 id="FitnessTools">FITNESS TOOLS</h1>
+    <div class="jumbotron">
+        <h2 id="FitnessTools">FITNESS TOOLS</h2>
         <div class="lists">
             <div class="col-xs-4 col-sm-4 col-md-4">
                 <div class="circle">
-                    <a href="#">CALORIE CALCULATOR</a><p></p>
+                    <p>Check calories and keep track of what you eat everyday.</p>
+                    <div class="buttonlink"><a href="#">CALORIE CALCULATOR</a></div>
                 </div>
             </div>
             <div class="col-xs-4 col-sm-4 col-md-4">
                 <div class="circle">
-                    <a href="#">WEIGHT PREDICTION</a><p></p>
+                    <p>Keep track of your workout and see how much you burn.</p>
+                    <div class="buttonlink"><a href="#">WORKOUT CALCULAOTR</a></div>
                 </div>
             </div>
             <div class="col-xs-4 col-sm-4 col-md-4">
                 <div class="circle">
-                    <a href="#">SOMETHING ELSE</a><p></p>
+                    <p>Keep a record of your weight and see the results.</p>
+                    <div class="buttonlink"><a href="#">WEIGHT PREDICTION</a></div>
                 </div>
             </div>
-
         </div>
     </div>
 
 
-
-
 <style scoped>
     :scope
-    
+
     #wierdImg{
         height:auto;
         width:100%;
         display: block;
         margin-left: auto;
         margin-right: auto;
+        padding-top: 50px;
         position:relative;
     }
     
@@ -116,66 +110,76 @@
         height: 50px;
     }
     
+    .container{
+        height:750px;
+        width:100%;
+        margin-left:0px;
+        margin-right:0px;
+        padding-top:75px;
+        padding-left:0px;
+        padding-right:0px;
+        background-image: url("Images/adback.jpg");
+        background-repeat: no-repeat;
+        background-size: 100% 750px;
+    }
+
+    img {
+        width:330px;
+        height:300px;
+    }
+
+    h3{
+        padding-top:100px;
+        padding-left: 20px;
+        padding-right:20px;
+        font-size:18px;
+        text-align: center;
+        position: absolute;
+        color:black;
+        line-height: 20px
+    }
+
     .jumbotron {
-        background-color: #ef2e6c;
-        height:350px;
+        background-color: white;
+        height:400px;
+        margin-bottom:0px;
     }
     
     h2#FitnessTools{
         text-align:center;
         margin:0px;
+        margin-top: 30px;
+        color:gray;
+        font-family: times;
+        padding-bottom:50px;
     }
 
     .jumbotron .circle {
+        background: white;
+        margin-left: auto;
+        margin-right: auto;
+        line-height:50px;
+        text-align: center;
+    }
+
+    .jumbotron .buttonlink{
         width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        background: #f374a1;
+        height: 50px;
+        border-radius: 20px 20px 20px 20px;
+        border: 1px solid gray;
+        margin-top: 25px;
         margin-left: auto;
         margin-right: auto;
-        line-height:200px;
-        text-align: center;
     }
 
-    .introduction .circle {
-        width: 300px;
-        height: 300px;
-        background: #194A62;
-        margin-left: auto;
-        margin-right: auto;
-        line-height:200px;
-        text-align: center;
-        border-radius: 50%;
-        opacity: 0.85;
+    .jumbotron .circle a:hover {
+        color:gray;
+        text-decoration:none;
     }
 
-    .logo img {
-        width:100%;
-        height:50%;
-        text-align:center;
-    }
-
-    .introduction h3 {
-        color: white;
-        text-align: center;
-        padding-top: 95px;
-        font-size: 30px;
-        font-family: calibri;
-    }
-
-    .introduction {
-        padding-bottom: 30px;
-    }
+    
 
 </style>
-
-
-
-
-
-
-
-
 
 
 
