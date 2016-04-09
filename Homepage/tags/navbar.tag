@@ -1,5 +1,12 @@
 <navbar>
 	<!-- Always shows a header, even in smaller screens. -->
+	
+	  
+
+
+
+<!-- <navbar> -->
+	<!-- Always shows a header, even in smaller screens. -->
 
 	<div class="header">
             <div class="container">
@@ -10,10 +17,10 @@
                     <ul>
                         <li><a href="#calorieCal">Calorie Calculator</a></li>
                         <li><a href="#dashboard">Dashboard</a></li>
-                        <li><a href="#" onclick={showLogin}>Log In | Sign Up</a></li>
-                        <!-- <a if={!loggedIn} class="mdl-navigation__link" href="#" onclick={showLogin}>Log In | Sign Up</a>
-		      			<a if={loggedIn} class="mdl-navigation__link" href="#" onclick={logOut}>Log Out</a>
-		      			<a if={loggedIn} class="mdl-navigation__link" href="#personal" > <img class="head-icon" src="https://cdn0.iconfinder.com/data/icons/superuser-web-kit/512/686909-user_people_man_human_head_person-512.png" alt=""></a> -->
+                        <li><a if={!loggedIn} href="#" onclick={showLogin}>Log In | Sign Up</a></li>
+                        
+		      			<li><a if={loggedIn} href="#" onclick={logOut}>Log Out</a></li>
+		      			<li><a if={loggedIn} href="#personal" > <img class="head-icon" src="https://cdn0.iconfinder.com/data/icons/superuser-web-kit/512/686909-user_people_man_human_head_person-512.png" alt=""></a></li>
                     </ul>
                 </div>
             </div>
@@ -23,6 +30,7 @@
 	<script>
 	var that = this;
 	that.loggedIn = that.opts.loggedIn;
+	console.log(that.loggedIn)
 
 	that.logOut = function(e){
 		Parse.User.logOut();
@@ -31,6 +39,7 @@
 	}
 
 	that.showLogin = function(e){
+
 		riot.mount('#Login','logsign');
 	}
 
@@ -91,8 +100,15 @@
 		height:75px;
 	}
 
+	.head-icon{
+		border-radius: 50%;
+		width:30px;
+		margin-left: -20px;
+	}
+
 
   </style>
 
 </navbar>
 
+ -->

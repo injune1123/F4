@@ -78,7 +78,6 @@
         display: block;
         margin-left: auto;
         margin-right: auto;
-        padding-top: 50px;
         position:relative;
     }
     
