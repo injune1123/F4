@@ -1,64 +1,7 @@
 <navbar>
 	<!-- Always shows a header, even in smaller screens. -->
-	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-	  <header class="mdl-layout__header my-header">
-	    <div class="mdl-layout__header-row">
-	      <!-- Title -->
-	      
-	    </div>
-	  </header>
-	  
-	  
-	</div>
-
-	<script>
-	var that = this;
-	that.loggedIn = that.opts.loggedIn;
-
-	that.logOut = function(e){
-		Parse.User.logOut();
-		window.location.reload();
-
-	}
-
-	that.showLogin = function(e){
-		riot.mount('#Login','logsign');
-	}
-
-	</script>
-  <style scoped>
-    :scope 
-    /*.mdl-layout__header{
-		background-color: red !important; 
-	}*/
 	
-	.mdl-layout-title a:hover {
-		color:white;
-		text-decoration:none;
-	}
-	
-	.mdl-layout-title a:visited {
-		color:white;
-		text-decoration:none;
-	}
-
-	.mdl-layout--fixed-header{
-		height: 70px !important;
-	}
-
-	.my-header{
-		background-color: #424242;
-	}
-	.head-icon{
-		border-radius: 50%;
-		width:30px;
-		margin-left: -20px;
-	}
-
-  </style>
-
-<!-- </navbar>
- -->
+	  
 
 
 
@@ -155,6 +98,12 @@
 	.nav {
 		float: right;
 		height:75px;
+	}
+
+	.head-icon{
+		border-radius: 50%;
+		width:30px;
+		margin-left: -20px;
 	}
 
 
