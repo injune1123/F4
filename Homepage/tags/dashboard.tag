@@ -9,7 +9,7 @@
         <i class="material-icons mdl-list__item-avatar color-set-peach">create</i>
         <span>Record </span>
       </a>
-      <a class="mdl-navigation__link" href="#calorieCal">
+      <a class="mdl-navigation__link" href="" onclick={showCalculator}>
         <i class="material-icons mdl-list__item-avatar color-set-blue">exposure</i>
         <span>Calculate  </span>
       </a>
@@ -38,6 +38,9 @@
             riot.mount('#Mount-dashboard','personal')
           }
 
+          that.showCalculator = function(e){
+            riot.mount('#Mount-dashboard','calorie')
+          }
 
 
     </script>

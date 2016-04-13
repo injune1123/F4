@@ -1,0 +1,1404 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'parse-cli' ]
+2 info using npm@2.14.12
+3 info using node@v4.3.0
+4 verbose install initial load of /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage/package.json
+5 verbose readDependencies loading dependencies from /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage/package.json
+6 silly cache add args [ 'parse-cli', null ]
+7 verbose cache add spec parse-cli
+8 silly cache add parsed spec Result {
+8 silly cache add   raw: 'parse-cli',
+8 silly cache add   scope: null,
+8 silly cache add   name: 'parse-cli',
+8 silly cache add   rawSpec: '',
+8 silly cache add   spec: 'latest',
+8 silly cache add   type: 'tag' }
+9 silly addNamed parse-cli@latest
+10 verbose addNamed "latest" is being treated as a dist-tag for parse-cli
+11 info addNameTag [ 'parse-cli', 'latest' ]
+12 silly mapToRegistry name parse-cli
+13 silly mapToRegistry using default registry
+14 silly mapToRegistry registry https://registry.npmjs.org/
+15 silly mapToRegistry uri https://registry.npmjs.org/parse-cli
+16 verbose addNameTag registry:https://registry.npmjs.org/parse-cli not in flight; fetching
+17 verbose request uri https://registry.npmjs.org/parse-cli
+18 verbose request no auth needed
+19 info attempt registry request try #1 at 14:05:24
+20 verbose request id e77979417a5d8a22
+21 verbose etag "1UYR9TWHHG77JL2KTGXM5Z580"
+22 http request GET https://registry.npmjs.org/parse-cli
+23 http 304 https://registry.npmjs.org/parse-cli
+24 verbose headers { date: 'Tue, 12 Apr 2016 18:05:24 GMT',
+24 verbose headers   via: '1.1 varnish',
+24 verbose headers   'cache-control': 'max-age=300',
+24 verbose headers   etag: '"1UYR9TWHHG77JL2KTGXM5Z580"',
+24 verbose headers   age: '0',
+24 verbose headers   connection: 'keep-alive',
+24 verbose headers   'x-served-by': 'cache-atl6226-ATL',
+24 verbose headers   'x-cache': 'MISS',
+24 verbose headers   'x-cache-hits': '0',
+24 verbose headers   'x-timer': 'S1460484324.895229,VS0,VE368',
+24 verbose headers   vary: 'Accept-Encoding' }
+25 silly get cb [ 304,
+25 silly get   { date: 'Tue, 12 Apr 2016 18:05:24 GMT',
+25 silly get     via: '1.1 varnish',
+25 silly get     'cache-control': 'max-age=300',
+25 silly get     etag: '"1UYR9TWHHG77JL2KTGXM5Z580"',
+25 silly get     age: '0',
+25 silly get     connection: 'keep-alive',
+25 silly get     'x-served-by': 'cache-atl6226-ATL',
+25 silly get     'x-cache': 'MISS',
+25 silly get     'x-cache-hits': '0',
+25 silly get     'x-timer': 'S1460484324.895229,VS0,VE368',
+25 silly get     vary: 'Accept-Encoding' } ]
+26 verbose etag https://registry.npmjs.org/parse-cli from cache
+27 verbose get saving parse-cli to /Users/apple/.npm/registry.npmjs.org/parse-cli/.cache.json
+28 silly addNameTag next cb for parse-cli with tag latest
+29 silly addNamed parse-cli@0.2.4
+30 verbose addNamed "0.2.4" is a plain semver version for parse-cli
+31 silly cache afterAdd parse-cli@0.2.4
+32 verbose afterAdd /Users/apple/.npm/parse-cli/0.2.4/package/package.json not in flight; writing
+33 verbose afterAdd /Users/apple/.npm/parse-cli/0.2.4/package/package.json written
+34 silly install resolved [ { name: 'parse-cli',
+34 silly install resolved     version: '0.2.4',
+34 silly install resolved     description: 'Parse Command line tools built on Node',
+34 silly install resolved     main: 'index.js',
+34 silly install resolved     scripts: { test: 'echo "Error: no test specified" && exit 1' },
+34 silly install resolved     repository:
+34 silly install resolved      { type: 'git',
+34 silly install resolved        url: 'git+https://github.com/flovilmart/parse-cli.git' },
+34 silly install resolved     keywords: [ 'Parse', 'Command', 'line', 'tools' ],
+34 silly install resolved     author: { name: 'Florent Vilmart' },
+34 silly install resolved     license: 'MIT',
+34 silly install resolved     bugs: { url: 'https://github.com/flovilmart/parse-cli/issues' },
+34 silly install resolved     homepage: 'https://github.com/flovilmart/parse-cli',
+34 silly install resolved     bin: { 'parse-cli': './parse-cli' },
+34 silly install resolved     dependencies:
+34 silly install resolved      { async: '^0.9.0',
+34 silly install resolved        commander: '^2.2.0',
+34 silly install resolved        'fs-extra': '^0.10.0',
+34 silly install resolved        glob: '^4.0.3',
+34 silly install resolved        mime: '^1.2.11',
+34 silly install resolved        'parse-develop': '~0.0.54',
+34 silly install resolved        'parse-module': '^0.1.2',
+34 silly install resolved        'posix-getopt': '^1.1.0',
+34 silly install resolved        prompt: '^0.2.13',
+34 silly install resolved        request: '^2.36.0',
+34 silly install resolved        'request-sync': '0.0.5',
+34 silly install resolved        string: '^1.9.0',
+34 silly install resolved        underscore: '^1.6.0' },
+34 silly install resolved     gitHead: '7133dbcc1928d0c681e281a01238906b21838725',
+34 silly install resolved     _id: 'parse-cli@0.2.4',
+34 silly install resolved     _shasum: '96254bd94b711ad80999fb9c3c9faf96e411d27d',
+34 silly install resolved     _from: 'parse-cli@latest',
+34 silly install resolved     _npmVersion: '1.4.16',
+34 silly install resolved     _npmUser: { name: 'flovilmart', email: 'flovilmart@icloud.com' },
+34 silly install resolved     maintainers: [ [Object] ],
+34 silly install resolved     dist:
+34 silly install resolved      { shasum: '96254bd94b711ad80999fb9c3c9faf96e411d27d',
+34 silly install resolved        tarball: 'https://registry.npmjs.org/parse-cli/-/parse-cli-0.2.4.tgz' },
+34 silly install resolved     directories: {},
+34 silly install resolved     _resolved: 'https://registry.npmjs.org/parse-cli/-/parse-cli-0.2.4.tgz',
+34 silly install resolved     readme: 'ERROR: No README data found!' } ]
+35 info install parse-cli@0.2.4 into /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage
+36 info installOne parse-cli@0.2.4
+37 verbose installOne of parse-cli to /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage not in flight; installing
+38 verbose lock using /Users/apple/.npm/_locks/parse-cli-406ff491fe50affa.lock for /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage/node_modules/parse-cli
+39 silly install write writing parse-cli 0.2.4 to /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage/node_modules/parse-cli
+40 verbose unbuild node_modules/parse-cli
+41 silly gentlyRm /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage/node_modules/parse-cli is being purged from base /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage
+42 verbose gentlyRm don't care about contents; nuking /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage/node_modules/parse-cli
+43 verbose tar unpack /Users/apple/.npm/parse-cli/0.2.4/package.tgz
+44 verbose tar unpacking to /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage/node_modules/parse-cli
+45 silly gentlyRm /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage/node_modules/parse-cli is being purged
+46 verbose gentlyRm don't care about contents; nuking /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage/node_modules/parse-cli
+47 silly gunzTarPerm modes [ '755', '644' ]
+48 silly gunzTarPerm extractEntry package.json
+49 silly gunzTarPerm extractEntry .npmignore
+50 silly gunzTarPerm extractEntry README.md
+51 silly gunzTarPerm extractEntry LICENSE
+52 silly gunzTarPerm extractEntry lib/cli.js
+53 silly gunzTarPerm extractEntry lib/configHandler.js
+54 silly gunzTarPerm extractEntry lib/constants.js
+55 silly gunzTarPerm extractEntry lib/main.js
+56 silly gunzTarPerm extractEntry lib/parse.js
+57 silly gunzTarPerm extractEntry parse-cli
+58 silly gunzTarPerm extractEntry res/tpl/cloud/app.js
+59 silly gunzTarPerm extractEntry res/tpl/cloud/main.js
+60 silly gunzTarPerm extractEntry res/tpl/cloud/views/hello.ejs
+61 silly gunzTarPerm extractEntry res/tpl/config/global.json
+62 silly gunzTarPerm extractEntry res/tpl/public/index.html
+63 verbose write writing to /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage/node_modules/parse-cli/package.json
+64 info preinstall parse-cli@0.2.4
+65 verbose readDependencies loading dependencies from /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage/node_modules/parse-cli/package.json
+66 silly prepareForInstallMany adding async@^0.9.0 from parse-cli dependencies
+67 silly prepareForInstallMany adding commander@^2.2.0 from parse-cli dependencies
+68 silly prepareForInstallMany adding fs-extra@^0.10.0 from parse-cli dependencies
+69 silly prepareForInstallMany adding glob@^4.0.3 from parse-cli dependencies
+70 silly prepareForInstallMany adding mime@^1.2.11 from parse-cli dependencies
+71 silly prepareForInstallMany adding parse-develop@~0.0.54 from parse-cli dependencies
+72 silly prepareForInstallMany adding parse-module@^0.1.2 from parse-cli dependencies
+73 silly prepareForInstallMany adding posix-getopt@^1.1.0 from parse-cli dependencies
+74 silly prepareForInstallMany adding prompt@^0.2.13 from parse-cli dependencies
+75 silly prepareForInstallMany adding request@^2.36.0 from parse-cli dependencies
+76 silly prepareForInstallMany adding request-sync@0.0.5 from parse-cli dependencies
+77 silly prepareForInstallMany adding string@^1.9.0 from parse-cli dependencies
+78 silly prepareForInstallMany adding underscore@^1.6.0 from parse-cli dependencies
+79 verbose readDependencies loading dependencies from /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage/node_modules/parse-cli/package.json
+80 silly cache add args [ 'async@^0.9.0', null ]
+81 verbose cache add spec async@^0.9.0
+82 silly cache add args [ 'commander@^2.2.0', null ]
+83 verbose cache add spec commander@^2.2.0
+84 silly cache add parsed spec Result {
+84 silly cache add   raw: 'async@^0.9.0',
+84 silly cache add   scope: null,
+84 silly cache add   name: 'async',
+84 silly cache add   rawSpec: '^0.9.0',
+84 silly cache add   spec: '>=0.9.0 <0.10.0',
+84 silly cache add   type: 'range' }
+85 silly addNamed async@>=0.9.0 <0.10.0
+86 verbose addNamed ">=0.9.0 <0.10.0" is a valid semver range for async
+87 silly addNameRange { name: 'async', range: '>=0.9.0 <0.10.0', hasData: false }
+88 silly mapToRegistry name async
+89 silly mapToRegistry using default registry
+90 silly mapToRegistry registry https://registry.npmjs.org/
+91 silly mapToRegistry uri https://registry.npmjs.org/async
+92 verbose addNameRange registry:https://registry.npmjs.org/async not in flight; fetching
+93 silly cache add parsed spec Result {
+93 silly cache add   raw: 'commander@^2.2.0',
+93 silly cache add   scope: null,
+93 silly cache add   name: 'commander',
+93 silly cache add   rawSpec: '^2.2.0',
+93 silly cache add   spec: '>=2.2.0 <3.0.0',
+93 silly cache add   type: 'range' }
+94 silly addNamed commander@>=2.2.0 <3.0.0
+95 verbose addNamed ">=2.2.0 <3.0.0" is a valid semver range for commander
+96 silly addNameRange { name: 'commander', range: '>=2.2.0 <3.0.0', hasData: false }
+97 silly mapToRegistry name commander
+98 silly mapToRegistry using default registry
+99 silly mapToRegistry registry https://registry.npmjs.org/
+100 silly mapToRegistry uri https://registry.npmjs.org/commander
+101 verbose addNameRange registry:https://registry.npmjs.org/commander not in flight; fetching
+102 silly cache add args [ 'fs-extra@^0.10.0', null ]
+103 verbose cache add spec fs-extra@^0.10.0
+104 silly cache add parsed spec Result {
+104 silly cache add   raw: 'fs-extra@^0.10.0',
+104 silly cache add   scope: null,
+104 silly cache add   name: 'fs-extra',
+104 silly cache add   rawSpec: '^0.10.0',
+104 silly cache add   spec: '>=0.10.0 <0.11.0',
+104 silly cache add   type: 'range' }
+105 silly addNamed fs-extra@>=0.10.0 <0.11.0
+106 verbose addNamed ">=0.10.0 <0.11.0" is a valid semver range for fs-extra
+107 silly addNameRange { name: 'fs-extra', range: '>=0.10.0 <0.11.0', hasData: false }
+108 silly mapToRegistry name fs-extra
+109 silly mapToRegistry using default registry
+110 silly mapToRegistry registry https://registry.npmjs.org/
+111 silly mapToRegistry uri https://registry.npmjs.org/fs-extra
+112 verbose addNameRange registry:https://registry.npmjs.org/fs-extra not in flight; fetching
+113 silly cache add args [ 'glob@^4.0.3', null ]
+114 verbose cache add spec glob@^4.0.3
+115 silly cache add parsed spec Result {
+115 silly cache add   raw: 'glob@^4.0.3',
+115 silly cache add   scope: null,
+115 silly cache add   name: 'glob',
+115 silly cache add   rawSpec: '^4.0.3',
+115 silly cache add   spec: '>=4.0.3 <5.0.0',
+115 silly cache add   type: 'range' }
+116 silly addNamed glob@>=4.0.3 <5.0.0
+117 verbose addNamed ">=4.0.3 <5.0.0" is a valid semver range for glob
+118 silly addNameRange { name: 'glob', range: '>=4.0.3 <5.0.0', hasData: false }
+119 silly mapToRegistry name glob
+120 silly mapToRegistry using default registry
+121 silly mapToRegistry registry https://registry.npmjs.org/
+122 silly mapToRegistry uri https://registry.npmjs.org/glob
+123 verbose addNameRange registry:https://registry.npmjs.org/glob not in flight; fetching
+124 silly cache add args [ 'mime@^1.2.11', null ]
+125 verbose cache add spec mime@^1.2.11
+126 silly cache add parsed spec Result {
+126 silly cache add   raw: 'mime@^1.2.11',
+126 silly cache add   scope: null,
+126 silly cache add   name: 'mime',
+126 silly cache add   rawSpec: '^1.2.11',
+126 silly cache add   spec: '>=1.2.11 <2.0.0',
+126 silly cache add   type: 'range' }
+127 silly addNamed mime@>=1.2.11 <2.0.0
+128 verbose addNamed ">=1.2.11 <2.0.0" is a valid semver range for mime
+129 silly addNameRange { name: 'mime', range: '>=1.2.11 <2.0.0', hasData: false }
+130 silly mapToRegistry name mime
+131 silly mapToRegistry using default registry
+132 silly mapToRegistry registry https://registry.npmjs.org/
+133 silly mapToRegistry uri https://registry.npmjs.org/mime
+134 verbose addNameRange registry:https://registry.npmjs.org/mime not in flight; fetching
+135 silly cache add args [ 'parse-develop@~0.0.54', null ]
+136 verbose cache add spec parse-develop@~0.0.54
+137 silly cache add parsed spec Result {
+137 silly cache add   raw: 'parse-develop@~0.0.54',
+137 silly cache add   scope: null,
+137 silly cache add   name: 'parse-develop',
+137 silly cache add   rawSpec: '~0.0.54',
+137 silly cache add   spec: '>=0.0.54 <0.1.0',
+137 silly cache add   type: 'range' }
+138 silly addNamed parse-develop@>=0.0.54 <0.1.0
+139 verbose addNamed ">=0.0.54 <0.1.0" is a valid semver range for parse-develop
+140 silly addNameRange { name: 'parse-develop',
+140 silly addNameRange   range: '>=0.0.54 <0.1.0',
+140 silly addNameRange   hasData: false }
+141 silly mapToRegistry name parse-develop
+142 silly mapToRegistry using default registry
+143 silly mapToRegistry registry https://registry.npmjs.org/
+144 silly mapToRegistry uri https://registry.npmjs.org/parse-develop
+145 verbose addNameRange registry:https://registry.npmjs.org/parse-develop not in flight; fetching
+146 silly cache add args [ 'parse-module@^0.1.2', null ]
+147 verbose cache add spec parse-module@^0.1.2
+148 silly cache add parsed spec Result {
+148 silly cache add   raw: 'parse-module@^0.1.2',
+148 silly cache add   scope: null,
+148 silly cache add   name: 'parse-module',
+148 silly cache add   rawSpec: '^0.1.2',
+148 silly cache add   spec: '>=0.1.2 <0.2.0',
+148 silly cache add   type: 'range' }
+149 silly addNamed parse-module@>=0.1.2 <0.2.0
+150 verbose addNamed ">=0.1.2 <0.2.0" is a valid semver range for parse-module
+151 silly addNameRange { name: 'parse-module', range: '>=0.1.2 <0.2.0', hasData: false }
+152 silly mapToRegistry name parse-module
+153 silly mapToRegistry using default registry
+154 silly mapToRegistry registry https://registry.npmjs.org/
+155 silly mapToRegistry uri https://registry.npmjs.org/parse-module
+156 verbose addNameRange registry:https://registry.npmjs.org/parse-module not in flight; fetching
+157 silly cache add args [ 'posix-getopt@^1.1.0', null ]
+158 verbose cache add spec posix-getopt@^1.1.0
+159 silly cache add parsed spec Result {
+159 silly cache add   raw: 'posix-getopt@^1.1.0',
+159 silly cache add   scope: null,
+159 silly cache add   name: 'posix-getopt',
+159 silly cache add   rawSpec: '^1.1.0',
+159 silly cache add   spec: '>=1.1.0 <2.0.0',
+159 silly cache add   type: 'range' }
+160 silly addNamed posix-getopt@>=1.1.0 <2.0.0
+161 verbose addNamed ">=1.1.0 <2.0.0" is a valid semver range for posix-getopt
+162 silly addNameRange { name: 'posix-getopt', range: '>=1.1.0 <2.0.0', hasData: false }
+163 silly mapToRegistry name posix-getopt
+164 silly mapToRegistry using default registry
+165 silly mapToRegistry registry https://registry.npmjs.org/
+166 silly mapToRegistry uri https://registry.npmjs.org/posix-getopt
+167 verbose addNameRange registry:https://registry.npmjs.org/posix-getopt not in flight; fetching
+168 silly cache add args [ 'prompt@^0.2.13', null ]
+169 verbose cache add spec prompt@^0.2.13
+170 silly cache add parsed spec Result {
+170 silly cache add   raw: 'prompt@^0.2.13',
+170 silly cache add   scope: null,
+170 silly cache add   name: 'prompt',
+170 silly cache add   rawSpec: '^0.2.13',
+170 silly cache add   spec: '>=0.2.13 <0.3.0',
+170 silly cache add   type: 'range' }
+171 silly addNamed prompt@>=0.2.13 <0.3.0
+172 verbose addNamed ">=0.2.13 <0.3.0" is a valid semver range for prompt
+173 silly addNameRange { name: 'prompt', range: '>=0.2.13 <0.3.0', hasData: false }
+174 silly mapToRegistry name prompt
+175 silly mapToRegistry using default registry
+176 silly mapToRegistry registry https://registry.npmjs.org/
+177 silly mapToRegistry uri https://registry.npmjs.org/prompt
+178 verbose addNameRange registry:https://registry.npmjs.org/prompt not in flight; fetching
+179 silly cache add args [ 'request@^2.36.0', null ]
+180 verbose cache add spec request@^2.36.0
+181 silly cache add parsed spec Result {
+181 silly cache add   raw: 'request@^2.36.0',
+181 silly cache add   scope: null,
+181 silly cache add   name: 'request',
+181 silly cache add   rawSpec: '^2.36.0',
+181 silly cache add   spec: '>=2.36.0 <3.0.0',
+181 silly cache add   type: 'range' }
+182 silly addNamed request@>=2.36.0 <3.0.0
+183 verbose addNamed ">=2.36.0 <3.0.0" is a valid semver range for request
+184 silly addNameRange { name: 'request', range: '>=2.36.0 <3.0.0', hasData: false }
+185 silly mapToRegistry name request
+186 silly mapToRegistry using default registry
+187 silly mapToRegistry registry https://registry.npmjs.org/
+188 silly mapToRegistry uri https://registry.npmjs.org/request
+189 verbose addNameRange registry:https://registry.npmjs.org/request not in flight; fetching
+190 silly cache add args [ 'request-sync@0.0.5', null ]
+191 verbose cache add spec request-sync@0.0.5
+192 silly cache add parsed spec Result {
+192 silly cache add   raw: 'request-sync@0.0.5',
+192 silly cache add   scope: null,
+192 silly cache add   name: 'request-sync',
+192 silly cache add   rawSpec: '0.0.5',
+192 silly cache add   spec: '0.0.5',
+192 silly cache add   type: 'version' }
+193 silly addNamed request-sync@0.0.5
+194 verbose addNamed "0.0.5" is a plain semver version for request-sync
+195 silly mapToRegistry name request-sync
+196 silly mapToRegistry using default registry
+197 silly mapToRegistry registry https://registry.npmjs.org/
+198 silly mapToRegistry uri https://registry.npmjs.org/request-sync
+199 verbose addNameVersion registry:https://registry.npmjs.org/request-sync not in flight; fetching
+200 silly cache add args [ 'string@^1.9.0', null ]
+201 verbose cache add spec string@^1.9.0
+202 silly cache add parsed spec Result {
+202 silly cache add   raw: 'string@^1.9.0',
+202 silly cache add   scope: null,
+202 silly cache add   name: 'string',
+202 silly cache add   rawSpec: '^1.9.0',
+202 silly cache add   spec: '>=1.9.0 <2.0.0',
+202 silly cache add   type: 'range' }
+203 silly addNamed string@>=1.9.0 <2.0.0
+204 verbose addNamed ">=1.9.0 <2.0.0" is a valid semver range for string
+205 silly addNameRange { name: 'string', range: '>=1.9.0 <2.0.0', hasData: false }
+206 silly mapToRegistry name string
+207 silly mapToRegistry using default registry
+208 silly mapToRegistry registry https://registry.npmjs.org/
+209 silly mapToRegistry uri https://registry.npmjs.org/string
+210 verbose addNameRange registry:https://registry.npmjs.org/string not in flight; fetching
+211 silly cache add args [ 'underscore@^1.6.0', null ]
+212 verbose cache add spec underscore@^1.6.0
+213 silly cache add parsed spec Result {
+213 silly cache add   raw: 'underscore@^1.6.0',
+213 silly cache add   scope: null,
+213 silly cache add   name: 'underscore',
+213 silly cache add   rawSpec: '^1.6.0',
+213 silly cache add   spec: '>=1.6.0 <2.0.0',
+213 silly cache add   type: 'range' }
+214 silly addNamed underscore@>=1.6.0 <2.0.0
+215 verbose addNamed ">=1.6.0 <2.0.0" is a valid semver range for underscore
+216 silly addNameRange { name: 'underscore', range: '>=1.6.0 <2.0.0', hasData: false }
+217 silly mapToRegistry name underscore
+218 silly mapToRegistry using default registry
+219 silly mapToRegistry registry https://registry.npmjs.org/
+220 silly mapToRegistry uri https://registry.npmjs.org/underscore
+221 verbose addNameRange registry:https://registry.npmjs.org/underscore not in flight; fetching
+222 verbose request uri https://registry.npmjs.org/parse-develop
+223 verbose request no auth needed
+224 info attempt registry request try #1 at 14:05:25
+225 http request GET https://registry.npmjs.org/parse-develop
+226 verbose request uri https://registry.npmjs.org/commander
+227 verbose request no auth needed
+228 info attempt registry request try #1 at 14:05:25
+229 verbose etag "APOV7WL5UHYCP3UY4Z8IVRBZM"
+230 http request GET https://registry.npmjs.org/commander
+231 verbose request uri https://registry.npmjs.org/async
+232 verbose request no auth needed
+233 info attempt registry request try #1 at 14:05:25
+234 verbose etag "BLCU80HI2ZI6ZVJ65LL80MZLV"
+235 http request GET https://registry.npmjs.org/async
+236 verbose request uri https://registry.npmjs.org/fs-extra
+237 verbose request no auth needed
+238 info attempt registry request try #1 at 14:05:25
+239 verbose etag "63AZDVOM0SDXFE5WNYR4Y07L7"
+240 http request GET https://registry.npmjs.org/fs-extra
+241 verbose request uri https://registry.npmjs.org/parse-module
+242 verbose request no auth needed
+243 info attempt registry request try #1 at 14:05:25
+244 verbose etag "D04PBN4LLU6PD4L2DQUMTHP2Y"
+245 http request GET https://registry.npmjs.org/parse-module
+246 verbose request uri https://registry.npmjs.org/mime
+247 verbose request no auth needed
+248 info attempt registry request try #1 at 14:05:25
+249 verbose etag "DXIC6MMHRDK81RJWRTJ3L2DWU"
+250 http request GET https://registry.npmjs.org/mime
+251 verbose request uri https://registry.npmjs.org/glob
+252 verbose request no auth needed
+253 info attempt registry request try #1 at 14:05:25
+254 verbose etag "A9RWKTDY2PL58R9J1NKQX5AQ7"
+255 http request GET https://registry.npmjs.org/glob
+256 verbose request uri https://registry.npmjs.org/posix-getopt
+257 verbose request no auth needed
+258 info attempt registry request try #1 at 14:05:25
+259 verbose etag "AT2OFME4BRGNYXG8IUOY5UIUI"
+260 http request GET https://registry.npmjs.org/posix-getopt
+261 verbose request uri https://registry.npmjs.org/prompt
+262 verbose request no auth needed
+263 info attempt registry request try #1 at 14:05:25
+264 verbose etag "DU7Q21WDWDPDNZ3XT87AHEXEO"
+265 http request GET https://registry.npmjs.org/prompt
+266 verbose request uri https://registry.npmjs.org/request-sync
+267 verbose request no auth needed
+268 info attempt registry request try #1 at 14:05:25
+269 verbose etag "1ZBPS18FMPW1R3GXT736JAD0M"
+270 http request GET https://registry.npmjs.org/request-sync
+271 verbose request uri https://registry.npmjs.org/request
+272 verbose request no auth needed
+273 info attempt registry request try #1 at 14:05:25
+274 verbose etag "7NVKLQ2AAPR3XLM50DKEUGLOH"
+275 http request GET https://registry.npmjs.org/request
+276 verbose request uri https://registry.npmjs.org/underscore
+277 verbose request no auth needed
+278 info attempt registry request try #1 at 14:05:25
+279 verbose etag "2V52DMICFOX10TYF8N7Y9WYID"
+280 http request GET https://registry.npmjs.org/underscore
+281 verbose request uri https://registry.npmjs.org/string
+282 verbose request no auth needed
+283 info attempt registry request try #1 at 14:05:25
+284 verbose etag "EEUVYFT5CJYR0QBIKL93C4BAQ"
+285 http request GET https://registry.npmjs.org/string
+286 http 304 https://registry.npmjs.org/commander
+287 verbose headers { date: 'Tue, 12 Apr 2016 18:05:25 GMT',
+287 verbose headers   via: '1.1 varnish',
+287 verbose headers   'cache-control': 'max-age=300',
+287 verbose headers   etag: '"APOV7WL5UHYCP3UY4Z8IVRBZM"',
+287 verbose headers   age: '39',
+287 verbose headers   connection: 'keep-alive',
+287 verbose headers   'x-served-by': 'cache-atl6227-ATL',
+287 verbose headers   'x-cache': 'HIT',
+287 verbose headers   'x-cache-hits': '5',
+287 verbose headers   'x-timer': 'S1460484325.678344,VS0,VE0',
+287 verbose headers   vary: 'Accept-Encoding' }
+288 silly get cb [ 304,
+288 silly get   { date: 'Tue, 12 Apr 2016 18:05:25 GMT',
+288 silly get     via: '1.1 varnish',
+288 silly get     'cache-control': 'max-age=300',
+288 silly get     etag: '"APOV7WL5UHYCP3UY4Z8IVRBZM"',
+288 silly get     age: '39',
+288 silly get     connection: 'keep-alive',
+288 silly get     'x-served-by': 'cache-atl6227-ATL',
+288 silly get     'x-cache': 'HIT',
+288 silly get     'x-cache-hits': '5',
+288 silly get     'x-timer': 'S1460484325.678344,VS0,VE0',
+288 silly get     vary: 'Accept-Encoding' } ]
+289 verbose etag https://registry.npmjs.org/commander from cache
+290 verbose get saving commander to /Users/apple/.npm/registry.npmjs.org/commander/.cache.json
+291 silly addNameRange number 2 { name: 'commander', range: '>=2.2.0 <3.0.0', hasData: true }
+292 silly addNameRange versions [ 'commander',
+292 silly addNameRange   [ '0.0.1',
+292 silly addNameRange     '0.0.3',
+292 silly addNameRange     '0.0.4',
+292 silly addNameRange     '0.0.5',
+292 silly addNameRange     '0.1.0',
+292 silly addNameRange     '0.2.0',
+292 silly addNameRange     '0.2.1',
+292 silly addNameRange     '0.3.0',
+292 silly addNameRange     '0.3.1',
+292 silly addNameRange     '0.3.2',
+292 silly addNameRange     '0.3.3',
+292 silly addNameRange     '0.4.0',
+292 silly addNameRange     '0.4.1',
+292 silly addNameRange     '0.4.2',
+292 silly addNameRange     '0.4.3',
+292 silly addNameRange     '0.5.0',
+292 silly addNameRange     '0.5.1',
+292 silly addNameRange     '0.6.0',
+292 silly addNameRange     '0.6.1',
+292 silly addNameRange     '0.5.2',
+292 silly addNameRange     '1.0.0',
+292 silly addNameRange     '1.0.1',
+292 silly addNameRange     '1.0.2',
+292 silly addNameRange     '1.0.3',
+292 silly addNameRange     '1.0.4',
+292 silly addNameRange     '1.0.5',
+292 silly addNameRange     '1.1.0',
+292 silly addNameRange     '1.1.1',
+292 silly addNameRange     '1.2.0',
+292 silly addNameRange     '1.3.0',
+292 silly addNameRange     '1.3.1',
+292 silly addNameRange     '1.3.2',
+292 silly addNameRange     '2.0.0',
+292 silly addNameRange     '2.1.0',
+292 silly addNameRange     '2.2.0',
+292 silly addNameRange     '2.3.0',
+292 silly addNameRange     '2.4.0',
+292 silly addNameRange     '2.5.0',
+292 silly addNameRange     '2.5.1',
+292 silly addNameRange     '2.6.0',
+292 silly addNameRange     '2.7.0',
+292 silly addNameRange     '2.7.1',
+292 silly addNameRange     '2.8.0',
+292 silly addNameRange     '2.8.1',
+292 silly addNameRange     '2.9.0' ] ]
+293 silly addNamed commander@2.9.0
+294 verbose addNamed "2.9.0" is a plain semver version for commander
+295 silly cache afterAdd commander@2.9.0
+296 verbose afterAdd /Users/apple/.npm/commander/2.9.0/package/package.json not in flight; writing
+297 verbose afterAdd /Users/apple/.npm/commander/2.9.0/package/package.json written
+298 http 304 https://registry.npmjs.org/fs-extra
+299 verbose headers { date: 'Tue, 12 Apr 2016 18:05:25 GMT',
+299 verbose headers   via: '1.1 varnish',
+299 verbose headers   'cache-control': 'max-age=300',
+299 verbose headers   etag: '"63AZDVOM0SDXFE5WNYR4Y07L7"',
+299 verbose headers   age: '105',
+299 verbose headers   connection: 'keep-alive',
+299 verbose headers   'x-served-by': 'cache-atl6248-ATL',
+299 verbose headers   'x-cache': 'HIT',
+299 verbose headers   'x-cache-hits': '1',
+299 verbose headers   'x-timer': 'S1460484325.680976,VS0,VE0',
+299 verbose headers   vary: 'Accept-Encoding' }
+300 silly get cb [ 304,
+300 silly get   { date: 'Tue, 12 Apr 2016 18:05:25 GMT',
+300 silly get     via: '1.1 varnish',
+300 silly get     'cache-control': 'max-age=300',
+300 silly get     etag: '"63AZDVOM0SDXFE5WNYR4Y07L7"',
+300 silly get     age: '105',
+300 silly get     connection: 'keep-alive',
+300 silly get     'x-served-by': 'cache-atl6248-ATL',
+300 silly get     'x-cache': 'HIT',
+300 silly get     'x-cache-hits': '1',
+300 silly get     'x-timer': 'S1460484325.680976,VS0,VE0',
+300 silly get     vary: 'Accept-Encoding' } ]
+301 verbose etag https://registry.npmjs.org/fs-extra from cache
+302 verbose get saving fs-extra to /Users/apple/.npm/registry.npmjs.org/fs-extra/.cache.json
+303 silly addNameRange number 2 { name: 'fs-extra', range: '>=0.10.0 <0.11.0', hasData: true }
+304 silly addNameRange versions [ 'fs-extra',
+304 silly addNameRange   [ '0.0.1',
+304 silly addNameRange     '0.0.11',
+304 silly addNameRange     '0.0.3',
+304 silly addNameRange     '0.0.4',
+304 silly addNameRange     '0.1.0',
+304 silly addNameRange     '0.1.1',
+304 silly addNameRange     '0.1.2',
+304 silly addNameRange     '0.1.3',
+304 silly addNameRange     '0.2.0',
+304 silly addNameRange     '0.2.1',
+304 silly addNameRange     '0.3.0',
+304 silly addNameRange     '0.3.1',
+304 silly addNameRange     '0.3.2',
+304 silly addNameRange     '0.4.0',
+304 silly addNameRange     '0.5.0',
+304 silly addNameRange     '0.6.0',
+304 silly addNameRange     '0.6.1',
+304 silly addNameRange     '0.6.2',
+304 silly addNameRange     '0.6.3',
+304 silly addNameRange     '0.6.4',
+304 silly addNameRange     '0.7.0',
+304 silly addNameRange     '0.7.1',
+304 silly addNameRange     '0.8.0',
+304 silly addNameRange     '0.8.1',
+304 silly addNameRange     '0.9.0',
+304 silly addNameRange     '0.9.1',
+304 silly addNameRange     '0.10.0',
+304 silly addNameRange     '0.11.0',
+304 silly addNameRange     '0.11.1',
+304 silly addNameRange     '0.12.0',
+304 silly addNameRange     '0.13.0',
+304 silly addNameRange     '0.14.0',
+304 silly addNameRange     '0.15.0',
+304 silly addNameRange     '0.16.0',
+304 silly addNameRange     '0.16.1',
+304 silly addNameRange     '0.16.2',
+304 silly addNameRange     '0.16.3',
+304 silly addNameRange     '0.16.4',
+304 silly addNameRange     '0.16.5',
+304 silly addNameRange     '0.17.0',
+304 silly addNameRange     '0.18.0',
+304 silly addNameRange     '0.18.1',
+304 silly addNameRange     '0.18.2',
+304 silly addNameRange     '0.18.3',
+304 silly addNameRange     '0.18.4',
+304 silly addNameRange     '0.19.0',
+304 silly addNameRange     '0.20.0',
+304 silly addNameRange     '0.20.1',
+304 silly addNameRange     '0.21.0',
+304 silly addNameRange     '0.22.0',
+304 silly addNameRange     '0.22.1',
+304 silly addNameRange     '0.23.0',
+304 silly addNameRange     '0.23.1',
+304 silly addNameRange     '0.24.0',
+304 silly addNameRange     '0.25.0',
+304 silly addNameRange     '0.26.0',
+304 silly addNameRange     '0.26.1',
+304 silly addNameRange     '0.26.2',
+304 silly addNameRange     '0.26.3',
+304 silly addNameRange     '0.26.4',
+304 silly addNameRange     '0.26.5',
+304 silly addNameRange     '0.26.6',
+304 silly addNameRange     '0.26.7' ] ]
+305 silly addNamed fs-extra@0.10.0
+306 verbose addNamed "0.10.0" is a plain semver version for fs-extra
+307 http 304 https://registry.npmjs.org/mime
+308 verbose headers { date: 'Tue, 12 Apr 2016 18:05:25 GMT',
+308 verbose headers   via: '1.1 varnish',
+308 verbose headers   'cache-control': 'max-age=300',
+308 verbose headers   etag: '"DXIC6MMHRDK81RJWRTJ3L2DWU"',
+308 verbose headers   age: '118',
+308 verbose headers   connection: 'keep-alive',
+308 verbose headers   'x-served-by': 'cache-atl6224-ATL',
+308 verbose headers   'x-cache': 'HIT',
+308 verbose headers   'x-cache-hits': '5',
+308 verbose headers   'x-timer': 'S1460484325.709719,VS0,VE0',
+308 verbose headers   vary: 'Accept-Encoding' }
+309 silly get cb [ 304,
+309 silly get   { date: 'Tue, 12 Apr 2016 18:05:25 GMT',
+309 silly get     via: '1.1 varnish',
+309 silly get     'cache-control': 'max-age=300',
+309 silly get     etag: '"DXIC6MMHRDK81RJWRTJ3L2DWU"',
+309 silly get     age: '118',
+309 silly get     connection: 'keep-alive',
+309 silly get     'x-served-by': 'cache-atl6224-ATL',
+309 silly get     'x-cache': 'HIT',
+309 silly get     'x-cache-hits': '5',
+309 silly get     'x-timer': 'S1460484325.709719,VS0,VE0',
+309 silly get     vary: 'Accept-Encoding' } ]
+310 verbose etag https://registry.npmjs.org/mime from cache
+311 verbose get saving mime to /Users/apple/.npm/registry.npmjs.org/mime/.cache.json
+312 silly cache afterAdd fs-extra@0.10.0
+313 verbose afterAdd /Users/apple/.npm/fs-extra/0.10.0/package/package.json not in flight; writing
+314 silly addNameRange number 2 { name: 'mime', range: '>=1.2.11 <2.0.0', hasData: true }
+315 silly addNameRange versions [ 'mime',
+315 silly addNameRange   [ '1.0.0',
+315 silly addNameRange     '1.1.0',
+315 silly addNameRange     '1.2.1',
+315 silly addNameRange     '1.2.2',
+315 silly addNameRange     '1.2.3',
+315 silly addNameRange     '1.2.4',
+315 silly addNameRange     '1.2.5',
+315 silly addNameRange     '1.2.6',
+315 silly addNameRange     '1.2.7',
+315 silly addNameRange     '1.2.8',
+315 silly addNameRange     '1.2.9',
+315 silly addNameRange     '1.2.10',
+315 silly addNameRange     '1.2.11',
+315 silly addNameRange     '1.3.0',
+315 silly addNameRange     '1.3.2',
+315 silly addNameRange     '1.3.3',
+315 silly addNameRange     '1.3.4' ] ]
+316 silly addNamed mime@1.3.4
+317 verbose addNamed "1.3.4" is a plain semver version for mime
+318 verbose afterAdd /Users/apple/.npm/fs-extra/0.10.0/package/package.json written
+319 silly cache afterAdd mime@1.3.4
+320 verbose afterAdd /Users/apple/.npm/mime/1.3.4/package/package.json not in flight; writing
+321 verbose afterAdd /Users/apple/.npm/mime/1.3.4/package/package.json written
+322 http 304 https://registry.npmjs.org/glob
+323 verbose headers { date: 'Tue, 12 Apr 2016 18:05:25 GMT',
+323 verbose headers   via: '1.1 varnish',
+323 verbose headers   'cache-control': 'max-age=300',
+323 verbose headers   etag: '"A9RWKTDY2PL58R9J1NKQX5AQ7"',
+323 verbose headers   age: '141',
+323 verbose headers   connection: 'keep-alive',
+323 verbose headers   'x-served-by': 'cache-atl6223-ATL',
+323 verbose headers   'x-cache': 'HIT',
+323 verbose headers   'x-cache-hits': '29',
+323 verbose headers   'x-timer': 'S1460484325.722083,VS0,VE0',
+323 verbose headers   vary: 'Accept-Encoding' }
+324 silly get cb [ 304,
+324 silly get   { date: 'Tue, 12 Apr 2016 18:05:25 GMT',
+324 silly get     via: '1.1 varnish',
+324 silly get     'cache-control': 'max-age=300',
+324 silly get     etag: '"A9RWKTDY2PL58R9J1NKQX5AQ7"',
+324 silly get     age: '141',
+324 silly get     connection: 'keep-alive',
+324 silly get     'x-served-by': 'cache-atl6223-ATL',
+324 silly get     'x-cache': 'HIT',
+324 silly get     'x-cache-hits': '29',
+324 silly get     'x-timer': 'S1460484325.722083,VS0,VE0',
+324 silly get     vary: 'Accept-Encoding' } ]
+325 verbose etag https://registry.npmjs.org/glob from cache
+326 verbose get saving glob to /Users/apple/.npm/registry.npmjs.org/glob/.cache.json
+327 http 304 https://registry.npmjs.org/posix-getopt
+328 verbose headers { date: 'Tue, 12 Apr 2016 18:05:25 GMT',
+328 verbose headers   via: '1.1 varnish',
+328 verbose headers   'cache-control': 'max-age=300',
+328 verbose headers   etag: '"AT2OFME4BRGNYXG8IUOY5UIUI"',
+328 verbose headers   age: '90',
+328 verbose headers   connection: 'keep-alive',
+328 verbose headers   'x-served-by': 'cache-atl6234-ATL',
+328 verbose headers   'x-cache': 'HIT',
+328 verbose headers   'x-cache-hits': '1',
+328 verbose headers   'x-timer': 'S1460484325.724655,VS0,VE0',
+328 verbose headers   vary: 'Accept-Encoding' }
+329 silly get cb [ 304,
+329 silly get   { date: 'Tue, 12 Apr 2016 18:05:25 GMT',
+329 silly get     via: '1.1 varnish',
+329 silly get     'cache-control': 'max-age=300',
+329 silly get     etag: '"AT2OFME4BRGNYXG8IUOY5UIUI"',
+329 silly get     age: '90',
+329 silly get     connection: 'keep-alive',
+329 silly get     'x-served-by': 'cache-atl6234-ATL',
+329 silly get     'x-cache': 'HIT',
+329 silly get     'x-cache-hits': '1',
+329 silly get     'x-timer': 'S1460484325.724655,VS0,VE0',
+329 silly get     vary: 'Accept-Encoding' } ]
+330 verbose etag https://registry.npmjs.org/posix-getopt from cache
+331 verbose get saving posix-getopt to /Users/apple/.npm/registry.npmjs.org/posix-getopt/.cache.json
+332 http 304 https://registry.npmjs.org/prompt
+333 verbose headers { date: 'Tue, 12 Apr 2016 18:05:25 GMT',
+333 verbose headers   via: '1.1 varnish',
+333 verbose headers   'cache-control': 'max-age=300',
+333 verbose headers   etag: '"DU7Q21WDWDPDNZ3XT87AHEXEO"',
+333 verbose headers   age: '191',
+333 verbose headers   connection: 'keep-alive',
+333 verbose headers   'x-served-by': 'cache-atl6246-ATL',
+333 verbose headers   'x-cache': 'HIT',
+333 verbose headers   'x-cache-hits': '3',
+333 verbose headers   'x-timer': 'S1460484325.724142,VS0,VE0',
+333 verbose headers   vary: 'Accept-Encoding' }
+334 silly get cb [ 304,
+334 silly get   { date: 'Tue, 12 Apr 2016 18:05:25 GMT',
+334 silly get     via: '1.1 varnish',
+334 silly get     'cache-control': 'max-age=300',
+334 silly get     etag: '"DU7Q21WDWDPDNZ3XT87AHEXEO"',
+334 silly get     age: '191',
+334 silly get     connection: 'keep-alive',
+334 silly get     'x-served-by': 'cache-atl6246-ATL',
+334 silly get     'x-cache': 'HIT',
+334 silly get     'x-cache-hits': '3',
+334 silly get     'x-timer': 'S1460484325.724142,VS0,VE0',
+334 silly get     vary: 'Accept-Encoding' } ]
+335 verbose etag https://registry.npmjs.org/prompt from cache
+336 verbose get saving prompt to /Users/apple/.npm/registry.npmjs.org/prompt/.cache.json
+337 http 304 https://registry.npmjs.org/request
+338 verbose headers { date: 'Tue, 12 Apr 2016 18:05:25 GMT',
+338 verbose headers   via: '1.1 varnish',
+338 verbose headers   'cache-control': 'max-age=300',
+338 verbose headers   etag: '"7NVKLQ2AAPR3XLM50DKEUGLOH"',
+338 verbose headers   age: '8',
+338 verbose headers   connection: 'keep-alive',
+338 verbose headers   'x-served-by': 'cache-atl6225-ATL',
+338 verbose headers   'x-cache': 'HIT',
+338 verbose headers   'x-cache-hits': '2',
+338 verbose headers   'x-timer': 'S1460484325.724853,VS0,VE0',
+338 verbose headers   vary: 'Accept-Encoding' }
+339 silly get cb [ 304,
+339 silly get   { date: 'Tue, 12 Apr 2016 18:05:25 GMT',
+339 silly get     via: '1.1 varnish',
+339 silly get     'cache-control': 'max-age=300',
+339 silly get     etag: '"7NVKLQ2AAPR3XLM50DKEUGLOH"',
+339 silly get     age: '8',
+339 silly get     connection: 'keep-alive',
+339 silly get     'x-served-by': 'cache-atl6225-ATL',
+339 silly get     'x-cache': 'HIT',
+339 silly get     'x-cache-hits': '2',
+339 silly get     'x-timer': 'S1460484325.724853,VS0,VE0',
+339 silly get     vary: 'Accept-Encoding' } ]
+340 verbose etag https://registry.npmjs.org/request from cache
+341 verbose get saving request to /Users/apple/.npm/registry.npmjs.org/request/.cache.json
+342 http 304 https://registry.npmjs.org/underscore
+343 verbose headers { date: 'Tue, 12 Apr 2016 18:05:25 GMT',
+343 verbose headers   via: '1.1 varnish',
+343 verbose headers   'cache-control': 'max-age=300',
+343 verbose headers   etag: '"2V52DMICFOX10TYF8N7Y9WYID"',
+343 verbose headers   age: '182',
+343 verbose headers   connection: 'keep-alive',
+343 verbose headers   'x-served-by': 'cache-atl6244-ATL',
+343 verbose headers   'x-cache': 'HIT',
+343 verbose headers   'x-cache-hits': '11',
+343 verbose headers   'x-timer': 'S1460484325.726424,VS0,VE0',
+343 verbose headers   vary: 'Accept-Encoding' }
+344 silly get cb [ 304,
+344 silly get   { date: 'Tue, 12 Apr 2016 18:05:25 GMT',
+344 silly get     via: '1.1 varnish',
+344 silly get     'cache-control': 'max-age=300',
+344 silly get     etag: '"2V52DMICFOX10TYF8N7Y9WYID"',
+344 silly get     age: '182',
+344 silly get     connection: 'keep-alive',
+344 silly get     'x-served-by': 'cache-atl6244-ATL',
+344 silly get     'x-cache': 'HIT',
+344 silly get     'x-cache-hits': '11',
+344 silly get     'x-timer': 'S1460484325.726424,VS0,VE0',
+344 silly get     vary: 'Accept-Encoding' } ]
+345 verbose etag https://registry.npmjs.org/underscore from cache
+346 verbose get saving underscore to /Users/apple/.npm/registry.npmjs.org/underscore/.cache.json
+347 http 304 https://registry.npmjs.org/string
+348 verbose headers { date: 'Tue, 12 Apr 2016 18:05:25 GMT',
+348 verbose headers   via: '1.1 varnish',
+348 verbose headers   'cache-control': 'max-age=300',
+348 verbose headers   etag: '"EEUVYFT5CJYR0QBIKL93C4BAQ"',
+348 verbose headers   age: '70',
+348 verbose headers   connection: 'keep-alive',
+348 verbose headers   'x-served-by': 'cache-atl6244-ATL',
+348 verbose headers   'x-cache': 'HIT',
+348 verbose headers   'x-cache-hits': '1',
+348 verbose headers   'x-timer': 'S1460484325.726735,VS0,VE0',
+348 verbose headers   vary: 'Accept-Encoding' }
+349 silly get cb [ 304,
+349 silly get   { date: 'Tue, 12 Apr 2016 18:05:25 GMT',
+349 silly get     via: '1.1 varnish',
+349 silly get     'cache-control': 'max-age=300',
+349 silly get     etag: '"EEUVYFT5CJYR0QBIKL93C4BAQ"',
+349 silly get     age: '70',
+349 silly get     connection: 'keep-alive',
+349 silly get     'x-served-by': 'cache-atl6244-ATL',
+349 silly get     'x-cache': 'HIT',
+349 silly get     'x-cache-hits': '1',
+349 silly get     'x-timer': 'S1460484325.726735,VS0,VE0',
+349 silly get     vary: 'Accept-Encoding' } ]
+350 verbose etag https://registry.npmjs.org/string from cache
+351 verbose get saving string to /Users/apple/.npm/registry.npmjs.org/string/.cache.json
+352 silly addNameRange number 2 { name: 'glob', range: '>=4.0.3 <5.0.0', hasData: true }
+353 silly addNameRange versions [ 'glob',
+353 silly addNameRange   [ '1.1.0',
+353 silly addNameRange     '2.0.9',
+353 silly addNameRange     '2.0.8',
+353 silly addNameRange     '2.0.7',
+353 silly addNameRange     '2.1.0',
+353 silly addNameRange     '3.0.0',
+353 silly addNameRange     '3.0.1',
+353 silly addNameRange     '3.1.0',
+353 silly addNameRange     '3.1.1',
+353 silly addNameRange     '3.1.2',
+353 silly addNameRange     '3.1.3',
+353 silly addNameRange     '3.1.4',
+353 silly addNameRange     '3.1.5',
+353 silly addNameRange     '3.1.6',
+353 silly addNameRange     '3.1.7',
+353 silly addNameRange     '3.1.9',
+353 silly addNameRange     '3.1.10',
+353 silly addNameRange     '3.1.11',
+353 silly addNameRange     '3.1.12',
+353 silly addNameRange     '3.1.13',
+353 silly addNameRange     '3.1.14',
+353 silly addNameRange     '3.1.15',
+353 silly addNameRange     '3.1.16',
+353 silly addNameRange     '3.1.17',
+353 silly addNameRange     '3.1.18',
+353 silly addNameRange     '3.1.19',
+353 silly addNameRange     '3.1.20',
+353 silly addNameRange     '3.1.21',
+353 silly addNameRange     '3.2.0',
+353 silly addNameRange     '3.2.1',
+353 silly addNameRange     '3.2.3',
+353 silly addNameRange     '3.2.4',
+353 silly addNameRange     '3.2.5',
+353 silly addNameRange     '3.2.6',
+353 silly addNameRange     '3.2.7',
+353 silly addNameRange     '3.2.8',
+353 silly addNameRange     '3.2.9',
+353 silly addNameRange     '3.2.10',
+353 silly addNameRange     '3.2.11',
+353 silly addNameRange     '4.0.0',
+353 silly addNameRange     '4.0.1',
+353 silly addNameRange     '4.0.2',
+353 silly addNameRange     '4.0.3',
+353 silly addNameRange     '4.0.4',
+353 silly addNameRange     '4.0.5',
+353 silly addNameRange     '4.0.6',
+353 silly addNameRange     '4.1.2-beta',
+353 silly addNameRange     '4.1.2',
+353 silly addNameRange     '4.1.3',
+353 silly addNameRange     '4.1.4',
+353 silly addNameRange     '4.1.5',
+353 silly addNameRange     '4.1.6',
+353 silly addNameRange     '4.2.0',
+353 silly addNameRange     '4.2.1',
+353 silly addNameRange     '4.2.2',
+353 silly addNameRange     '4.3.0',
+353 silly addNameRange     '4.3.1',
+353 silly addNameRange     '4.3.2',
+353 silly addNameRange     '4.3.3',
+353 silly addNameRange     '4.3.4',
+353 silly addNameRange     '4.3.5',
+353 silly addNameRange     '4.4.0',
+353 silly addNameRange     '4.4.2',
+353 silly addNameRange     '4.5.0',
+353 silly addNameRange     '5.0.0',
+353 silly addNameRange     '4.5.1',
+353 silly addNameRange     '5.0.1',
+353 silly addNameRange     '4.5.2',
+353 silly addNameRange     '5.0.2',
+353 silly addNameRange     '4.5.3',
+353 silly addNameRange     '5.0.3',
+353 silly addNameRange     '5.0.4',
+353 silly addNameRange     '5.0.5',
+353 silly addNameRange     '5.0.6',
+353 silly addNameRange     '5.0.7',
+353 silly addNameRange     '5.0.9',
+353 silly addNameRange     '5.0.10',
+353 silly addNameRange     '5.0.11',
+353 silly addNameRange     '5.0.12',
+353 silly addNameRange     '5.0.13',
+353 silly addNameRange     '5.0.14',
+353 silly addNameRange     '5.0.15',
+353 silly addNameRange     '6.0.1',
+353 silly addNameRange     '6.0.2',
+353 silly addNameRange     '6.0.3',
+353 silly addNameRange     '6.0.4',
+353 silly addNameRange     '7.0.0',
+353 silly addNameRange     '7.0.1',
+353 silly addNameRange     '7.0.3' ] ]
+354 silly addNamed glob@4.5.3
+355 verbose addNamed "4.5.3" is a plain semver version for glob
+356 silly addNameRange number 2 { name: 'posix-getopt', range: '>=1.1.0 <2.0.0', hasData: true }
+357 silly addNameRange versions [ 'posix-getopt', [ '0.0.1', '1.0.0', '1.1.0', '1.2.0' ] ]
+358 silly addNamed posix-getopt@1.2.0
+359 verbose addNamed "1.2.0" is a plain semver version for posix-getopt
+360 silly addNameRange number 2 { name: 'prompt', range: '>=0.2.13 <0.3.0', hasData: true }
+361 silly addNameRange versions [ 'prompt',
+361 silly addNameRange   [ '0.0.1',
+361 silly addNameRange     '0.0.2',
+361 silly addNameRange     '0.0.3',
+361 silly addNameRange     '0.0.4',
+361 silly addNameRange     '0.1.0',
+361 silly addNameRange     '0.1.1',
+361 silly addNameRange     '0.1.2',
+361 silly addNameRange     '0.1.3',
+361 silly addNameRange     '0.1.4',
+361 silly addNameRange     '0.1.5',
+361 silly addNameRange     '0.1.7',
+361 silly addNameRange     '0.1.8',
+361 silly addNameRange     '0.1.9',
+361 silly addNameRange     '0.1.10',
+361 silly addNameRange     '0.1.11',
+361 silly addNameRange     '0.1.12',
+361 silly addNameRange     '0.2.0',
+361 silly addNameRange     '0.2.1',
+361 silly addNameRange     '0.2.2',
+361 silly addNameRange     '0.2.3',
+361 silly addNameRange     '0.2.4',
+361 silly addNameRange     '0.2.5',
+361 silly addNameRange     '0.2.6',
+361 silly addNameRange     '0.2.7',
+361 silly addNameRange     '0.2.8',
+361 silly addNameRange     '0.2.9',
+361 silly addNameRange     '0.2.10',
+361 silly addNameRange     '0.2.11',
+361 silly addNameRange     '0.2.12',
+361 silly addNameRange     '0.2.13',
+361 silly addNameRange     '0.2.14',
+361 silly addNameRange     '0.3.0',
+361 silly addNameRange     '1.0.0' ] ]
+362 silly addNamed prompt@0.2.14
+363 verbose addNamed "0.2.14" is a plain semver version for prompt
+364 silly addNameRange number 2 { name: 'request', range: '>=2.36.0 <3.0.0', hasData: true }
+365 silly addNameRange versions [ 'request',
+365 silly addNameRange   [ '0.10.0',
+365 silly addNameRange     '0.8.3',
+365 silly addNameRange     '0.9.0',
+365 silly addNameRange     '0.9.1',
+365 silly addNameRange     '0.9.5',
+365 silly addNameRange     '1.0.0',
+365 silly addNameRange     '1.1.0',
+365 silly addNameRange     '1.1.1',
+365 silly addNameRange     '1.2.0',
+365 silly addNameRange     '1.9.0',
+365 silly addNameRange     '1.9.1',
+365 silly addNameRange     '1.9.2',
+365 silly addNameRange     '1.9.3',
+365 silly addNameRange     '1.9.5',
+365 silly addNameRange     '1.9.7',
+365 silly addNameRange     '1.9.8',
+365 silly addNameRange     '1.9.9',
+365 silly addNameRange     '2.0.0',
+365 silly addNameRange     '2.0.1',
+365 silly addNameRange     '2.0.2',
+365 silly addNameRange     '2.0.3',
+365 silly addNameRange     '2.0.4',
+365 silly addNameRange     '2.0.5',
+365 silly addNameRange     '2.1.0',
+365 silly addNameRange     '2.1.1',
+365 silly addNameRange     '2.2.0',
+365 silly addNameRange     '2.2.5',
+365 silly addNameRange     '2.2.6',
+365 silly addNameRange     '2.2.9',
+365 silly addNameRange     '2.9.0',
+365 silly addNameRange     '2.9.1',
+365 silly addNameRange     '2.9.2',
+365 silly addNameRange     '2.9.3',
+365 silly addNameRange     '2.9.100',
+365 silly addNameRange     '2.9.150',
+365 silly addNameRange     '2.9.151',
+365 silly addNameRange     '2.9.152',
+365 silly addNameRange     '2.9.153',
+365 silly addNameRange     '2.9.200',
+365 silly addNameRange     '2.9.201',
+365 silly addNameRange     '2.9.202',
+365 silly addNameRange     '2.9.203',
+365 silly addNameRange     '2.10.0',
+365 silly addNameRange     '2.11.0',
+365 silly addNameRange     '2.11.1',
+365 silly addNameRange     '2.11.2',
+365 silly addNameRange     '2.11.3',
+365 silly addNameRange     '2.11.4',
+365 silly addNameRange     '2.12.0',
+365 silly addNameRange     '2.14.0',
+365 silly addNameRange     '2.16.0',
+365 silly addNameRange     '2.16.2',
+365 silly addNameRange     '2.16.4',
+365 silly addNameRange     '2.16.6',
+365 silly addNameRange     '2.18.0',
+365 silly addNameRange     '2.19.0',
+365 silly addNameRange     '2.20.0',
+365 silly addNameRange     '2.21.0',
+365 silly addNameRange     '2.22.0',
+365 silly addNameRange     '2.23.0',
+365 silly addNameRange     '2.24.0',
+365 silly addNameRange     '2.25.0',
+365 silly addNameRange     '2.26.0',
+365 silly addNameRange     '2.27.0',
+365 silly addNameRange     '2.28.0',
+365 silly addNameRange     '2.29.0',
+365 silly addNameRange     '2.30.0',
+365 silly addNameRange     '2.31.0',
+365 silly addNameRange     '2.32.0',
+365 silly addNameRange     '2.33.0',
+365 silly addNameRange     '2.34.0',
+365 silly addNameRange     '2.35.0',
+365 silly addNameRange     '2.36.0',
+365 silly addNameRange     '2.37.0',
+365 silly addNameRange     '2.38.0',
+365 silly addNameRange     '2.39.0',
+365 silly addNameRange     '2.40.0',
+365 silly addNameRange     '2.41.0',
+365 silly addNameRange     '2.42.0',
+365 silly addNameRange     '2.43.0',
+365 silly addNameRange     '2.44.0',
+365 silly addNameRange     '2.45.0',
+365 silly addNameRange     '2.46.0',
+365 silly addNameRange     '2.47.0',
+365 silly addNameRange     '2.48.0',
+365 silly addNameRange     '2.49.0',
+365 silly addNameRange     '2.50.0',
+365 silly addNameRange     '2.51.0',
+365 silly addNameRange     '2.52.0',
+365 silly addNameRange     '2.53.0',
+365 silly addNameRange     '2.54.0',
+365 silly addNameRange     '2.55.0',
+365 silly addNameRange     '2.56.0',
+365 silly addNameRange     '2.57.0',
+365 silly addNameRange     '2.58.0',
+365 silly addNameRange     '2.59.0',
+365 silly addNameRange     '2.60.0',
+365 silly addNameRange     '2.61.0',
+365 silly addNameRange     '2.62.0',
+365 silly addNameRange     '2.63.0',
+365 silly addNameRange     '2.64.0',
+365 silly addNameRange     '2.65.0',
+365 silly addNameRange     '2.66.0',
+365 silly addNameRange     '2.67.0',
+365 silly addNameRange     '2.68.0',
+365 silly addNameRange     '2.69.0',
+365 silly addNameRange     '2.70.0',
+365 silly addNameRange     '2.71.0' ] ]
+366 silly addNamed request@2.71.0
+367 verbose addNamed "2.71.0" is a plain semver version for request
+368 silly addNameRange number 2 { name: 'underscore', range: '>=1.6.0 <2.0.0', hasData: true }
+369 silly addNameRange versions [ 'underscore',
+369 silly addNameRange   [ '1.0.3',
+369 silly addNameRange     '1.0.4',
+369 silly addNameRange     '1.1.0',
+369 silly addNameRange     '1.1.1',
+369 silly addNameRange     '1.1.2',
+369 silly addNameRange     '1.1.3',
+369 silly addNameRange     '1.1.4',
+369 silly addNameRange     '1.1.5',
+369 silly addNameRange     '1.1.6',
+369 silly addNameRange     '1.1.7',
+369 silly addNameRange     '1.2.0',
+369 silly addNameRange     '1.2.1',
+369 silly addNameRange     '1.2.2',
+369 silly addNameRange     '1.2.3',
+369 silly addNameRange     '1.2.4',
+369 silly addNameRange     '1.3.0',
+369 silly addNameRange     '1.3.1',
+369 silly addNameRange     '1.3.2',
+369 silly addNameRange     '1.3.3',
+369 silly addNameRange     '1.4.0',
+369 silly addNameRange     '1.4.1',
+369 silly addNameRange     '1.4.2',
+369 silly addNameRange     '1.4.3',
+369 silly addNameRange     '1.4.4',
+369 silly addNameRange     '1.5.0',
+369 silly addNameRange     '1.5.1',
+369 silly addNameRange     '1.5.2',
+369 silly addNameRange     '1.6.0',
+369 silly addNameRange     '1.7.0',
+369 silly addNameRange     '1.8.0',
+369 silly addNameRange     '1.8.1',
+369 silly addNameRange     '1.8.2',
+369 silly addNameRange     '1.8.3' ] ]
+370 silly addNamed underscore@1.8.3
+371 verbose addNamed "1.8.3" is a plain semver version for underscore
+372 silly addNameRange number 2 { name: 'string', range: '>=1.9.0 <2.0.0', hasData: true }
+373 silly addNameRange versions [ 'string',
+373 silly addNameRange   [ '0.0.1',
+373 silly addNameRange     '0.0.2',
+373 silly addNameRange     '0.0.3',
+373 silly addNameRange     '0.0.4',
+373 silly addNameRange     '0.1.1',
+373 silly addNameRange     '0.1.2',
+373 silly addNameRange     '0.2.0',
+373 silly addNameRange     '0.2.1',
+373 silly addNameRange     '0.2.1-1',
+373 silly addNameRange     '0.2.1-2',
+373 silly addNameRange     '0.2.2',
+373 silly addNameRange     '1.0.0',
+373 silly addNameRange     '1.1.0',
+373 silly addNameRange     '1.2.0',
+373 silly addNameRange     '1.2.1',
+373 silly addNameRange     '1.3.0',
+373 silly addNameRange     '1.3.1',
+373 silly addNameRange     '1.4.0',
+373 silly addNameRange     '1.5.0',
+373 silly addNameRange     '1.5.1',
+373 silly addNameRange     '1.6.0',
+373 silly addNameRange     '1.6.1',
+373 silly addNameRange     '1.7.0',
+373 silly addNameRange     '1.8.0',
+373 silly addNameRange     '1.8.1',
+373 silly addNameRange     '1.9.0',
+373 silly addNameRange     '1.9.1',
+373 silly addNameRange     '2.0.0',
+373 silly addNameRange     '2.0.1',
+373 silly addNameRange     '2.1.0',
+373 silly addNameRange     '2.2.0',
+373 silly addNameRange     '3.0.0',
+373 silly addNameRange     '3.0.1',
+373 silly addNameRange     '3.1.0',
+373 silly addNameRange     '3.1.1',
+373 silly addNameRange     '3.1.2',
+373 silly addNameRange     '3.1.3',
+373 silly addNameRange     '3.2.0',
+373 silly addNameRange     '3.2.1',
+373 silly addNameRange     '3.3.0',
+373 silly addNameRange     '3.3.1' ] ]
+374 silly addNamed string@1.9.1
+375 verbose addNamed "1.9.1" is a plain semver version for string
+376 silly cache afterAdd glob@4.5.3
+377 verbose afterAdd /Users/apple/.npm/glob/4.5.3/package/package.json not in flight; writing
+378 silly cache afterAdd posix-getopt@1.2.0
+379 verbose afterAdd /Users/apple/.npm/posix-getopt/1.2.0/package/package.json not in flight; writing
+380 silly cache afterAdd prompt@0.2.14
+381 verbose afterAdd /Users/apple/.npm/prompt/0.2.14/package/package.json not in flight; writing
+382 http 304 https://registry.npmjs.org/parse-module
+383 verbose headers { date: 'Tue, 12 Apr 2016 18:05:25 GMT',
+383 verbose headers   via: '1.1 varnish',
+383 verbose headers   'cache-control': 'max-age=300',
+383 verbose headers   etag: '"D04PBN4LLU6PD4L2DQUMTHP2Y"',
+383 verbose headers   age: '0',
+383 verbose headers   connection: 'keep-alive',
+383 verbose headers   'x-served-by': 'cache-atl6222-ATL',
+383 verbose headers   'x-cache': 'MISS',
+383 verbose headers   'x-cache-hits': '0',
+383 verbose headers   'x-timer': 'S1460484325.689656,VS0,VE38',
+383 verbose headers   vary: 'Accept-Encoding' }
+384 silly get cb [ 304,
+384 silly get   { date: 'Tue, 12 Apr 2016 18:05:25 GMT',
+384 silly get     via: '1.1 varnish',
+384 silly get     'cache-control': 'max-age=300',
+384 silly get     etag: '"D04PBN4LLU6PD4L2DQUMTHP2Y"',
+384 silly get     age: '0',
+384 silly get     connection: 'keep-alive',
+384 silly get     'x-served-by': 'cache-atl6222-ATL',
+384 silly get     'x-cache': 'MISS',
+384 silly get     'x-cache-hits': '0',
+384 silly get     'x-timer': 'S1460484325.689656,VS0,VE38',
+384 silly get     vary: 'Accept-Encoding' } ]
+385 verbose etag https://registry.npmjs.org/parse-module from cache
+386 verbose get saving parse-module to /Users/apple/.npm/registry.npmjs.org/parse-module/.cache.json
+387 silly cache afterAdd underscore@1.8.3
+388 verbose afterAdd /Users/apple/.npm/underscore/1.8.3/package/package.json not in flight; writing
+389 silly cache afterAdd request@2.71.0
+390 verbose afterAdd /Users/apple/.npm/request/2.71.0/package/package.json not in flight; writing
+391 http 404 https://registry.npmjs.org/parse-develop
+392 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+392 verbose headers   etag: '"8FQ4KV96KBX8GFBN08VIM14Y2"',
+392 verbose headers   'content-type': 'application/json',
+392 verbose headers   'cache-control': 'max-age=0',
+392 verbose headers   'content-length': '1295',
+392 verbose headers   'accept-ranges': 'bytes',
+392 verbose headers   date: 'Tue, 12 Apr 2016 18:05:25 GMT',
+392 verbose headers   via: '1.1 varnish',
+392 verbose headers   age: '0',
+392 verbose headers   connection: 'keep-alive',
+392 verbose headers   'x-served-by': 'cache-atl6233-ATL',
+392 verbose headers   'x-cache': 'MISS',
+392 verbose headers   'x-cache-hits': '0',
+392 verbose headers   'x-timer': 'S1460484325.650169,VS0,VE89',
+392 verbose headers   vary: 'Accept-Encoding' }
+393 silly get cb [ 404,
+393 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+393 silly get     etag: '"8FQ4KV96KBX8GFBN08VIM14Y2"',
+393 silly get     'content-type': 'application/json',
+393 silly get     'cache-control': 'max-age=0',
+393 silly get     'content-length': '1295',
+393 silly get     'accept-ranges': 'bytes',
+393 silly get     date: 'Tue, 12 Apr 2016 18:05:25 GMT',
+393 silly get     via: '1.1 varnish',
+393 silly get     age: '0',
+393 silly get     connection: 'keep-alive',
+393 silly get     'x-served-by': 'cache-atl6233-ATL',
+393 silly get     'x-cache': 'MISS',
+393 silly get     'x-cache-hits': '0',
+393 silly get     'x-timer': 'S1460484325.650169,VS0,VE89',
+393 silly get     vary: 'Accept-Encoding' } ]
+394 silly cache afterAdd string@1.9.1
+395 verbose afterAdd /Users/apple/.npm/string/1.9.1/package/package.json not in flight; writing
+396 verbose afterAdd /Users/apple/.npm/glob/4.5.3/package/package.json written
+397 verbose afterAdd /Users/apple/.npm/prompt/0.2.14/package/package.json written
+398 verbose afterAdd /Users/apple/.npm/posix-getopt/1.2.0/package/package.json written
+399 verbose afterAdd /Users/apple/.npm/underscore/1.8.3/package/package.json written
+400 verbose afterAdd /Users/apple/.npm/request/2.71.0/package/package.json written
+401 silly addNameRange number 2 { name: 'parse-module', range: '>=0.1.2 <0.2.0', hasData: true }
+402 silly addNameRange versions [ 'parse-module', [ '0.1.0', '0.1.1', '0.1.2' ] ]
+403 silly addNamed parse-module@0.1.2
+404 verbose addNamed "0.1.2" is a plain semver version for parse-module
+405 verbose afterAdd /Users/apple/.npm/string/1.9.1/package/package.json written
+406 silly cache afterAdd parse-module@0.1.2
+407 verbose afterAdd /Users/apple/.npm/parse-module/0.1.2/package/package.json not in flight; writing
+408 http 200 https://registry.npmjs.org/async
+409 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+409 verbose headers   etag: '"BA51GGM9V6XEBGTJ9UOXOUOWR"',
+409 verbose headers   'content-type': 'application/json',
+409 verbose headers   'content-encoding': 'gzip',
+409 verbose headers   'cache-control': 'max-age=300',
+409 verbose headers   'content-length': '35384',
+409 verbose headers   'accept-ranges': 'bytes',
+409 verbose headers   date: 'Tue, 12 Apr 2016 18:05:25 GMT',
+409 verbose headers   via: '1.1 varnish',
+409 verbose headers   age: '192',
+409 verbose headers   connection: 'keep-alive',
+409 verbose headers   'x-served-by': 'cache-atl6223-ATL',
+409 verbose headers   'x-cache': 'HIT',
+409 verbose headers   'x-cache-hits': '25',
+409 verbose headers   'x-timer': 'S1460484325.679546,VS0,VE0',
+409 verbose headers   vary: 'Accept-Encoding' }
+410 silly get cb [ 200,
+410 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+410 silly get     etag: '"BA51GGM9V6XEBGTJ9UOXOUOWR"',
+410 silly get     'content-type': 'application/json',
+410 silly get     'content-encoding': 'gzip',
+410 silly get     'cache-control': 'max-age=300',
+410 silly get     'content-length': '35384',
+410 silly get     'accept-ranges': 'bytes',
+410 silly get     date: 'Tue, 12 Apr 2016 18:05:25 GMT',
+410 silly get     via: '1.1 varnish',
+410 silly get     age: '192',
+410 silly get     connection: 'keep-alive',
+410 silly get     'x-served-by': 'cache-atl6223-ATL',
+410 silly get     'x-cache': 'HIT',
+410 silly get     'x-cache-hits': '25',
+410 silly get     'x-timer': 'S1460484325.679546,VS0,VE0',
+410 silly get     vary: 'Accept-Encoding' } ]
+411 verbose get saving async to /Users/apple/.npm/registry.npmjs.org/async/.cache.json
+412 verbose afterAdd /Users/apple/.npm/parse-module/0.1.2/package/package.json written
+413 silly addNameRange number 2 { name: 'async', range: '>=0.9.0 <0.10.0', hasData: true }
+414 silly addNameRange versions [ 'async',
+414 silly addNameRange   [ '0.1.0',
+414 silly addNameRange     '0.1.1',
+414 silly addNameRange     '0.1.2',
+414 silly addNameRange     '0.1.3',
+414 silly addNameRange     '0.1.4',
+414 silly addNameRange     '0.1.5',
+414 silly addNameRange     '0.1.6',
+414 silly addNameRange     '0.1.7',
+414 silly addNameRange     '0.1.8',
+414 silly addNameRange     '0.1.9',
+414 silly addNameRange     '0.1.10',
+414 silly addNameRange     '0.1.11',
+414 silly addNameRange     '0.1.12',
+414 silly addNameRange     '0.1.13',
+414 silly addNameRange     '0.1.14',
+414 silly addNameRange     '0.1.15',
+414 silly addNameRange     '0.1.16',
+414 silly addNameRange     '0.1.17',
+414 silly addNameRange     '0.1.18',
+414 silly addNameRange     '0.1.19',
+414 silly addNameRange     '0.1.20',
+414 silly addNameRange     '0.1.21',
+414 silly addNameRange     '0.1.22',
+414 silly addNameRange     '0.2.0',
+414 silly addNameRange     '0.2.1',
+414 silly addNameRange     '0.2.2',
+414 silly addNameRange     '0.2.3',
+414 silly addNameRange     '0.2.4',
+414 silly addNameRange     '0.2.5',
+414 silly addNameRange     '0.2.6',
+414 silly addNameRange     '0.2.7',
+414 silly addNameRange     '0.2.8',
+414 silly addNameRange     '0.2.9',
+414 silly addNameRange     '0.2.10',
+414 silly addNameRange     '0.3.0',
+414 silly addNameRange     '0.4.0',
+414 silly addNameRange     '0.4.1',
+414 silly addNameRange     '0.5.0',
+414 silly addNameRange     '0.6.0',
+414 silly addNameRange     '0.6.1',
+414 silly addNameRange     '0.6.2',
+414 silly addNameRange     '0.7.0',
+414 silly addNameRange     '0.8.0',
+414 silly addNameRange     '0.9.0',
+414 silly addNameRange     '0.9.2',
+414 silly addNameRange     '1.0.0',
+414 silly addNameRange     '1.1.0',
+414 silly addNameRange     '1.2.0',
+414 silly addNameRange     '1.1.1',
+414 silly addNameRange     '1.2.1',
+414 silly addNameRange     '1.3.0',
+414 silly addNameRange     '1.4.0',
+414 silly addNameRange     '1.4.1',
+414 silly addNameRange     '1.4.2',
+414 silly addNameRange     '1.5.0',
+414 silly addNameRange     '1.5.1',
+414 silly addNameRange     '1.5.2',
+414 silly addNameRange     '2.0.0-alpha.0',
+414 silly addNameRange     '2.0.0-rc.1',
+414 silly addNameRange     '2.0.0-rc.2',
+414 silly addNameRange     '2.0.0-rc.3' ] ]
+415 silly addNamed async@0.9.2
+416 verbose addNamed "0.9.2" is a plain semver version for async
+417 silly cache afterAdd async@0.9.2
+418 verbose afterAdd /Users/apple/.npm/async/0.9.2/package/package.json not in flight; writing
+419 verbose afterAdd /Users/apple/.npm/async/0.9.2/package/package.json written
+420 http 304 https://registry.npmjs.org/request-sync
+421 verbose headers { date: 'Tue, 12 Apr 2016 18:05:25 GMT',
+421 verbose headers   via: '1.1 varnish',
+421 verbose headers   'cache-control': 'max-age=300',
+421 verbose headers   etag: '"1ZBPS18FMPW1R3GXT736JAD0M"',
+421 verbose headers   age: '0',
+421 verbose headers   connection: 'keep-alive',
+421 verbose headers   'x-served-by': 'cache-atl6239-ATL',
+421 verbose headers   'x-cache': 'MISS',
+421 verbose headers   'x-cache-hits': '0',
+421 verbose headers   'x-timer': 'S1460484325.724809,VS0,VE96',
+421 verbose headers   vary: 'Accept-Encoding' }
+422 silly get cb [ 304,
+422 silly get   { date: 'Tue, 12 Apr 2016 18:05:25 GMT',
+422 silly get     via: '1.1 varnish',
+422 silly get     'cache-control': 'max-age=300',
+422 silly get     etag: '"1ZBPS18FMPW1R3GXT736JAD0M"',
+422 silly get     age: '0',
+422 silly get     connection: 'keep-alive',
+422 silly get     'x-served-by': 'cache-atl6239-ATL',
+422 silly get     'x-cache': 'MISS',
+422 silly get     'x-cache-hits': '0',
+422 silly get     'x-timer': 'S1460484325.724809,VS0,VE96',
+422 silly get     vary: 'Accept-Encoding' } ]
+423 verbose etag https://registry.npmjs.org/request-sync from cache
+424 verbose get saving request-sync to /Users/apple/.npm/registry.npmjs.org/request-sync/.cache.json
+425 silly cache afterAdd request-sync@0.0.5
+426 verbose afterAdd /Users/apple/.npm/request-sync/0.0.5/package/package.json not in flight; writing
+427 verbose afterAdd /Users/apple/.npm/request-sync/0.0.5/package/package.json written
+428 verbose about to build /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage/node_modules/parse-cli
+429 verbose unlock done using /Users/apple/.npm/_locks/parse-cli-406ff491fe50affa.lock for /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage/node_modules/parse-cli
+430 verbose stack Error: Registry returned 404 for GET on https://registry.npmjs.org/parse-develop
+430 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+430 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:242:14)
+430 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+430 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:198:22)
+430 verbose stack     at emitTwo (events.js:87:13)
+430 verbose stack     at Request.emit (events.js:172:7)
+430 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1082:10)
+430 verbose stack     at emitOne (events.js:82:20)
+430 verbose stack     at Request.emit (events.js:169:7)
+430 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1009:12)
+431 verbose statusCode 404
+432 verbose pkgid parse-develop
+433 verbose cwd /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage
+434 error Darwin 11.4.2
+435 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "parse-cli"
+436 error node v4.3.0
+437 error npm  v2.14.12
+438 error code E404
+439 error 404 Registry returned 404 for GET on https://registry.npmjs.org/parse-develop
+439 error 404
+439 error 404 'parse-develop' is not in the npm registry.
+439 error 404 You should bug the author to publish it (or use the name yourself!)
+439 error 404 It was specified as a dependency of 'parse-cli'
+439 error 404
+439 error 404 Note that you can also install from a
+439 error 404 tarball, folder, http url, or git url.
+440 verbose exit [ 1, true ]
+441 verbose unbuild node_modules/parse-cli
+442 info preuninstall parse-cli@0.2.4
+443 info uninstall parse-cli@0.2.4
+444 verbose unbuild rmStuff parse-cli@0.2.4 from /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage/node_modules
+445 silly gentlyRm /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage/node_modules/.bin/parse-cli is being gently removed
+446 silly gentlyRm verifying /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage is an npm working directory
+447 silly gentlyRm containing path /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage is under npm's control, in /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage
+448 silly gentlyRm deletion target /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage/node_modules/.bin/parse-cli is under /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage
+449 verbose gentlyRm vacuuming from /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage/node_modules/.bin/parse-cli up to /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage
+450 info postuninstall parse-cli@0.2.4
+451 silly gentlyRm /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage/node_modules/parse-cli is being purged from base /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage
+452 verbose gentlyRm don't care about contents; nuking /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage/node_modules/parse-cli
+453 silly vacuum-fs purging /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage/node_modules/parse-cli
+454 silly vacuum-fs removing /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage/node_modules
+455 silly vacuum-fs finished vacuuming up to /Users/apple/Google Drive/Columbia/Spring 2016/MSTU5013/F4/Homepage
