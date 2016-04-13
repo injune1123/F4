@@ -1,6 +1,6 @@
 <calorie>
 	<div class="date-recorder">
-		<input type="date" name="theDate">
+		<input type="date" name="theDate" id="theDate">
 	</div>
 	<div class="main-board container">
 
@@ -11,7 +11,7 @@
 				</div>
 			</div>
 			<div class="record-panel col-sm-7">
-				world
+				
 			</div>
 		</div>
 	</div>
@@ -19,7 +19,8 @@
 
 <script>
 	var that = this;
-	
+	var user = Parse.User.current().toJSON();
+
 	that.menuItems = [
 		{title:"Breakfast",done:false},
 		{title:"Lunch",done:false},
@@ -37,7 +38,41 @@
 		item.done = !item.done
 	}
 
-	console.log(that.theDate.value)
+	function setDateToToday (el) {
+      var today = new Date();
+      var dd = today.getDate();
+      var mm = today.getMonth()+1; //January is 0!
+      var yyyy = today.getFullYear();
+
+      if(dd<10) { dd='0'+dd} // format the date 
+      if(mm<10) {mm='0'+mm}  // format the month
+
+      today = yyyy + '-' + mm+'-'+dd;
+      el.value = today;
+    }
+
+    if(that.theDate.value==""){
+    	
+    	setDateToToday(that.theDate);
+    }
+    
+
+    //query for FoodsRecord
+    var FoodsRecordQuery = new Parse.Query('FoodsRecord')
+    //two equals query to find the user's input on that date
+    FoodsRecordQuery.equalTo('email',user.email).
+    	equalTo('date',that.theDate.value).
+    	first().
+    	then(function(result){
+    		
+    	if(result){
+    		console.log(result.toJSON)
+    		// that.record = result.toJSON();
+    		// console.log(that.record)
+    	}
+    });
+   
+    
 
 	// that.result = 0;
 	// //don't show search result now
