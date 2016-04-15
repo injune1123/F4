@@ -79,7 +79,7 @@
 		}
 
 		.container {
-			width:100%;
+			width:100vw;
 			background-color: #424242;
 			padding:30px;
 			color:white;

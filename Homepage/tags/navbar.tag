@@ -1,4 +1,5 @@
 <navbar>
+<meta name="viewpoint" content="width=device-width, initial-scale=1.0">
 	<!-- Always shows a header, even in smaller screens. -->
 	
 	  
@@ -54,6 +55,7 @@
 		background: #424242;
 		border-color: #e7e7e7;
 		width:100%;
+		height: 15vh;
 		top:0;
 		position: fixed;
 		z-index: 99;
@@ -63,9 +65,10 @@
 	.logo{
 		float:left;
 		font-family: "Helvetica";
-		font-size: 20px;
+		font-size: 1.5vw;
 		color:white;
-		margin-top: 30px;
+		margin-top: 5vh;
+		padding-right: 60%;
 	}
 
 	.logo a {
@@ -81,24 +84,36 @@
 	.nav a {
 		text-decoration: none;
 		color: white;
+		font-size: 1.1vw;
 	}
 
 	.nav a:hover {
         color:#f94283;
-        text-decoration:none
+        text-decoration:none;
+        font-size: 1.1vw;
 	}
 
 	li {
 		list-style: none;
 		float: left;
-		margin: 15px;
-		padding-top: 15px;
+		padding-left: 2.5vw;
 	}
 
 	.nav {
-		float: right;
-		height:75px;
+/*		float: right;*/
+/*		height:75px;*/
+		margin-top: 5vh;
+		margin-left: 55vw;
+		width: 35vw;
+		margin-right: 2vw;
+/*		margin-left: 400px;*/
+/*		margin-right: -10%;*/
 	}
+
+	ul {
+/*		margin-right: 2%;*/
+	}
+
 
 	.head-icon{
 		border-radius: 50%;
