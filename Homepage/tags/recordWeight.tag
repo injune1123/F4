@@ -18,6 +18,7 @@
 
     <script>
 
+
     // this is the helper function that helps to set the date to current date
     function setDateToToday (el) {
           var today = new Date();

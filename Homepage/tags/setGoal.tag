@@ -39,6 +39,28 @@
 
     <script>
 
+function seedToParseDataBase(element) {
+    var Foods = Parse.Object.extend("Foods");
+    var foods = new Foods();
+
+    foods.save(element, {
+        success: function(gameScore) {
+          console.log("yeah!I am seeding")
+            // The object was saved successfully.
+        },
+        error: function(gameScore, error) {
+            // The save failed.
+            // error is a Parse.Error with an error code and message.
+                  console.log("No!I am not seeding")
+
+
+        }
+    });
+
+}
+
+
+
     var Goal = Parse.Object.extend('Goal');
 
     // this is the helper function that helps to set the date to current date
