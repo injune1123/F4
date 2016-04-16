@@ -14,7 +14,6 @@ function seedFoodToParseDataBase(element) {
 
 }
 
-exerciseData.forEach(seedExerciseToParseDataBase);
 
 
 var foodData = [{
