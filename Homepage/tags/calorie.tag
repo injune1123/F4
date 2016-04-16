@@ -24,15 +24,15 @@
 				<div class="meal">{title}</div>
 				<div class="food-list">
 					<div class="food-image" each={todayRecord[title.toLowerCase()]}>
-						<img src={url} alt={name}>
+						<img src={url} alt={name} onclick={parent.removeFromRecord}>
 					</div>
 					<div class="calorie-result">
 					{computeCalorie(todayRecord[title.toLowerCase()])}
 					</div>
 				</div>
 
-
 			</div>
+			<div class="btn btn-info" onclick={updateToDatabase}>Update</div>
 		</div>
 	</div>
 	
@@ -42,6 +42,7 @@
 <script>
 	var that = this;
 	var user = Parse.User.current().toJSON();
+	that.currentMenu
 
 	that.menuItems = [
 		{title:"Breakfast",done:false},
@@ -57,7 +58,9 @@
 			that.menuItems[i].done=false;
 		}
 		var item = e.item;
+		that.currentMenu = item.title.toLowerCase()
 		item.done = !item.done
+
 	}
 
 	function setDateToToday (el) {
@@ -89,8 +92,22 @@
     }
 
     that.addToRecord = function(e){
-    	console.log(e)
-    	console.log(title)
+    	//add the selected food into todayRecord array
+    	that.todayRecord[that.currentMenu].push(e.item);
+    	//and at the same time change parse raw data to the same as todayRecord
+    	that.RawRecordData.set(that.currentMenu,that.todayRecord[that.currentMenu])
+
+    }
+
+    that.removeFromRecord = function(e){
+    	console.log(e.item)
+    	// that.todayRecord.[that.currentMenu]
+    }
+
+    that.updateToDatabase = function(e){
+    	//update change to the data base
+    	that.RawRecordData.save()
+
 
     }
 
@@ -125,6 +142,9 @@
 	    		// console.log(that.record)
 	    	}
 	    	else{
+	    		//Save raw parse object into RawRecordData
+	    		that.RawRecordData = result;
+	    		//and save toJSON() format data into todayRecord
 	    		that.todayRecord = result.toJSON();
 	    		
 	    		// that.update();
@@ -169,6 +189,7 @@
     
     that.one('updated',function(){
     	//update for the first time
+
     	that.updateTable();
     	//when date is changed
     	$('#theDate').change(function(){
