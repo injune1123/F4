@@ -24,6 +24,7 @@
 				<div class="meal">{title}</div>
 				<div class="food-list">
 					<div class="food-image" each={todayRecord[title.toLowerCase()]}>
+						
 						<img src={url} alt={name} onclick={parent.removeFromRecord}>
 					</div>
 					<div class="calorie-result">
@@ -43,6 +44,7 @@
 	var that = this;
 	var user = Parse.User.current().toJSON();
 	that.currentMenu
+
 
 	that.menuItems = [
 		{title:"Breakfast",done:false},
@@ -99,9 +101,10 @@
 
     }
 
-    that.removeFromRecord = function(e){
-    	console.log(e.item)
-    	// that.todayRecord.[that.currentMenu]
+    that.removeFromRecord = function(e,title){
+    	// console.log(e)
+    	// console.log(title)
+    	// that.todayRecord[title.toLowerCase()].remove(e.item);
     }
 
     that.updateToDatabase = function(e){
