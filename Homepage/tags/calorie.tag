@@ -15,7 +15,7 @@
 					  	</div>
 
 					  	<div class="food-image" each={SearchHistory[title.toLowerCase()]}>
-							<img src={url} alt={name}>
+							<img src={url} alt={name} onclick={parent.addToRecord}>
 						</div>
 					</div>
 				</div>
@@ -87,9 +87,15 @@
     	}
     	return sum
     }
-    
-    that.one('updated',function(){
-    	//create promises array to hold two promises
+
+    that.addToRecord = function(e){
+    	console.log(e)
+    	console.log(title)
+
+    }
+
+    that.updateTable = function(){
+    //create promises array to hold two promises
 	    var promises = []
 
 	    //query for FoodsRecord
@@ -159,6 +165,16 @@
 	   	Parse.Promise.when(promises).then(function(){
 	   		that.update();
 	   	})
+    }
+    
+    that.one('updated',function(){
+    	//update for the first time
+    	that.updateTable();
+    	//when date is changed
+    	$('#theDate').change(function(){
+    		that.updateTable();
+    	})
+
 
     })
 
