@@ -4,17 +4,13 @@ function seedFoodToParseDataBase(element) {
 
     foods.save(element, {
         success: function(gameScore) {
-            // The object was saved successfully.
+            console.log("I am seeding")
         },
         error: function(gameScore, error) {
-            // The save failed.
-            // error is a Parse.Error with an error code and message.
+            console.log("I am not seeding")
         }
     });
-
 }
-
-
 
 var foodData = [{
     name: "cheesecake",
