@@ -14,7 +14,6 @@
             shape-rendering: crispEdges;
         }
         div.tooltip {   
-            position: absolute;         
             text-align: center;         
             width: 100px;                   
             height: 28px;                   
@@ -23,7 +22,9 @@
             background: lightsteelblue; 
             border: 0px;        
             border-radius: 8px;         
-            pointer-events: none;           
+            pointer-events: none; 
+            margin-left: -250px;          
+            margin-top: -50px;          
         }
         .area {
           fill: red;
@@ -49,8 +50,6 @@
                 allDates.push(currentDayObj)
             }
         }
-
-
 
 
         // Set the dimensions of the canvas / graph
@@ -166,7 +165,9 @@
                 .attr("r", 3.5)
                 .attr("cx", function(d) { return x(d.date); })
                 .attr("cy", function(d) { return y(d.weight); })
-                .attr("r", 4).style("fill", "black")
+                .attr("r", 6).style("fill", "white")
+                .attr("stroke", "blue")
+                .attr("stroke-width", 4)
                 .on("mouseover", function(d) {      
                         div.transition()        
                             .duration(200)      
@@ -180,7 +181,11 @@
                         div.transition()        
                             .duration(500)      
                             .style("opacity", 0);
-                        d3.select(this).attr("r", 4).style("fill", "black");
+                        d3.select(this)
+                        .attr("r", 6)
+                        .style("fill", "white")
+                        .attr("stroke", "blue")
+                        .attr("stroke-width", 4);
                
                 });
 
