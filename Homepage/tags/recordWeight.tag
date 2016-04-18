@@ -1,13 +1,13 @@
-<record-weight>
+<recordWeight>
 
-
+<div>
    <p id="Weightrecord">On  
       <input type="date" name="dateInput">
 	  I weigh
 	  <input type="number" name="weightInput" placeholder = "target weight (lb)">
       <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick={saveWeightRecord}>Yeah!</button>
     </p>
-
+</div>
 
 <style>
 	#Weightrecord{
@@ -17,7 +17,6 @@
 </style>
 
     <script>
-
 
     // this is the helper function that helps to set the date to current date
     function setDateToToday (el) {
@@ -52,15 +51,9 @@
       weightLog.push(newRecord);
 
       // update the parese object
-
-
       
-		window.location.reload();
       }
 
 </script>
 
-
-recordWeight
-
-</record-weight>
+</recordWeight>

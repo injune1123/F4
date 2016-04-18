@@ -1,17 +1,11 @@
 <record>
 
-	<div id="recordWeight"></div>
-      <div class='col-md-3'>
-            <BMI></BMI>
-      </div>  
+		<recordWeight></recordWeight> 
+    <div class="row">
+        <line></line>    
+    </div>
+    <div class='col-md-3'>
+        <BMI></BMI>
 
-
-      <div class="row">
-           <line></line>    
-      </div>
-
-
-
-
-
+    </div> 
 </record>
