@@ -33,7 +33,7 @@
     </style>
     <script>
  //http://bl.ocks.org/d3noob/38744a17f9c0141bcd04
-
+        
         var weightLogData = [{date: new Date(2016,01,02), weight: 130},{date: new Date(2016,01,06), weight: 125},{date: new Date(2016,01,12), weight: 129},{date: new Date(2016,01,22), weight: 128},{date: new Date(2016,02,02), weight: 130},{date: new Date(2016,02,08), weight: 110}]
         var goalData = [{date: new Date(2016,01,02), weight: 130}, {date: new Date(2016,05,06), weight: 110}];
 
