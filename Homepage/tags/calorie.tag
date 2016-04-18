@@ -7,28 +7,28 @@
 		<div class="row">
 			<div class="col-sm-5 meal-nav">
 				<div each={menuItems}>
-					<div class={highlight:done} onclick={parent.toggle}>{title}</div>
+					<div class={highlight:done} onclick={parent.toggle}>{meal}</div>
 					<div class="search-board" if={done}>
 						<div class="container-1">
 					      <input type="search" id="search" placeholder="Search..." />
 					      <span class="icon" onclick={searchFood}><i class="fa fa-search"></i></span>
 					  	</div>
 
-					  	<div class="food-image" each={SearchHistory[title.toLowerCase()]}>
+					  	<div class="food-image" each={SearchHistory[meal.toLowerCase()]} no-reorder>
 							<img src={url} alt={name} onclick={parent.addToRecord}>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="record-panel col-sm-7" each={menuItems}>
-				<div class="meal">{title}</div>
+				<div class="meal">{meal}</div>
 				<div class="food-list">
-					<div class="food-image" each={todayRecord[title.toLowerCase()]}>
+					<div class="food-image" each={todayRecord[meal.toLowerCase()]} datameal={ meal.toLowerCase() } no-reorder>
 						
 						<img src={url} alt={name} onclick={parent.removeFromRecord}>
 					</div>
 					<div class="calorie-result">
-					{computeCalorie(todayRecord[title.toLowerCase()])}
+					{computeCalorie(todayRecord[meal.toLowerCase()])}
 					</div>
 				</div>
 
@@ -47,11 +47,11 @@
 
 
 	that.menuItems = [
-		{title:"Breakfast",done:false},
-		{title:"Lunch",done:false},
-		{title:"Dinner",done:false},
-		{title:"Snack",done:false},
-		{title:"Exercise",done:false}]
+		{meal:"Breakfast",done:false},
+		{meal:"Lunch",done:false},
+		{meal:"Dinner",done:false},
+		{meal:"Snack",done:false},
+		{meal:"Exercise",done:false}]
 
 	that.toggle = function(e){
 		//reset all done property
@@ -60,7 +60,7 @@
 			that.menuItems[i].done=false;
 		}
 		var item = e.item;
-		that.currentMenu = item.title.toLowerCase()
+		that.currentMenu = item.meal.toLowerCase()
 		item.done = !item.done
 
 	}
@@ -101,10 +101,10 @@
 
     }
 
-    that.removeFromRecord = function(e,title){
-    	// console.log(e)
-    	// console.log(title)
-    	// that.todayRecord[title.toLowerCase()].remove(e.item);
+    that.removeFromRecord = function(e){
+    	var meal=this.opts.datameal;
+    	that.todayRecord[meal].remove(e.item);
+    	that.RawRecordData.set(meal,that.todayRecord[meal])
     }
 
     that.updateToDatabase = function(e){
