@@ -61,13 +61,12 @@
 		window.location.replace("/#");
 	}
 
+// save the user data into database
 	that.register = function(callback){
 		//create a Parse promise object
 		var promise = new Parse.Promise();
 		var usrname = that.email.value;
-
-		
-		
+	
 		if(that.pass.value == that.cpass.value){
 		
 			var user = new Parse.User();
@@ -86,12 +85,10 @@
 			that.pass.value = that.cpass.value = "";
 			riot.update();
 			promise.reject(that.errorMessage);
-			
 		}
-
 		return promise;
-		
 	};
+
 
 	that.moveToNext = function(current_fs,next_fs){
 		var left, opacity, scale; //fieldset properties which we will animate

@@ -32,9 +32,9 @@ riot.route('/personal',function(){
 //     riot.mount('#Login','logsign')
 // })
 
-riot.route('/register',function(){
-    riot.mount('#Mount','register')
-})
+// riot.route('/register',function(){
+//     riot.mount('#Mount','register')
+// })
 
 riot.route(function(){
     riot.mount('#Mount','homepage');
