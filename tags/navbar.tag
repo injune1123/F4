@@ -1,10 +1,5 @@
 <navbar>
 	<!-- Always shows a header, even in smaller screens. -->
-	
-	  
-
-
-
 <!-- <navbar> -->
 	<!-- Always shows a header, even in smaller screens. -->
 

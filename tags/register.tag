@@ -2,12 +2,6 @@
 <!-- source code copyright from Atakan Goktepe http://codepen.io/atakan/pen/gqbIz -->
 	<div class="register-wrap">
 		<form class="register-form">
-			<ul id="progressbar">
-			    <li class="active">Create Account</li>
-			    <li>Personal Info</li>
-			    <li>Set Goal</li>
-			</ul>
-		
 			<fieldset>
 			    <h2 class="title">Create your account</h2>
 			    <h3 if={errorMessage} class="errorMessage">{errorMessage}</h3>
@@ -15,6 +9,11 @@
 			    <input type="password" name="pass" placeholder="Password" />
 			    <input type="password" name="cpass" placeholder="Confirm Password" />
 			    <input type="button" name="next" class="next action-button" value="Next" id="register"/>
+			    <ul id="progressbar">
+				    <li class="active"></li>
+				    <li></li>
+				    <li></li>
+				</ul>
 			</fieldset >
 			
 			<fieldset>
@@ -28,6 +27,11 @@
 			    	<option value="other">Other</option>
 			    </select>
 			    <input type="button" name="next" class="next action-button" value="Next" id="personal"/>
+			    <ul id="progressbar">
+				    <li></li>
+				    <li class="active"></li>
+				    <li></li>
+			    </ul>
 			</fieldset>
 
 			<fieldset>
@@ -38,9 +42,12 @@
 			    <input type="text" name="period" placeholder="Achivable Period in terms of month" />
 			    
 			    <input type="button" name="next" class="next action-button" value="Finish" id="setgoal"/>
+			    <ul id="progressbar">
+				    <li></li>
+				    <li></li>
+				    <li class="active"></li>
+			    </ul>
 			</fieldset>
-
-
 
 		</form>
 	</div>
@@ -53,19 +60,6 @@
 	if(Parse.User.current()){
 		window.location.replace("/#");
 	}
-
-	//redundant. don't need anymore
-	// that.checkUserExistance = function(username,callback){	
-	//     	var query = new Parse.Query(Parse.User);
-	// 	    query.equalTo("username", username);
-	// 	    query.find().then(function(result){callback(result)});
-	// 	};
-
-	// that.checkPassword = function() {
-	// 	if(that.pass.value == ""|| that.cpass.value == ""){return false;}
-	// 	else{ return (that.pass.value == that.cpass.value); }
-     
-	// };
 
 	that.register = function(callback){
 		//create a Parse promise object
@@ -93,11 +87,9 @@
 			riot.update();
 			promise.reject(that.errorMessage);
 			
-
 		}
 
 		return promise;
-
 		
 	};
 
@@ -183,94 +175,6 @@
 				
 			}
 		})
-		//jQuery time
-		// var current_fs, next_fs, previous_fs; //fieldsets
-		// var left, opacity, scale; //fieldset properties which we will animate
-		// var animating; //flag to prevent quick multi-click glitches
-
-		// $(".next").click(function(){
-		// 	// if(that.register(event)){
-		// 		if(animating) {return false};
-		// 		animating = true;
-			
-		// 		console.log($(this).attr('id'))
-
-		// 		current_fs = $(this).parent();
-		// 		next_fs = $(this).parent().next();
-			
-		// 		//activate next step on progressbar using the index of next_fs
-		// 		$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-			
-		// 		//show the next fieldset
-		// 		next_fs.show(); 
-		// 		//hide the current fieldset with style
-		// 		current_fs.animate({opacity: 0}, {
-		// 			step: function(now, mx) {
-		// 				//as the opacity of current_fs reduces to 0 - stored in "now"
-		// 				//1. scale current_fs down to 80%
-		// 				scale = 1 - (1 - now) * 0.2;
-		// 				//2. bring next_fs from the right(50%)
-		// 				left = (now * 50)+"%";
-		// 				//3. increase opacity of next_fs to 1 as it moves in
-		// 				opacity = 1 - now;
-		// 				current_fs.css({
-		// 	        'transform': 'scale('+scale+')',
-		// 	        'position': 'absolute'
-		// 	      	});
-		// 				next_fs.css({'left': left, 'opacity': opacity});
-		// 			}, 
-		// 			duration: 800, 
-		// 			complete: function(){
-		// 				current_fs.hide();
-		// 				animating = false;
-		// 			}, 
-		// 			//this comes from the custom easing plugin
-		// 			easing: 'easeInOutBack'
-		// 		});
-			// };
-
-		// $(".previous").click(function(){
-		// 	if(animating) return false;
-		// 	animating = true;
-			
-		// 	current_fs = $(this).parent();
-		// 	previous_fs = $(this).parent().prev();
-			
-		// 	//de-activate current step on progressbar
-		// 	$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
-			
-		// 	//show the previous fieldset
-		// 	previous_fs.show(); 
-		// 	//hide the current fieldset with style
-		// 	current_fs.animate({opacity: 0}, {
-		// 		step: function(now, mx) {
-		// 			//as the opacity of current_fs reduces to 0 - stored in "now"
-		// 			//1. scale previous_fs from 80% to 100%
-		// 			scale = 0.8 + (1 - now) * 0.2;
-		// 			//2. take current_fs to the right(50%) - from 0%
-		// 			left = ((1-now) * 50)+"%";
-		// 			//3. increase opacity of previous_fs to 1 as it moves in
-		// 			opacity = 1 - now;
-		// 			current_fs.css({'left': left});
-		// 			previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
-		// 		}, 
-		// 		duration: 800, 
-		// 		complete: function(){
-		// 			current_fs.hide();
-		// 			animating = false;
-		// 		}, 
-		// 		//this comes from the custom easing plugin
-		// 		easing: 'easeInOutBack'
-		// 	});
-		// });
-
-		// $(".submit").click(function(){
-		// 	return false;
-		// })
-			
-		// })
-			
-
 	})
 
 
