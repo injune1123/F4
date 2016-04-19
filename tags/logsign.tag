@@ -32,13 +32,15 @@
 	</div>
 	<!--  the register form-->
 	<!-- here are actually three forms -->
-	<div id="multiple-step-register-from" class="panel panel-info" if={inRegister}>
+	<!-- source code copyright from Atakan Goktepe http://codepen.io/atakan/pen/gqbIz -->
+
+	<div id="multiple-step-register-from" if={inRegister}>
 		<!-- the 1st register form -->	
 		<div id="step1-register-from" class="register-from-steps"> 
 			<div class="panel panel-info registerPanel">	
 				<a href="/#" onclick={unmount} class="panel-close"><img src="https://cdn4.iconfinder.com/data/icons/online-menu/64/x_close_denied_delete_cross_circle-128.png" alt=""></a>
 		        <div class="panel-heading title">
-					<h1>Create your account</h1>	
+					<h1>Create your account: 1/3</h1>					
 					<h3 if={errorMessage} class="errorMessage">{errorMessage}</h3>
 	    	    </div>
 				<div class="panel-body" >
@@ -46,22 +48,19 @@
 	                	<fieldset>
 	                		<label for="Email" style="display:block">Email address</label>
 	                  		<input type="text" name="email" placeholder="Email" class="form-control"/>
-	                  		<br/>
 	                  		<label for="Password">Password</label>
 			    			<input type="password" name="pass" placeholder="Password" class="form-control"/>
-	                  		<br/>
 			    			<label for="ConfirmPassword">Confirm Password</label>
 			    			<input type="password" name="cpass" placeholder="Confirm Password" class="form-control"/>
 			    			<br/>
+
 	           				<input type="button" name="next" class="next action-button btn btn-info" value="Next" id="register"/>
+	           				<br/>
 	                	</fieldset>
-	                	<div class="progress-hint">
-	                		<p>1 in 3</p>
-	                	</div>
 	            	</form>
 	            	
 					<div class="registered-hint">
-	        		Already a member? <a onclick={goRegister}>Sing in</a> Now!
+	        		Already a member? <a onclick={goRegister}>Sign in</a> Now!
 	        		</div>
 	        	</div>
 			</div>
@@ -71,7 +70,7 @@
 			<div class="panel panel-info registerPanel">	
 				<a href="/#" onclick={unmount} class="panel-close"><img src="https://cdn4.iconfinder.com/data/icons/online-menu/64/x_close_denied_delete_cross_circle-128.png" alt=""></a>
 		        <div class="panel-heading title">
-					<h1 class="title">Input personal info</h2>
+					<h1 class="title">Input personal info: 2/3</h2>
 			    	<h3 class="subtitle">Account created! Now let's have your personal information.</h3>
 	    	    </div>
 				<div class="panel-body" >
@@ -87,14 +86,13 @@
 						    	<option value="male">Male</option>
 						    	<option value="other">Other</option>
 						    </select>
+						    <br/>
 						    <input type="button" name="next" class="next action-button btn btn-info" value="Next" id="personal"/>
 	                	</fieldset>
 	            	</form>
-                	<div class="progress-hint">
-                		<p>2 in 3</p>
-                	</div>
+
 	        	</div>
-	       		<div class="registered-hint">
+	       		<div id="registered-hint2">
 	        	Already a member? <a onclick={goRegister}>Sing in</a> Now!
 	        	</div>
 			</div>			
@@ -104,7 +102,7 @@
 			<div class="panel panel-info registerPanel">	
 				<a href="/#" onclick={unmount} class="panel-close"><img src="https://cdn4.iconfinder.com/data/icons/online-menu/64/x_close_denied_delete_cross_circle-128.png" alt=""></a>
 		        <div class="panel-heading title">
-					<h1 class="title">Set Goal</h1>
+					<h1 class="title">Set Goal: 3/3</h1>
 			    	<h3 class="subtitle">Now set up the objective weight and expecting period. Don't be too harsh on yourself!</h3>
 	    	    </div>
 				<div class="panel-body" >
@@ -116,14 +114,12 @@
 			    			<input type="text" name="objective" placeholder="Objective Weight" class="form-control"/>
 							<label for="Period" style="display:block">Period</label>			    			
 			    			<input type="text" name="period" placeholder="Achivable Period in terms of month" class="form-control"/>
+			    			<br/>
 			    			<input type="button" name="next" class="next action-button btn btn-info" value="Finish" id="setgoal"/>
 	                	</fieldset>
 	            	</form>
-					<div class="progress-hint">
-                		<p>3 in 3</p>
-                	</div>
 	        	</div>
-	        	<div class="registered-hint">
+	        	<div id="registered-hint3">
 	        	Already a member? <a>Sing in</a> Now!
 	        	</div>
 			</div>						
@@ -131,11 +127,13 @@
 	</div>
 
 	<script>
+
     var that = this;
+	
 	if(Parse.User.current()){
-		that.unmount();
 		window.location.replace("/#");
 	}
+
 	that.inRegister = false;
 
 	that.checkUserExistance = function(username,callback){
@@ -147,7 +145,7 @@
 	};
 
 	that.checkPassword = function() {
-		if(that.Password.value == ""|| that.ReinputPassword.value == ""){return false;}
+		if(that.Password.value == "" || that.ReinputPassword.value == ""){return false;}
 		else{ return (that.Password.value == that.ReinputPassword.value); }
      
 	};
@@ -187,7 +185,118 @@
 		return true;
 	}
 
+	// save the user data into database
+	that.register = function(callback){
+		//create a Parse promise object
+		var promise = new Parse.Promise();
+		var usrname = that.email.value;
+	
+		if(that.pass.value == that.cpass.value){
+		
+			var user = new Parse.User();
 
+	        user.set("username", that.email.value);
+	        user.set("password", that.pass.value);
+	        user.set("email", that.email.value);
+			user.signUp().then(function(user){
+				promise.resolve(user);
+			}, function(error){
+				promise.reject(error);
+			})	
+		}
+		else{
+			that.errorMessage = "Two passwards not confirm.";
+			that.pass.value = that.cpass.value = "";
+			riot.update();
+			promise.reject(that.errorMessage);
+		}
+		return promise;
+	};
+
+	that.moveToNext = function(current_fs,next_fs){
+		var left, opacity, scale; //fieldset properties which we will animate
+		var animating; //flag to prevent quick multi-click glitches
+	
+		//show the next fieldset
+		next_fs.show(); 
+		//hide the current fieldset with style
+		current_fs.animate({opacity: 0}, {
+			step: function(now, mx) {
+				//as the opacity of current_fs reduces to 0 - stored in "now"
+				//1. scale current_fs down to 80%
+				scale = 1 - (1 - now) * 0.2;
+				//2. bring next_fs from the right(50%)
+				left = (now * 50)+"%";
+				//3. increase opacity of next_fs to 1 as it moves in
+				opacity = 1 - now;
+				current_fs.css({
+	        'transform': 'scale('+scale+')',
+	        'position': 'absolute'
+	      	});
+				next_fs.css({'left': left, 'opacity': opacity});
+			}, 
+			duration: 800, 
+			complete: function(){
+				current_fs.hide();
+				animating = false;
+			}, 
+			//this comes from the custom easing plugin
+			easing: 'easeInOutBack'
+		});
+	}
+
+
+	that.on('updated',function(){
+
+		//jQuery has to go into updated function
+		//first need to check which step is currently on
+		$(".next").click(function(){
+			var $pane = $(this);
+			//if user is registering account
+			if($pane.attr('id') == 'register'){
+				//register. use deffered
+				
+				that.register().then(function(user){
+					that.moveToNext($("#step1-register-from"),$("#step2-register-from"))
+					}, function(error){
+			      		that.errorMessage = "Email address aleady exists."
+			      		that.email.value = that.pass.value = that.cpass.value = "";
+			      		riot.update();
+				});
+
+			}
+			else if ($(this).attr('id') == 'personal') {
+				var currentUser = Parse.User.current();
+				currentUser.set('infos',
+					{nickname:that.nickname.value,
+						age:that.age.value,
+						sex:$('select option:selected').val()
+					});
+				currentUser.save().then(function(user){
+
+				that.moveToNext($("#step2-register-from"),$("#step3-register-from"))
+				},
+					function(error){
+						//some errors here
+					})
+				
+			}
+			else{
+				var currentUser = Parse.User.current();
+				var info = currentUser.get('infos')
+				info.current = that.current.value;
+				info.objective = that.objective.value;
+				info.period = that.period.value;
+				currentUser.set('infos',info);
+				currentUser.save().then(function(){
+					that.moveToNext($(this).parent(),$(this).parent().next());
+					window.location.href = '/#dashboard';
+					that.unmount();
+				});
+				
+			}
+		})
+	})
 
 
 
@@ -227,11 +336,28 @@
 		.registered-hint{
 			    background-color: rgb(217, 237, 247);
 			    padding: 10px;
-			    margin-bottom: -37px !important;
 			    margin: -16px;
 			    border-radius: 8px;
 			    color: rgb(49, 112, 143);
 		}
+		#registered-hint2{
+				background-color: rgb(217, 237, 247);
+			    padding: 10px;
+			    border-radius: 8px;
+			    color: rgb(49, 112, 143);
+		}
+		#registered-hint3{
+				background-color: rgb(217, 237, 247);
+			    padding: 10px;
+			    border-radius: 8px;
+			    margin-top: -16px;
+
+			    color: rgb(49, 112, 143);
+		}
+
+	
+
+
 		.panel-heading>div{
 			display:inline-block;
 			width: 48%;
@@ -294,16 +420,9 @@
 			color: #B51E1E;
 			margin: -15px 0 10px;
 		}
-
-
 		.action-button{
 			margin: 0 auto;
 			display: block
-		}
-		.progress-hint{
-			text-align: center;
-			color:#00a3cc;
-			margin-top: 10px
 		}
 
 
