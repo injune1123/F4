@@ -34,10 +34,30 @@
     </style>
     <script>
  //http://bl.ocks.org/d3noob/38744a17f9c0141bcd04
+        // get goal data
+        var goalData =[];
+        var initialInfo = {};
+        var goalInfo = {};
+
+        var currentUser = Parse.User.current();
+        var initialYear = currentUser.get("Goal").date.split("-")[0];
+        var initialMonth = currentUser.get("Goal").date.split("-")[1];
+        var initialDay = currentUser.get("Goal").date.split("-")[2];
+        initialInfo.date = currentUser.get("initialWeight").date;
+        initialInfo.weight = currentUser.get("initialWeight").weight;
+
+        goalInfo.date = new Date(initialYear,initialMonth,initialDay);
+        goalInfo.weight =  currentUser.get("Goal").weight;
+
+        goalData.push(initialInfo);
+        goalData.push(goalInfo);
+
+
         this.on('updated', function(){
 
-        var weightLogData = [{date: new Date(2016,01,02), weight: 130},{date: new Date(2016,01,06), weight: 125},{date: new Date(2016,01,12), weight: 129},{date: new Date(2016,01,22), weight: 128},{date: new Date(2016,02,02), weight: 130},{date: new Date(2016,02,08), weight: 110}]
-        var goalData = [{date: new Date(2016,01,02), weight: 130}, {date: new Date(2016,05,06), weight: 110}];
+        var weightLogData = [{date: new Date(2016,04,22), weight: 130},{date: new Date(2016,04,25), weight: 125},{date: new Date(2016,04,26), weight: 129},{date: new Date(2016,04,29), weight: 128},{date: new Date(2016,04,30), weight: 130},{date: new Date(2016,05,01), weight: 110}]
+        var goalData5 = [{date: new Date(2016,01,02), weight: 130}, {date: new Date(2016,05,06), weight: 110}];
+
 
         var allDates = [];
         for ( var i = 0; i < weightLogData.length; i++){
@@ -100,7 +120,7 @@
         var area = d3.svg.area()
             .x(function(d) { return x(d.date); })
             .y0(function(d) { return y(d.weight-8); })
-            .y1(function(d) { return y(d.weight+8); });
+            .y1(function(d) { return y(d.weight)-30; });
 
         svg.append("path")
           .datum(goalData)

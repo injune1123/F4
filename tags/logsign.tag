@@ -109,11 +109,11 @@
 	            	<form class="register form-register">
 	                	<fieldset>
 	                		<label for="Current Weight" style="display:block">Current Weight</label>
-							<input type="text" name="current" placeholder="Current Weight" class="form-control"/>
+							<input type="text" name="currentWeight" placeholder="Current Weight" class="form-control"/>
 							<label for="ObjectiveWeight" style="display:block">Objective Weight</label>
 			    			<input type="text" name="objective" placeholder="Objective Weight" class="form-control"/>
-							<label for="Period" style="display:block">Period</label>			    			
-			    			<input type="text" name="period" placeholder="Achivable Period in terms of month" class="form-control"/>
+							<label for="Period" style="display:block">Date to be Fit</label>	
+							<input type="date" name="dateToBeFit" class="form-control">
 			    			<br/>
 			    			<input type="button" name="next" class="next action-button btn btn-info" value="Finish" id="setgoal"/>
 	                	</fieldset>
@@ -283,11 +283,9 @@
 			}
 			else{
 				var currentUser = Parse.User.current();
-				var info = currentUser.get('infos')
-				info.current = that.current.value;
-				info.objective = that.objective.value;
-				info.period = that.period.value;
-				currentUser.set('infos',info);
+				var currentDate = new Date();
+				currentUser.set('initialWeight',{date: currentDate, weight: that.currentWeight.value});
+				currentUser.set('Goal',{date: that.dateToBeFit.value, weight: that.objective.value});
 				currentUser.save().then(function(){
 					that.moveToNext($(this).parent(),$(this).parent().next());
 					window.location.href = '/#dashboard';
