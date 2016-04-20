@@ -10,7 +10,6 @@
                 </div>
                 <div class="nav">
                     <ul>
-                        <li><a href="#calorieCal">Calorie Calculator</a></li>
                         <li><a href="#dashboard">Dashboard</a></li>
                         <li><a if={!loggedIn} href="#" onclick={showLogin}>Log In | Sign Up</a></li>
                         
