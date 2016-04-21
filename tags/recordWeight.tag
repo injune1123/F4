@@ -9,34 +9,88 @@
 	  I weigh
 	  <input type="number" name="weightInput" placeholder = "target weight (lb)">
     </p>
+    <br/>
     <p class="center">
       I am feeling  
+      <label>
+        <input type="radio" name="emoji" value="astonished" />
         <i class="em em-astonished"></i>
+      </label>  
+      <label>
+        <input type="radio" name="emoji" value="angry" />
         <i class="em em-angry"></i>
+      </label>
+      <label>
+        <input type="radio" name="emoji" value="anguished" />
         <i class="em em-anguished"></i>
+      </label>
+      <label>
+        <input type="radio" name="emoji" value="blush" />
         <i class="em  em-blush"></i>
+      </label>
+      <label>
+        <input type="radio" name="emoji" value="grinning" />
         <i class="em  em-grinning"></i>
+      </label>
+      <label>
+        <input type="radio" name="emoji" value="flushed" />
         <i class="em  em-flushed"></i>
+      </label>
+      <label>
+        <input type="radio" name="emoji" value="full_moon_with_face" />
         <i class="em  em-full_moon_with_face"></i>
+      </label>
+      <label>
+        <input type="radio" name="emoji" value="mask" />
         <i class="em  em-mask"></i>
+      </label>
+      <label>
+        <input type="radio" name="emoji" value="satisfied" />
         <i class="em  em-satisfied"></i>
+      </label>
+      <label>
+        <input type="radio" name="emoji" value="smile" />
         <i class="em  em-smile"></i>
+      </label>
+      <label>
+        <input type="radio" name="emoji" value="stuck_out_tongue_winking_eye" />
         <i class="em  em-stuck_out_tongue_winking_eye"></i>
+      </label>
+      <label>
+        <input type="radio" name="emoji" value="em-stuck_out_tongue_closed_eyes" />
         <i class="em  em-stuck_out_tongue_closed_eyes"></i>
-        <i class="em  em-sweat"></i>
+      </label>        
+      <label>
+        <input type="radio" name="emoji" value="sweat" />
+          <i class="em  em-sweat"></i>
+      </label>
 
 
     </p>
-      <textarea type="text" class="form-control" row="4" placeholder="The weather is nice, and I am doing well..."></textarea>
+      <textarea name="textArea" type="text" class="form-control" row="4" placeholder="I am working hard, and I will keep doing it..."></textarea>
       <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick={saveWeightRecord}>Yeah!</button>
 
 </div>
 
 <style scoped>
   :scope
+  label > input{ /* HIDE RADIO */
+    visibility: hidden; /* Makes input not-clickable */
+    position: absolute; /* Remove input from document flow */
+  }
+  label > input + i{ /* IMAGE STYLES */
+    cursor:pointer;
+    border:2px solid transparent;
+  }
+
+  label > input:checked + i{ /* (RADIO CHECKED) IMAGE STYLES */
+    border:2px solid blue;
+    font-size: 30px;
+  }
+
   #note{
     width: 50%;
-    height: 50vh;
+    height: 70vh;
     margin: 0 auto;
   }
   .center{
@@ -65,6 +119,7 @@
 
     <script>
 
+    var that = this;
     // this is the helper function that helps to set the date to current date
     function setDateToToday (el) {
           var today = new Date();
@@ -80,26 +135,45 @@
     }
 
     // set the date of the input box with a name of currentDate
-    setDateToToday(this.dateInput);
+    setDateToToday(that.dateInput);
 
     this.saveWeightRecord = function(e){
       // get the info of the current user
       var currentUser = Parse.User.current();
 
-      // get the weight log of current user
-      var weightLog = [];
+      // check whether weight log exists
+      if (currentUser.get('weightLog')===undefined){
+        var weightLog = [];
+      } else{
+        var weightLog = currentUser.get('weightLog');
+      }
 
-      // create a variable callled goalInfo and store all the information into the 
+      // create a variable called newRecord and store all the information into the 
       var newRecord = {
-      	date: this.dateInput.value,
-      	weight: this.weightInput.value
+        date: this.dateInput.value,
+        weight: this.weightInput.value,
+        emojiValue: document.querySelector('input[name="emoji"]:checked').value,
+        textAreaValue: that.textArea.value
       }
 
       weightLog.push(newRecord);
 
-      // update the parese object
+      currentUser.set('weightLog',weightLog);
       
-      }
+      currentUser.save(null, {
+        success: function(user) {
+          // Execute any logic that should take place after the object is saved.
+          // alert('New object created with objectId: ' + gameScore.id);
+        },
+        error: function(user, error) {
+          // Execute any logic that should take place if the save fails.
+          // error is a Parse.Error with an error code and message.
+          // alert('Failed to create new object, with error code: ' + error.message);
+        }
+      });
+
+
+    }
 
 </script>
 
