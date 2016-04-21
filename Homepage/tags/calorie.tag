@@ -12,6 +12,7 @@
 						<div class="container-1">
 					      <input type="search" id="search" placeholder="Search..." />
 					      <span class="icon" onclick={searchFood}><i class="fa fa-search"></i></span>
+					      <p id="outputcontent"></p>
 					  	</div>
 
 					  	<div class="food-image" each={SearchHistory[meal.toLowerCase()]} no-reorder>
@@ -44,6 +45,15 @@
 	var that = this;
 	var user = Parse.User.current().toJSON();
 	that.currentMenu
+
+	var currencies = [
+    { value: 'Afghan afghani', data: 'AFN' },
+    { value: 'Albanian lek', data: 'ALL' },
+    { value: 'Algerian dinar', data: 'DZD' },
+    { value: 'European euro', data: 'EUR' },
+    { value: 'Angolan kwanza', data: 'AOA' },
+    { value: 'East Caribbean dollar', data: 'XCD' }]
+
 
 
 	that.menuItems = [
@@ -139,10 +149,15 @@
 	    			snack:[],
 	    			exercise:[],
 	    			email:user.email
+	    		}).then(function(){
+	    			that.RawRecordData = that.todayRecord;
+	    			that.todayRecord = that.todayRecord.toJSON();
 	    		})
 	    		
 	    		// that.record = result.toJSON();
 	    		// console.log(that.record)
+	    		
+	    		
 	    	}
 	    	else{
 	    		//Save raw parse object into RawRecordData
@@ -175,6 +190,8 @@
 		    			snack:[],
 		    			exercise:[],
 		    			email:user.email
+	    			}).then(function(){
+	    				that.SearchHistory = that.SearchHistory.toJSON() 
 	    			})
 	   			}
 	   			else{
@@ -190,13 +207,21 @@
 	   	})
     }
     
-    that.one('updated',function(){
+    that.on('updated',function(){
     	//update for the first time
 
     	that.updateTable();
     	//when date is changed
     	$('#theDate').change(function(){
     		that.updateTable();
+    	})
+    	//auto fill search box
+    	$('#search').autocomplete({
+    		lookup:currencies,
+    		onSelect:function(suggestion){
+    			var thehtml = '<strong>Currency Name:</strong> ' + suggestion.value + ' <br> <strong>Symbol:</strong> ' + suggestion.data;
+      			$('#outputcontent').html(thehtml);
+    		}
     	})
 
 
