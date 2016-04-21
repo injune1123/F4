@@ -5,12 +5,22 @@
     <br/>
     <br/>
    <p id="Weightrecord">On 
-      <input type="date" name="dateInput">
+      <input type="date" name="dateInput" if= {!isDisplay}>
+      <span if= {isDisplay}>{todayDate}</span>
 	  I weigh
-	  <input type="number" name="weightInput" placeholder = "target weight (lb)">
+	  <input type="number" name="weightInput" placeholder = "target weight (lb)" if= {!isDisplay}>
+    <span if= {isDisplay}>{todayWeight}</span>
+
     </p>
     <br/>
-    <p class="center">
+    
+    <p class="center" if= {isDisplay}>
+
+      I am feeling  
+        <i class={"em em-" + emoji }></i>
+
+    </p>
+    <p class="center" if= {!isDisplay}>
       I am feeling  
       <label>
         <input type="radio" name="emoji" value="astonished" />
@@ -67,8 +77,10 @@
 
 
     </p>
-      <textarea name="textArea" type="text" class="form-control" row="4" placeholder="I am working hard, and I will keep doing it..."></textarea>
-      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick={saveWeightRecord}>Yeah!</button>
+      <textarea name="textArea" type="text" class="form-control" row="4" placeholder="I am working hard, and I will keep doing it..."  if = {!isDisplay}></textarea>
+      <p  class= "center"if = {isDisplay}>{textAreaValue}</p>
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick={saveWeightRecord}  if= {!isDisplay}>Yeah!</button>
+      <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick={editWeightRecord}  if= {isDisplay}>Edit</button>
 
 </div>
 
@@ -120,6 +132,33 @@
     <script>
 
     var that = this;
+    // this controls whether we should show the edit ot the display view of the weight log
+    that.isDisplay = false;
+    // get the info of the current user
+    var currentUser = Parse.User.current();
+    var allWeightLog = currentUser.get('weightLog');
+          // check whether weight log exists
+    if (currentUser.get('weightLog')===undefined){
+        var weightLog = [];
+    } else{
+        var weightLog = currentUser.get('weightLog');
+    }
+
+    //check whether today's data exsits
+    for (var i = 0; i < weightLog.length; i++){
+        var todayObj = {};
+        setDateToToday(todayObj);
+        if(weightLog[i].date == todayObj.value){
+          that.isDisplay = true;
+          that.todayWeight = weightLog[i].weight;
+          that.emoji = weightLog[i].emojiValue;
+          that.todayDate = todayObj.value;
+          that.textAreaValue = weightLog[i].textAreaValue;
+        }
+    }
+
+
+
     // this is the helper function that helps to set the date to current date
     function setDateToToday (el) {
           var today = new Date();
@@ -136,17 +175,12 @@
 
     // set the date of the input box with a name of currentDate
     setDateToToday(that.dateInput);
+    
+    that.editWeightRecord = function(e){
+      that.isDisplay = false;
+    }
+    that.saveWeightRecord = function(e){
 
-    this.saveWeightRecord = function(e){
-      // get the info of the current user
-      var currentUser = Parse.User.current();
-
-      // check whether weight log exists
-      if (currentUser.get('weightLog')===undefined){
-        var weightLog = [];
-      } else{
-        var weightLog = currentUser.get('weightLog');
-      }
 
       // create a variable called newRecord and store all the information into the 
       var newRecord = {
