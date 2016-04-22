@@ -8,10 +8,13 @@
 			<div class="col-sm-5 meal-nav">
 				<div each={menuItems}>
 					<div class={highlight:done} onclick={parent.toggle}>{meal}</div>
-					<div class="search-board" if={done}>
+					<div class="search-board" if={done} datameal={ meal.toLowerCase() }>
 						<div class="container-1">
-					      <input type="search" id="search" placeholder="Search..." />
-					      <span class="icon" onclick={searchFood}><i class="fa fa-search"></i></span>
+					      <input type="search" id="search" placeholder="Search..." onfocus={queryData} onkeyup={searchFood}/>
+					      <ul show={ filtered.length }>
+					        <li each={ item,index in filtered }  class="{ active: parent.active==index}"><img src={item.url} alt="" onclick={parent.addToRecordFromSearch}></li>
+					    </ul>
+					      
 					      <p id="outputcontent"></p>
 					  	</div>
 
@@ -34,6 +37,7 @@
 				</div>
 
 			</div>
+			<div>Today's total calorie is: {totalCalorie()}</div>
 			<div class="btn btn-info" onclick={updateToDatabase}>Update</div>
 		</div>
 	</div>
@@ -44,16 +48,12 @@
 <script>
 	var that = this;
 	var user = Parse.User.current().toJSON();
+	//searched result array
+	that.filtered = []
+	that.active = -1;
+	//seleted menu pointer
 	that.currentMenu
-
-	var currencies = [
-    { value: 'Afghan afghani', data: 'AFN' },
-    { value: 'Albanian lek', data: 'ALL' },
-    { value: 'Algerian dinar', data: 'DZD' },
-    { value: 'European euro', data: 'EUR' },
-    { value: 'Angolan kwanza', data: 'AOA' },
-    { value: 'East Caribbean dollar', data: 'XCD' }]
-
+	
 
 
 	that.menuItems = [
@@ -92,7 +92,62 @@
     	
     	setDateToToday(that.theDate);
     }
-    
+    //when search bar focus, query data
+    that.queryData = function(e){
+    	if(this.meal.toLowerCase()=='exercise'){
+    		//query exercise
+    		if(!that.exerciseData){
+
+    			that.exerciseData = [];
+    			var allExerciseQuery = new Parse.Query('Exercise')
+    			allExerciseQuery.find().then(function(result){
+    				for(var i=0;i<result.length;i++){
+    					that.exerciseData.push(result[i].toJSON())
+    				}  				
+    			})
+    		}
+    		
+    	}
+    	else{
+    		//query foods
+
+    		if(!that.foodsData){
+    			that.foodsData = []
+    			var allFoodsQuery = new Parse.Query('Foods')
+    			allFoodsQuery.find().then(function(result){
+    				for(var i=0;i<result.length;i++){
+    					that.foodsData.push(result[i].toJSON())
+    				}
+    				
+    				
+    			})
+    		}
+    	}
+    	
+    }
+
+    //search the food after query from database
+    that.searchFood = function(e){
+    	//if search string less than two, show nothing
+    	if(e.target.value.length < 2) {
+                that.filtered = []
+                that.active = -1
+                return
+            }
+        if(that.currentMenu=='exercise'){
+        	that.filtered = that.exerciseData.filter(function(c) {
+    	
+            	return c['name'].match(RegExp('^'+e.target.value,'i'))
+        	})
+        }
+        else{
+        	that.filtered = that.foodsData.filter(function(c) {
+    	
+            	return c['name'].match(RegExp('^'+e.target.value,'i'))
+        	})
+        }
+    	
+    }
 
     //compute sum of calorie
     that.computeCalorie = function(foodsArr){
@@ -100,15 +155,38 @@
     	for(var i=0;i<foodsArr.length;i++){
     		sum = sum + Number(foodsArr[i].calorie)
     	}
+    	
     	return sum
+    }
+
+    that.totalCalorie = function(e){
+    	var total = 0
+    	for (var key in that.todayRecord){
+    		if('breakfast,lunch,dinner,snack,exercise'.indexOf(key)!=-1){
+    			total = total+that.computeCalorie(that.todayRecord[key])
+    		}
+    	}
+    	return total
     }
 
     that.addToRecord = function(e){
     	//add the selected food into todayRecord array
+    	
     	that.todayRecord[that.currentMenu].push(e.item);
     	//and at the same time change parse raw data to the same as todayRecord
     	that.RawRecordData.set(that.currentMenu,that.todayRecord[that.currentMenu])
 
+    }
+
+    that.addToRecordFromSearch = function(e){
+    	//add to record board and update to database
+    	that.todayRecord[that.currentMenu].push(e.item.item);
+    	that.RawRecordData.set(that.currentMenu,that.todayRecord[that.currentMenu])
+    	//also add to search history if not existing before
+    	if(that.SearchHistory[that.currentMenu].indexOf(e.item.item)==-1){
+    		that.SearchHistory[that.currentMenu].push(e.item.item);
+    		that.RawSearchHistory.set(that.currentMenu,that.SearchHistory[that.currentMenu])
+    	}
     }
 
     that.removeFromRecord = function(e){
@@ -120,7 +198,7 @@
     that.updateToDatabase = function(e){
     	//update change to the data base
     	that.RawRecordData.save()
-
+    	that.RawSearchHistory.save()
 
     }
 
@@ -183,7 +261,6 @@
 	   				var SearchHistory = Parse.Object.extend('SearchHistory')
 	   				that.SearchHistory = new SearchHistory();
 	   				that.SearchHistory.save({
-		    			date:that.theDate.value,
 		    			breakfast:[],
 		    			lunch:[],
 		    			dinner:[],
@@ -191,10 +268,13 @@
 		    			exercise:[],
 		    			email:user.email
 	    			}).then(function(){
+	    				//save SearchHistory Parse Object as one variable, easy for update
+	    				that.RawSearchHistory = that.SearchHistory;
 	    				that.SearchHistory = that.SearchHistory.toJSON() 
 	    			})
 	   			}
 	   			else{
+	   				that.RawSearchHistory = result;
 	   				that.SearchHistory = result.toJSON();
 
 	   			
@@ -207,7 +287,7 @@
 	   	})
     }
     
-    that.on('updated',function(){
+    that.one('updated',function(){
     	//update for the first time
 
     	that.updateTable();
@@ -215,21 +295,8 @@
     	$('#theDate').change(function(){
     		that.updateTable();
     	})
-    	//auto fill search box
-    	$('#search').autocomplete({
-    		lookup:currencies,
-    		onSelect:function(suggestion){
-    			var thehtml = '<strong>Currency Name:</strong> ' + suggestion.value + ' <br> <strong>Symbol:</strong> ' + suggestion.data;
-      			$('#outputcontent').html(thehtml);
-    		}
-    	})
 
-
-    })
-
-	
-    
-
+    }) 
 
 
 </script>
