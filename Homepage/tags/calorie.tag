@@ -10,7 +10,7 @@
 					<div class={highlight:done} onclick={parent.toggle}>{meal}</div>
 					<div class="search-board" if={done} datameal={ meal.toLowerCase() }>
 						<div class="container-1">
-					      <input type="search" id="search" placeholder="Search..." onfocus={queryData} onkeyup={searchFood}/>
+					      <input type="search" name="search" placeholder="Search..." onfocus={queryData} onkeyup={searchFood} onblur={clearInput} />
 					      <ul show={ filtered.length }>
 					        <li each={ item,index in filtered }  class="{ active: parent.active==index}"><img src={item.url} alt="" onclick={parent.addToRecordFromSearch}></li>
 					    </ul>
@@ -149,6 +149,11 @@
     	
     }
 
+    that.clearInput = function(e){
+    	e.target.value = ""
+    	
+    }
+
     //compute sum of calorie
     that.computeCalorie = function(foodsArr){
     	var sum = 0;
@@ -179,14 +184,21 @@
     }
 
     that.addToRecordFromSearch = function(e){
+    	
     	//add to record board and update to database
     	that.todayRecord[that.currentMenu].push(e.item.item);
     	that.RawRecordData.set(that.currentMenu,that.todayRecord[that.currentMenu])
     	//also add to search history if not existing before
-    	if(that.SearchHistory[that.currentMenu].indexOf(e.item.item)==-1){
+    	//that.SearchHistory[that.currentMenu].indexOf(e.item.item)==-1
+    	
+    	if(!_.findWhere(that.SearchHistory[that.currentMenu],e.item.item)){
+    		
     		that.SearchHistory[that.currentMenu].push(e.item.item);
     		that.RawSearchHistory.set(that.currentMenu,that.SearchHistory[that.currentMenu])
     	}
+    	that.filtered = []
+    	
+    	
     }
 
     that.removeFromRecord = function(e){
