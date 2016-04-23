@@ -10,7 +10,7 @@
                 </div>
                 <div class="nav">
                     <ul>
-                        <li><a href="#dashboard">Dashboard</a></li>
+                        <li if={Parse.User.current()}><a href="#dashboard">Dashboard</a></li>
                         <li><a if={!loggedIn} href="#" onclick={showLogin}>Log In | Sign Up</a></li>
                         
 		      			<li><a if={loggedIn} href="#" onclick={logOut}>Log Out</a></li>
@@ -105,4 +105,3 @@
 
 </navbar>
 
- -->
