@@ -347,7 +347,10 @@
 	.highlight{
 		background-color: #f7d4d4;
 	}
-
+	
+	.record-panel{
+		overflow: auto
+	}
 	.food-image{
 		display: inline-block;
 	}
