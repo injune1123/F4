@@ -170,6 +170,7 @@
 				})
 			}
 		});
+		window.location.replace = '/#dashboard';
 	};
 
 	that.SigninKey = function(event){
