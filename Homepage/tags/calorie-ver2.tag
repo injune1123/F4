@@ -1,49 +1,45 @@
 <calorie>
-	<div class="title-holder"><h2>CALORIE CALCULATOR <span> (Record your INs and OUTs)</span></h2></div>
+	<div class="title-holder"><h2>Calorie Calculator <span>(Record your INs and OUTs)</span></h2></div>
 	<div class="date-recorder" >
 		<input type="date" name="theDate" id="theDate">
 	</div>
 	<div class="main-board container">
-	<!-- Here are search input box -->
-		<div class="search-container">
-	      <input type="search" name="search" placeholder="Enter name of food / exercise ..." onfocus={} onkeyup={} onblur={} />
-	      <span class="icon"><i class="fa fa-search fa-lg"></i></span>
-	      <div class="button">Search</div>
-	      <ul show={ filtered.length }>
-	        <li each={ item,index in filtered }  class="{ active: parent.active==index}"><img src={item.url} alt="" onclick={parent.addToRecordFromSearch}></li>
-	    </ul>
-	  	</div>
 
 		<div class="row">
-			
-			<div class="record-panel col-sm-15" each={menuItems}>
+			<div class="col-sm-5 meal-nav">
+				<div each={menuItems}>
+					<div class={highlight:done} onclick={parent.toggle}>{meal}</div>
+					<div class="search-board" if={done} datameal={ meal.toLowerCase() }>
+						<div class="container-1">
+					      <input type="search" name="search" placeholder="Search..." onfocus={queryData} onkeyup={searchFood} onblur={clearInput} />
+					      <ul show={ filtered.length }>
+					        <li each={ item,index in filtered }  class="{ active: parent.active==index}"><img src={item.url} alt="" onclick={parent.addToRecordFromSearch}></li>
+					    </ul>
+					      
+					      <p id="outputcontent"></p>
+					  	</div>
+
+					  	<div class="food-image" each={SearchHistory[meal.toLowerCase()]} no-reorder>
+							<img src={url} alt={name} onclick={parent.addToRecord}>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="record-panel col-sm-7" each={menuItems}>
 				<div class="meal">{meal}</div>
 				<div class="food-list">
-				
 					<div class="food-image" each={todayRecord[meal.toLowerCase()]} datameal={ meal.toLowerCase() } no-reorder>
 						
-						<img src={fooditem.url} alt={fooditem.name} onclick={parent.removeFromRecord}>
-						<div class="count-number">{count}</div>
-						<div class="calorie-result">{computeCalorie(fooditem.calorie,count)} Cals</div>
+						<img src={url} alt={name} onclick={parent.removeFromRecord}>
 					</div>
-					
+					<div class="calorie-result">
+					{computeCalorie(todayRecord[meal.toLowerCase()])}
+					</div>
 				</div>
 
 			</div>
-			<!-- <div>Today's total calorie is: {totalCalorie()}</div> -->
-			<!-- <div class="btn btn-info" onclick={updateToDatabase}>Update</div> -->
-		</div>
-		<div class="row">
-			<div class="compute-calorie col-sm-12">
-				<div class="calorie-holder col-sm-15">{breakfastCal || 0}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+</div>
-				<div class="calorie-holder col-sm-15">{lunchCal || 0}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+</div>
-				<div class="calorie-holder col-sm-15">{dinnerCal || 0}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+</div>
-				<div class="calorie-holder col-sm-15">{snackCal || 0}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-</div>
-				<div class="calorie-holder col-sm-15">{exerciseCal || 0}</div>
-				
-				
-				 <div class="total-come-here">TOTAL = {totalCal}</div>
-			</div>
+			<div>Today's total calorie is: {totalCalorie()}</div>
+			<div class="btn btn-info" onclick={updateToDatabase}>Update</div>
 		</div>
 	</div>
 	
@@ -57,16 +53,16 @@
 	that.filtered = []
 	that.active = -1;
 	//seleted menu pointer
-	that.currentMenu = "Breakfast";
+	that.currentMenu
 	
 
 
 	that.menuItems = [
-		{meal:"Breakfast"},
-		{meal:"Lunch"},
-		{meal:"Dinner"},
-		{meal:"Snack"},
-		{meal:"Exercise"}]
+		{meal:"Breakfast",done:false},
+		{meal:"Lunch",done:false},
+		{meal:"Dinner",done:false},
+		{meal:"Snack",done:false},
+		{meal:"Exercise",done:false}]
 
 	that.toggle = function(e){
 		//reset all done property
@@ -160,33 +156,23 @@
     }
 
     //compute sum of calorie
-    that.computeCalorie = function(calorie,count){
-    	 return count * Number(calorie)
-    	
-    }
-
-    that.computeOneMealCalorie = function(mealArr){
+    that.computeCalorie = function(foodsArr){
     	var sum = 0;
-    	for(var i =0;i<mealArr.length;i++){
-    		sum = sum + that.computeCalorie(mealArr[i].fooditem.calorie,mealArr[i].count)
+    	for(var i=0;i<foodsArr.length;i++){
+    		sum = sum + Number(foodsArr[i].calorie)
     	}
+    	
     	return sum
     }
 
-    that.totalCalorie = function(){
-    	// var total = 0
-    	// for (var key in that.todayRecord){
-    	// 	if('breakfast,lunch,dinner,snack,exercise'.indexOf(key)!=-1){
-    	// 		total = total+that.computeCalorie(that.todayRecord[key])
-    	// 	}
-    	// }
-    	// return total
-    	that.breakfastCal = that.computeOneMealCalorie(that.todayRecord['breakfast'])
-    	that.lunchCal = that.computeOneMealCalorie(that.todayRecord['lunch'])
-    	that.dinnerCal = that.computeOneMealCalorie(that.todayRecord['dinner'])
-    	that.snackCal = that.computeOneMealCalorie(that.todayRecord['snack'])
-    	that.exerciseCal = Math.abs(that.computeOneMealCalorie(that.todayRecord['exercise']))
-    	that.totalCal = that.breakfastCal + that.lunchCal + that.dinnerCal + that.snackCal - that.exerciseCal
+    that.totalCalorie = function(e){
+    	var total = 0
+    	for (var key in that.todayRecord){
+    		if('breakfast,lunch,dinner,snack,exercise'.indexOf(key)!=-1){
+    			total = total+that.computeCalorie(that.todayRecord[key])
+    		}
+    	}
+    	return total
     }
 
     that.addToRecord = function(e){
@@ -257,7 +243,6 @@
 	    		}).then(function(){
 	    			that.RawRecordData = that.todayRecord;
 	    			that.todayRecord = that.todayRecord.toJSON();
-
 	    		})
 	    		
 	    		// that.record = result.toJSON();
@@ -270,7 +255,6 @@
 	    		that.RawRecordData = result;
 	    		//and save toJSON() format data into todayRecord
 	    		that.todayRecord = result.toJSON();
-	    		console.log(that.todayRecord.breakfast[0].count)
 	    		
 	    		// that.update();
 	    		
@@ -312,8 +296,6 @@
 	   	)
 
 	   	Parse.Promise.when(promises).then(function(){
-	   		//compute calorie after get the data
-	   		that.totalCalorie();
 	   		that.update();
 	   	})
     }
@@ -322,17 +304,12 @@
     	//update for the first time
 
     	that.updateTable();
-
     	//when date is changed
     	$('#theDate').change(function(){
     		that.updateTable();
     	})
 
     }) 
-
-    // that.on('updated',function(){
-    	
-    // })
 
 
 </script>
@@ -345,22 +322,22 @@
 	:scope{
 		
 		background-color: #f3f3f3;
-		height:1000px;
+		height:100%;
 		margin-top: -25px;
 		padding-left:50px;
 		padding-right:70px;
 	}
 
 	.title-holder{
-		padding: 55px 0 25px 0;
+		padding: 55px 0 45px 0;
 		text-align: left;
 		display: inline-block;
 	}
 
 	.title-holder h2{
-		font-size:24px;
+		font-size:20px;
 		font-weight: 600;
-		margin: 0 0 0 20px;
+		margin: 0 0 0 25px;
 
 	}
 
@@ -387,179 +364,81 @@
 	}
 
 	.main-board{
-		width:700px;
-		height:800px;
-		margin:0;
-		padding:0;
-		
-	}
-	/*BLDS board style*/
-
-	.row{
-		margin: -3px !important;
-	}
-	.record-panel{
-		padding: 20px 3px 8px 3px;
+		width:500px;
+		height:400px;
+		border:grey solid 1px;
+		margin-left: 70px;
 	}
 
-	.meal{
-		background-color: #f6cabe;
-		font-size: 20px;
-		font-weight: 300;
-		text-align: center;
-		padding:20px 30px;
+	.meal-nav{
+		height:100%;
 	}
-
-	.food-list{
-		background-color: #f5d9d0;
-		margin-top:7px;
-		height:350px;
-		padding-top: 13px;
-
-
+	
+	.meal-nav img{
+		width:30px;
 	}
 
 	.highlight{
 		background-color: #f7d4d4;
 	}
 	
-	
+	.record-panel{
+		overflow: auto
+	}
 	.food-image{
-		display: block;
-		padding: 2px 5px 0px 16px;
-
-	}
-
-	.food-list img{
-		width:40px;
-	}
-
-	/*~~~~~~~~~~~~~~~~~*/
-	/*Here is compute calorie part*/
-	.compute-calorie{
-		background-color: #e2d2de;
-		height:130px;
-		font-size: 25px;
-		padding: 0;
-	}
-
-	.count-number{
-		text-align: center;
-		background-color: #ef4577;
-		color:#fff2f2;
-		border-radius: 15px;
-		width: 20px;
-		position:relative;
-		top:-14px;
-		left:30px;
-		font-weight: 200;
-		font-size: 11px;
+		display: inline-block;
 	}
 	
-	.calorie-result{
-		font-size: 12px;
-		font-weight:200;
-		position: relative;
-		top:-38px;
-		left:60px;
-	}
-
-	.calorie-holder{
-		padding: 40px 50px 20px 50px;
-	}
-
-	.total-come-here{
-		text-align: right;
-		margin-right: 60px;
+	.food-list img{
+		width:30px;
 	}
 
 	/*~~~~~~~~~~~~~~~*/
 	/*Here is search board*/
-	
-	.search-container{
-	  width: 700px;
+	.search-board{
+		border:grey solid 1px;
+		width:300px;
+		height:350px;
+		position: absolute;
+		left:498px;
+		top:20px;
+	}
+	.container-1{
+	  width: 300px;
 	  vertical-align: middle;
 	  white-space: nowrap;
 	  position: relative;
 	}
 
-	.search-container input{
-	  width: 700px;
-	  height: 50px;
-	  background: white;
-	  border: 1px solid #f8c3ae;
+	.container-1 input#search{
+	  width: 150px;
+	  height: 25px;
+	  background: #e7e7e7;
+	  border: none;
 	  font-size: 10pt;
-	  font-weight: 300;
+	  
 	  color: #63717f;
-	  padding-left: 50px;
+	  padding-left: 10px;
+	  -webkit-border-radius: 5px;
+	  -moz-border-radius: 5px;
+	  border-radius: 5px;
 	}	
 	
-
-	.search-container input#search:focus{
+	.container-1 input#search:focus{
 		outline:none;
 	}
-	
-	/*icon style*/
-	.search-container .icon{
+
+	.container-1 .icon{
 	  position: absolute;
 	  /*top: 20%;*/
-	  left:15px;
-	  top:10px;
-	  margin-left: 0px;
+	  margin-left: -20px;
 	  margin-top: 3px;
 	  z-index: 1;
-	  color: #f8c3ae;
-	  
-	  
-	}
-	/*button style*/
-	.search-container .button{
-		background-color: #f79778;
-		width:160px;
-		height: 48px;
-		position: absolute;
-		right:1px;
-		top:1px;
-		color:#fff7ed;
-		text-align: center;
-		padding-top: 15px;
-		font-weight: 100;
-		font-size: 18px;
+	  color: #4f5b66;
+	  cursor: pointer;
 	}
 
-	/*Here are self-defined 1/5 grid system*/
 
-	.col-xs-15,
-	.col-sm-15,
-	.col-md-15,
-	.col-lg-15 {
-	    position: relative;
-	    min-height: 1px;
-	    
-	}
-
-	.col-xs-15 {
-	    width: 20%;
-	    float: left;
-	}
-	@media (min-width: 768px) {
-	.col-sm-15 {
-	        width: 20%;
-	        float: left;
-	    }
-	}
-	@media (min-width: 992px) {
-	    .col-md-15 {
-	        width: 20%;
-	        float: left;
-	    }
-	}
-	@media (min-width: 1200px) {
-	    .col-lg-15 {
-	        width: 20%;
-	        float: left;
-	    }
-	}
 </style>
 
 
