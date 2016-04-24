@@ -171,6 +171,8 @@
 			}
 		});
 		window.location.replace = '/#dashboard';
+		            riot.mount('#Mount-dashboard','record');
+
 	};
 
 	that.SigninKey = function(event){

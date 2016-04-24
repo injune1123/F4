@@ -77,8 +77,8 @@
         var weightLogData = currentUser.get("weightLog");
         if(!weightLogData){
             weightLogData = [];
+            weightLogDataForD3 = [];
         } else{
-
         var weightLogDataForD3 = weightLogData.map(function(dateWeightObj){
             var dateWeightObjForD3 = {};
             dateWeightObjForD3.date = new Date( 
@@ -87,6 +87,8 @@
             dateWeightObjForD3.weight = +dateWeightObj.weight
             return dateWeightObjForD3;       
         })
+
+        }
 
 
         var allDatesForD3 = [];
@@ -108,10 +110,9 @@
         allDataForD3.push(goalDataForD3[1])
 
         console.log(goalDataForD3, weightLogDataForD3, allDataForD3, allDatesForD3)
-
-        }
         
         this.on('updated', function(){
+            d3.select("svg").remove();
 
             // Set the dimensions of the canvas / graph
             var margin = {top: 30, right: 20, bottom: 30, left: 50},

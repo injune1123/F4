@@ -1,8 +1,8 @@
 <record>
 
-		<recordWeight></recordWeight> 
+	<recordWeight></recordWeight> 
     <div class="row">
-        <line></line>    
+    <line></line>    
     </div>
     <div class='col-md-3'>
         <BMI></BMI>

@@ -224,6 +224,7 @@
           that.recordDate = that.dateInput.value;
           that.textAreaValue = that.textArea.value;
           that.update();
+            riot.mount('#Mount-dashboard','record');
         },
         error: function(user, error) {
           // Execute any logic that should take place if the save fails.
