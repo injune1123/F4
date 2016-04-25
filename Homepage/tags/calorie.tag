@@ -1,30 +1,35 @@
 <calorie>
-	<div class="title-holder"><h2>CALORIE CALCULATOR <span> (Record your INs and OUTs)</span></h2></div>
+	<div class="title-holder"><h2>CALORIE CALCULATOR</h2></div>
 	<div class="date-recorder" >
 		<input type="date" name="theDate" id="theDate">
 	</div>
 	<div class="main-board container">
 	<!-- Here are search input box -->
 		<div class="search-container">
-	      <input type="search" name="search" placeholder="Enter name of food / exercise ..." onfocus={} onkeyup={} onblur={} />
+	      <input type="search" name="search" placeholder="Enter name of food / exercise ..." onfocus={showHistory} onkeyup={searchFood} onblur={} />
 	      <span class="icon"><i class="fa fa-search fa-lg"></i></span>
 	      <div class="button">Search</div>
 	      <ul show={ filtered.length }>
-	        <li each={ item,index in filtered }  class="{ active: parent.active==index}"><img src={item.url} alt="" onclick={parent.addToRecordFromSearch}></li>
+	        <li each={ item,index in filtered }  class="{}"><img src={item.url} alt="">
+			<div class="li-content">{item.name.capitalize()},<span>{item.calorie} cals each.</span></div>
+			<div class="add-button" onclick={addToRecord}>+</div>
+	        </li>
 	    </ul>
 	  	</div>
 
 		<div class="row">
 			
-			<div class="record-panel col-sm-15" each={menuItems}>
-				<div class="meal">{meal}</div>
-				<div class="food-list">
+			<div class="record-panel col-sm-15 " each={menuItems} onclick={toggle}>
+				<div class="meal {highlighted-top:meal==currentMenu}">{meal}</div>
+				<div class="food-list {highlighted-bottom:meal==currentMenu}">
 				
-					<div class="food-image" each={todayRecord[meal.toLowerCase()]} datameal={ meal.toLowerCase() } no-reorder>
-						
-						<img src={fooditem.url} alt={fooditem.name} onclick={parent.removeFromRecord}>
-						<div class="count-number">{count}</div>
+					<div class="food-image" each={todayRecord[meal.toLowerCase()]} no-reorder>
+						<div class="add-button " onclick={parent.increaseCount}>+</div>
+						<div class="minus-button {name}" onclick={parent.decreaseCount}>-</div>
+						<img src={fooditem.url} alt={fooditem.name} >
+						<div class="count-number" >{count}</div>
 						<div class="calorie-result">{computeCalorie(fooditem.calorie,count)} Cals</div>
+						
 					</div>
 					
 				</div>
@@ -42,7 +47,8 @@
 				<div class="calorie-holder col-sm-15">{exerciseCal || 0}</div>
 				
 				
-				 <div class="total-come-here">TOTAL = {totalCal}</div>
+				 <div class="total-come-here">TOTAL&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;&nbsp; <span>{totalCal}</span></div>
+				 <div class="button" onclick={updateToDatabase}>UPDATE</div>
 			</div>
 		</div>
 	</div>
@@ -70,14 +76,12 @@
 
 	that.toggle = function(e){
 		//reset all done property
-		for(var i = 0;i<that.menuItems.length;i++){
-			
-			that.menuItems[i].done=false;
-		}
-		var item = e.item;
-		that.currentMenu = item.meal.toLowerCase()
-		item.done = !item.done
+		
+		if(e.item.meal!=that.currentMenu){
+			that.currentMenu = e.item.meal;
+			that.filtered = that.SearchHistory[that.currentMenu.toLowerCase()]
 
+		}
 	}
 
 	function setDateToToday (el) {
@@ -98,19 +102,26 @@
     	setDateToToday(that.theDate);
     }
     //when search bar focus, query data
-    that.queryData = function(e){
-    	if(this.meal.toLowerCase()=='exercise'){
+    that.queryData = function(){
+    	var promise = new Parse.Promise()
+    	if(this.currentMenu=='Exercise'){
     		//query exercise
+
     		if(!that.exerciseData){
 
     			that.exerciseData = [];
     			var allExerciseQuery = new Parse.Query('Exercise')
-    			allExerciseQuery.find().then(function(result){
-    				for(var i=0;i<result.length;i++){
-    					that.exerciseData.push(result[i].toJSON())
-    				}  				
-    			})
+    			return allExerciseQuery.find().then(function(result){
+		    				for(var i=0;i<result.length;i++){
+		    					that.exerciseData.push(result[i].toJSON())
+		    				}  				
+    					})
     		}
+    		else{
+    			promise.resolve();
+    			return promise
+    		}
+
     		
     	}
     	else{
@@ -119,16 +130,26 @@
     		if(!that.foodsData){
     			that.foodsData = []
     			var allFoodsQuery = new Parse.Query('Foods')
-    			allFoodsQuery.find().then(function(result){
-    				for(var i=0;i<result.length;i++){
-    					that.foodsData.push(result[i].toJSON())
-    				}
-    				
-    				
-    			})
+    			return allFoodsQuery.find().then(function(result){
+		    				for(var i=0;i<result.length;i++){
+		    					that.foodsData.push(result[i].toJSON())
+		    				}		    				
+		    			})
+    		}
+    		else{
+    			promise.resolve();
+    			return promise
     		}
     	}
     	
+    }
+
+    that.showHistory = function(e){
+
+    	that.queryData().then(function(){
+    		that.filtered = that.SearchHistory[that.currentMenu.toLowerCase()]
+    		that.update();
+    	})
     }
 
     //search the food after query from database
@@ -139,7 +160,7 @@
                 that.active = -1
                 return
             }
-        if(that.currentMenu=='exercise'){
+        if(that.currentMenu=='Exercise'){
         	that.filtered = that.exerciseData.filter(function(c) {
     	
             	return c['name'].match(RegExp('^'+e.target.value,'i'))
@@ -156,6 +177,7 @@
 
     that.clearInput = function(e){
     	e.target.value = ""
+
     	
     }
 
@@ -174,13 +196,9 @@
     }
 
     that.totalCalorie = function(){
-    	// var total = 0
-    	// for (var key in that.todayRecord){
-    	// 	if('breakfast,lunch,dinner,snack,exercise'.indexOf(key)!=-1){
-    	// 		total = total+that.computeCalorie(that.todayRecord[key])
-    	// 	}
-    	// }
-    	// return total
+    	if(!that.todayRecord){
+    		return
+    	}
     	that.breakfastCal = that.computeOneMealCalorie(that.todayRecord['breakfast'])
     	that.lunchCal = that.computeOneMealCalorie(that.todayRecord['lunch'])
     	that.dinnerCal = that.computeOneMealCalorie(that.todayRecord['dinner'])
@@ -190,31 +208,70 @@
     }
 
     that.addToRecord = function(e){
+    	var ind = that.currentMenu.toLowerCase();
     	//add the selected food into todayRecord array
-    	
-    	that.todayRecord[that.currentMenu].push(e.item);
-    	//and at the same time change parse raw data to the same as todayRecord
-    	that.RawRecordData.set(that.currentMenu,that.todayRecord[that.currentMenu])
-
-    }
-
-    that.addToRecordFromSearch = function(e){
-    	
-    	//add to record board and update to database
-    	that.todayRecord[that.currentMenu].push(e.item.item);
-    	that.RawRecordData.set(that.currentMenu,that.todayRecord[that.currentMenu])
-    	//also add to search history if not existing before
-    	//that.SearchHistory[that.currentMenu].indexOf(e.item.item)==-1
-    	
-    	if(!_.findWhere(that.SearchHistory[that.currentMenu],e.item.item)){
+    	var finded = false;
+    	//locate food in the array
+    	for(var i=0;i < that.todayRecord[ind].length;i++ ){
     		
-    		that.SearchHistory[that.currentMenu].push(e.item.item);
-    		that.RawSearchHistory.set(that.currentMenu,that.SearchHistory[that.currentMenu])
+    		if(_.isEqual(that.todayRecord[ind][i].fooditem,e.item.item)){
+    			
+    			that.todayRecord[ind][i].count++;
+    			finded = true;
+    			break;
+    		}
+
+
     	}
-    	that.filtered = []
-    	
-    	
+    	//if not finded one, add new icon instead
+    	if(!finded){
+    		var newFood = {fooditem:e.item.item,count:1}
+    		that.todayRecord[ind].push(newFood)
+    	}
+
+    	that.RawRecordData.set(ind,that.todayRecord[ind])
+
+    	// and at the same time change parse raw data to the same as todayRecord
+
+
+    	//then check if the search result appear in food search history
+    	if(!_.findWhere(that.SearchHistory[ind],e.item.item)){
+    		
+    		that.SearchHistory[ind].push(e.item.item);
+    		
+    		that.RawSearchHistory.set(ind,that.SearchHistory[ind])
+    	}
+
     }
+
+    that.increaseCount = function(e){
+    	
+    	var ind = that.currentMenu.toLowerCase();
+    	for(var i=0;i < that.todayRecord[ind].length;i++ ){
+    		
+    		if(_.isEqual(that.todayRecord[ind][i].fooditem,this.fooditem)){  			
+    			that.todayRecord[ind][i].count++;
+    			break;
+    		}
+    	}
+    	that.RawRecordData.set(ind,that.todayRecord[ind]);
+
+    }
+
+    that.decreaseCount = function(e){
+    	var ind = that.currentMenu.toLowerCase();
+    	for(var i=0;i < that.todayRecord[ind].length;i++ ){
+    		
+    		if(_.isEqual(that.todayRecord[ind][i].fooditem,this.fooditem)){
+    			if(that.todayRecord[ind][i].count!=0){
+    				that.todayRecord[ind][i].count--;
+    			}  			
+    			break;
+    		}
+    	}
+    	that.RawRecordData.set(ind,that.todayRecord[ind]);
+    }
+
 
     that.removeFromRecord = function(e){
     	var meal=this.opts.datameal;
@@ -224,6 +281,7 @@
 
     that.updateToDatabase = function(e){
     	//update change to the data base
+
     	that.RawRecordData.save()
     	that.RawSearchHistory.save()
 
@@ -270,7 +328,6 @@
 	    		that.RawRecordData = result;
 	    		//and save toJSON() format data into todayRecord
 	    		that.todayRecord = result.toJSON();
-	    		console.log(that.todayRecord.breakfast[0].count)
 	    		
 	    		// that.update();
 	    		
@@ -313,7 +370,7 @@
 
 	   	Parse.Promise.when(promises).then(function(){
 	   		//compute calorie after get the data
-	   		that.totalCalorie();
+	   		
 	   		that.update();
 	   	})
     }
@@ -330,9 +387,15 @@
 
     }) 
 
-    // that.on('updated',function(){
-    	
-    // })
+    that.on('update',function(){
+
+    	that.totalCalorie();
+
+    })
+
+    String.prototype.capitalize = function() {
+    	return this.charAt(0).toUpperCase() + this.slice(1);
+	}
 
 
 </script>
@@ -378,8 +441,8 @@
 	}
 
 	.date-recorder input{
-		background-color: #f9f9f9;
-		border-radius: 5px;
+		background-color: #f3f3f3;
+		
 		outline: none;
 		border:none;
 		width:130px;	
@@ -400,6 +463,17 @@
 	}
 	.record-panel{
 		padding: 20px 3px 8px 3px;
+		
+	}
+
+	.record-panel .highlighted-top{
+		background-color: #f6b5a6;
+		box-shadow: 3px 3px 6px #E0A89B;
+	}
+
+	.record-panel .highlighted-bottom{
+		background-color: #f4c8bd;
+		box-shadow: 3px 3px 6px #DDB2A8;
 	}
 
 	.meal{
@@ -417,28 +491,50 @@
 		padding-top: 13px;
 
 
-	}
-
-	.highlight{
-		background-color: #f7d4d4;
-	}
-	
+	}	
 	
 	.food-image{
 		display: block;
 		padding: 2px 5px 0px 16px;
+		margin-top: 5px;
+
+	}
+	
+	.food-image .add-button{
+		display: inline-block;
+		position: relative;
+		left:60px;
+		top:7px;
+		font-size: 12px;
+		font-weight: 100;
+		color:grey;
+		text-shadow: 1px 1px #D3AFAF;
+		cursor:pointer;
+
 
 	}
 
+	.food-image .minus-button{
+		display: inline;
+		position: relative;
+		left:-3px;
+		top:8px;
+		font-size: 18px;
+		font-weight: 100;
+		color:grey;
+		text-shadow: 1px 1px #D3AFAF;
+		cursor:pointer;
+	}
+
 	.food-list img{
-		width:40px;
+		width:35px;
 	}
 
 	/*~~~~~~~~~~~~~~~~~*/
 	/*Here is compute calorie part*/
 	.compute-calorie{
 		background-color: #e2d2de;
-		height:130px;
+		height:180px;
 		font-size: 25px;
 		padding: 0;
 	}
@@ -448,29 +544,55 @@
 		background-color: #ef4577;
 		color:#fff2f2;
 		border-radius: 15px;
-		width: 20px;
 		position:relative;
-		top:-14px;
-		left:30px;
-		font-weight: 200;
-		font-size: 11px;
+		top:12px;
+		left:-18px;
+		font-weight: 100;
+		font-size: 8px;
+		padding:2px 5px;
+		display:inline;
 	}
 	
 	.calorie-result{
-		font-size: 12px;
+		font-size: 8px;
 		font-weight:200;
 		position: relative;
-		top:-38px;
-		left:60px;
+		top:7px;
+		
+		display:inline;
 	}
 
 	.calorie-holder{
 		padding: 40px 50px 20px 50px;
+		font-size: 20px;
+		font-weight: 300;
+
 	}
 
 	.total-come-here{
 		text-align: right;
-		margin-right: 60px;
+		margin-right: 60px;	
+		font-weight: 300;
+		font-size: 23px;
+	}
+
+	.total-come-here span{
+		font-size:25px;
+		font-weight: 400;
+	}
+	
+	/*update button style*/
+	.compute-calorie .button{
+		position: relative;
+		color:white;
+		display: inline;
+		background-color: #d7bace;
+		font-size: 18px;
+		font-weight: 300;
+		padding: 15px 26px;
+		left:555px;
+		top:28px;
+		cursor: pointer;
 	}
 
 	/*~~~~~~~~~~~~~~~*/
@@ -482,7 +604,7 @@
 	  white-space: nowrap;
 	  position: relative;
 	}
-
+	
 	.search-container input{
 	  width: 700px;
 	  height: 50px;
@@ -526,7 +648,64 @@
 		font-weight: 100;
 		font-size: 18px;
 	}
+	
+	/*dropdown list style*/
+	.search-container ul{
+		border: 1px solid #f8c3ae;
+		list-style-type: none;
+		padding-left: 60px;
+		background-color: white;
+	}
 
+	.search-container li{
+		border-top: 1px solid #f8c3ae;
+	}
+
+	.search-container .add-button{
+		display:none;
+		font-size: 24px;
+		font-weight: 500;
+		background-color: #f9e4d9;
+		color:grey;
+		padding:0px 5px;
+		position:relative;
+		right: 430px;
+		float:right;
+		top:13px;
+		cursor: pointer;
+		text-shadow: 1px 1px #D3AFAF;
+	}
+	
+	.search-container li:hover{
+		background-color: #f9e4d9;
+	}
+
+	
+	.search-container li:hover .add-button{
+		display:inline-block;
+	}
+
+	.search-container .li-content{
+		display: inline;
+		font-size: 18px;
+		top:10px;
+		margin-left:17px;
+		position:relative;
+		top:7px;
+
+	}
+
+	.search-container span{
+		font-size:16px;
+		color:grey;
+		font-weight: 300;
+	}
+
+	.search-container ul img{
+		width:38px;
+		margin:5px 0px 3px -50px;
+		 
+	}
 	/*Here are self-defined 1/5 grid system*/
 
 	.col-xs-15,
