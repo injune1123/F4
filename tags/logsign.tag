@@ -78,6 +78,11 @@
 	                	<fieldset>
 	                		<label for="Nickname" style="display:block">Nickname</label>
 							<input type="text" name="nickname" placeholder="Nickname" class="form-control"/>
+							<label for="heightFeetInch" style="display:block">height(feet.inch)</label>
+							<input type="number" name="heightFeet" placeholder="5.3" class="form-control" onChange={heightFeetInputed}/>
+							<label for="heightFeetInch" style="display:block">height(m)</label>
+							<input type="number" name="heightMeter" placeholder="1.75" class="form-control" onChange={heightMInputed}/>
+
 							<label for="Age" style="display:block">Age</label>
 						    <input type="text" name="age" placeholder="Age" class="form-control"/>
 						    <label for="Gender" style="display:block">Gender</label>
@@ -132,6 +137,25 @@
 	
 	if(Parse.User.current()){
 		window.location.replace("/#");
+	}
+
+	that.heightFeetInputed = function(){
+		var heightInFeet = that.heightFeet.value;
+		var inch = heightInFeet % 1
+		var foot = Math.floor(heightInFeet)
+		that.heightMeter.value = inch * 0.0254 * 10  + foot * 0.3048;
+		// 1 inch = 0.0254 meter
+		//1 foot = 0.3048 meter
+	}
+
+
+	that.heightMInputed = function(){
+		var heightInMeter = that.heightMeter.value;
+		var foot = Math.floor(heightInMeter * 3.28084) 
+		var inch = Math.ceil(heightInMeter * 3.28084 % 1 * 12)
+		that.heightFeet.value = foot + 0.1 * inch;
+		// 1 meter = 0.0254 foot
+		//1 foot = 12 inch
 	}
 
 	that.inRegister = false;
@@ -273,6 +297,7 @@
 				currentUser.set('infos',
 					{nickname:that.nickname.value,
 						age:that.age.value,
+						heightInMeter:that.heightMeter.value,	
 						sex:$('select option:selected').val()
 					});
 				currentUser.save().then(function(user){
