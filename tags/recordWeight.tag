@@ -2,7 +2,7 @@
 <div id="FitnessDiary">
   <h2>My Fitness Diary</h2><br/><br/>
   <p id="Weightrecord">
-    On <input type="date" name="dateInput" if= {!displayRecord} onChange={changeDateRecord}> <span if= {displayRecord}>{recordDate}</span>
+    On <input type="date" id="dateInput" if= {!displayRecord} onChange={changeDateRecord}> <span if= {displayRecord}>{recordDate}</span>
 	  I weigh <input type="number" name="weightInput" placeholder = "target weight (lb)" if= {!displayRecord}> <span if= {displayRecord}>{recordWeight}</span>
   </p><br/>
   <p class="center" if= {displayRecord}>
@@ -128,9 +128,8 @@
 
     var that = this;
     // this controls whether we should show the edit ot the display view of the weight log
-        // set the date of the input box with a name of currentDate
+    // set the date of the input box with a name of currentDate
     setDateToToday(that.dateInput);
-    
 
     that.displayRecord = false;
     that.validatedInfoShow = false;
