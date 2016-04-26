@@ -199,7 +199,17 @@
       that.update();
     }
     that.editWeightRecord = function(e){
-      that.displayRecord = false;
+
+        for (var i = 0; i < weightLog.length; i++){
+              if(weightLog[i].date == that.dateInput.value){
+                that.displayRecord = false;
+                that.update();
+                that.weightInput.value = weightLog[i].weight;
+                document.querySelector('input[value='+ weightLog[i].emojiValue+']').checked = true;
+                that.textArea.value = weightLog[i].textAreaValue;
+
+              }
+          }
     }
     that.saveWeightRecord = function(e){
 
@@ -258,8 +268,12 @@
           that.emoji = document.querySelector('input[name="emoji"]:checked').value;
           that.recordDate = that.dateInput.value;
           that.textAreaValue = that.textArea.value;
-          riot.mount('#Mount-dashboard','record');
-                    that.update();
+          // riot.mount('#Mount-dashboard','record');
+          // mounts custom tag "my-tag" to div#main and pass api as options
+          riot.mount('line')
+          riot.mount('BMI')
+
+          that.update();
 
         },
         error: function(user, error) {
