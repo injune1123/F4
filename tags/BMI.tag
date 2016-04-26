@@ -59,18 +59,16 @@ if (bmiValue>18.5&&bmiValue<24.9){
 	document.getElementById("navi").className += "green";
 	document.getElementById("navi").style.height = "" + bmiValue/50*100 + "%";
     document.getElementById("navi").style.marginTop =  (1- bmiValue/50)*100 + "%"; 
-    document.getElementById("bmiMessage").innerHTML =  ": Overweight"; 
+    document.getElementById("bmiMessage").innerHTML =  ": Healthy"; 
 
 
 }
 
 if (bmiValue>25&&bmiValue<29.9){
-	    that.overweight = true;
-    that.update();
 	document.getElementById("navi").className += "yellow";
 	document.getElementById("navi").style.height = "" + bmiValue/50*100 + "%";
     document.getElementById("navi").style.marginTop =  (1- bmiValue/50)*100 + "%"; 
-    document.getElementById("bmiMessage").innerHTML =  ": Healthy"; 
+    document.getElementById("bmiMessage").innerHTML =  ": Overweight"; 
 
 
 }

@@ -156,6 +156,21 @@
               }
           }
         }
+    function checkDateExistsAndDisplayEdit (targetDate) {
+          for (var i = 0; i < weightLog.length; i++){
+              if(weightLog[i].date == targetDate){
+                that.weightInput.value = weightLog[i].weight;
+                document.querySelector('input[value='+ weightLog[i].emojiValue+']').checked = true;
+                that.textArea.value = weightLog[i].textAreaValue;
+                return
+              }
+          }
+          that.weightInput.value = "";
+          that.textArea.value = "";
+          if (document.querySelector('input[name="emoji"]:checked')){
+            document.querySelector('input[name="emoji"]:checked').checked = false;
+          }
+    }
 
     //check whether today's data exsits
     var todayObj = {};
@@ -180,7 +195,7 @@
 
 
     that.changeDateRecord = function(){
-      checkDateExistsAndDisplay(that.dateInput.value)
+      checkDateExistsAndDisplayEdit(that.dateInput.value)
       that.update();
     }
     that.editWeightRecord = function(e){
@@ -188,26 +203,46 @@
     }
     that.saveWeightRecord = function(e){
 
-
-// check the user input fields
+    // check the user input fields
     if (!document.querySelector('input[name="emoji"]:checked') || !this.weightInput.value || !this.dateInput.value){
         that.validatedInfoShow =  true;
       } else{
         that.validatedInfoShow =  false;
 
-      // create a variable called newRecord and store all the information into the 
-      var newRecord = {
-        date: that.dateInput.value,
-        weight: that.weightInput.value,
-        emojiValue: document.querySelector('input[name="emoji"]:checked').value,
-        textAreaValue: that.textArea.value
-      }
 
-      weightLog.push(newRecord);
-      // sort the dates
-      weightLog.sort(function(a,b){
-        return new Date (b.date) - new Date(a.date)
-      })
+      //check whether the date record already exists
+      var dateRecordAlreadyExist = false;
+
+        for (var i = 0; i < weightLog.length; i++){
+              if(weightLog[i].date == this.dateInput.value){
+                // change the existent date record
+                weightLog[i].weight = that.weightInput.value;
+                 weightLog[i].emojiValue = document.querySelector('input[name="emoji"]:checked').value;
+                weightLog[i].textAreaValue = that.textArea.value;
+                 dateRecordAlreadyExist = true;
+              }
+        }
+
+        if (!dateRecordAlreadyExist){
+          // create a variable called newRecord and store all the information into the 
+          var newRecord = {
+            date: that.dateInput.value,
+            weight: that.weightInput.value,
+            emojiValue: document.querySelector('input[name="emoji"]:checked').value,
+            textAreaValue: that.textArea.value
+          }
+
+          weightLog.push(newRecord);
+          // sort the dates
+          weightLog.sort(function(a,b){
+            return new Date (b.date) - new Date(a.date)
+          })
+
+
+        }
+
+
+
 
 
 
@@ -223,8 +258,9 @@
           that.emoji = document.querySelector('input[name="emoji"]:checked').value;
           that.recordDate = that.dateInput.value;
           that.textAreaValue = that.textArea.value;
-          that.update();
-            riot.mount('#Mount-dashboard','record');
+          riot.mount('#Mount-dashboard','record');
+                    that.update();
+
         },
         error: function(user, error) {
           // Execute any logic that should take place if the save fails.
