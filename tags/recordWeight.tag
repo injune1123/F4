@@ -262,7 +262,7 @@
         success: function(user) {
           // Execute any logic that should take place after the object is saved.
           // alert('New object created with objectId: ' + gameScore.id);
-          console.log("success")
+          // console.log("success")
           that.displayRecord = true;
           that.recordWeight = that.weightInput.value;
           that.emoji = document.querySelector('input[name="emoji"]:checked').value;

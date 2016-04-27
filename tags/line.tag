@@ -104,12 +104,12 @@
         }
 
 
-        console.log(allDatesForD3)
+        // console.log(allDatesForD3)
         var allDataForD3 = weightLogDataForD3;
         allDataForD3.push(goalDataForD3[0])
         allDataForD3.push(goalDataForD3[1])
 
-        console.log(goalDataForD3, weightLogDataForD3, allDataForD3, allDatesForD3)
+        // console.log(goalDataForD3, weightLogDataForD3, allDataForD3, allDatesForD3)
         
         this.on('updated', function(){
             d3.select("svg").remove();
