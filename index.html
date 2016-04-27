@@ -1,0 +1,84 @@
+<html lang="en">
+
+<head>
+    <!-- <link rel="stylesheet" href="css/styles.css"> -->
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.2/material.indigo-pink.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>F4</title>
+
+    <body>
+        <navbar></navbar>
+        <div id="Mount" style="margin-top:90px"></div>
+        <div id="Login"></div>
+
+
+        <footer></footer>
+        <!-- ! -->
+        <!-- link tags -->
+        <script type="riot/tag" src="./tags/homepage.tag"></script>
+        <script type="riot/tag" src="./tags/navbar.tag"></script>
+        <script type="riot/tag" src="./tags/calorie.tag"></script>
+        <script type="riot/tag" src="./tags/singleFood.tag"></script>
+
+        <script type="riot/tag" src="./tags/footer1.tag"></script>
+        <script src="./tags/personal.tag" type="riot/tag"></script>
+
+        <script src="./tags/recordWeight.tag" type="riot/tag"></script>
+        <script src="./tags/BMI.tag" type="riot/tag"></script>
+        <script src="./tags/record.tag" type="riot/tag"></script>
+        <script src="./tags/line.tag" type="riot/tag"></script>
+        <script src="./tags/dashboard.tag" type="riot/tag"></script>
+        <script src="./tags/logsign.tag" type="riot/tag"></script>
+
+        <!-- Parse cdn  -->
+        <script src="https://www.parsecdn.com/js/parse-1.6.14.min.js"></script>
+        <script>
+        Parse.initialize("yiG8gq1FCWUdkMSFSNs8jMQvPGgVeRSccgVikA8K", "uWvwbnCc1PcNxwGM22lj1z7xqoy7jG0jLIHZ0P8q");
+        </script>
+        <!-- tag cdn -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/riot/2.3.15/riot+compiler.min.js"></script>
+        <script src="//mbostock.github.com/d3/d3.v2.js" charset="utf-8"></script>
+        <script   src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+        <script src="main.js"></script>
+        
+        <script defer src="https://code.getmdl.io/1.1.2/material.min.js"></script>
+        <!-- jquery auto fill    -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.2.24/jquery.autocomplete.min.js"></script>
+        <!-- underscore library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+        
+        <script>
+        // riot.mount('homepage');
+        //add remove function to array prototype
+        Array.prototype.remove = function(item) {
+            var index = this.indexOf(item);
+            this.splice(index, 1);
+            return this;
+        };
+
+        //observable
+        function chosenFood() {
+            this.foodArr = [];
+            riot.observable(this);
+        }
+        var chosen = new chosenFood();
+
+        //a variable suggest log in or not
+        if(Parse.User.current()){
+            riot.mount('navbar',{loggedIn:true})
+        }
+        else{
+            riot.mount('navbar',{loggedIn:false});
+        }
+        
+        riot.mount('footer');
+        // riot.mount('*');
+        </script>
+
+    </body>
+
+</html>
