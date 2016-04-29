@@ -1,14 +1,14 @@
 <calorie>
 	<div class="title-holder"><h2>CALORIE CALCULATOR</h2></div>
 	<div class="date-recorder" >
-		<input type="date" name="theDate" id="theDate">
+		<input type="date" name="theDate" id="theDate"> 
 	</div>
 	<div class="main-board container">
 	<!-- Here are search input box -->
 		<div class="search-container">
 	      <input type="search" name="search" placeholder="Enter name of food / exercise ..." onfocus={showHistory} onkeyup={searchFood} onblur={} />
 	      <span class="icon"><i class="fa fa-search fa-lg"></i></span>
-	      <div class="button">Search</div>
+	      <div class={currentMenu=='Exercise' ? 'buttonE' : 'buttonF'}>{currentMenu=='Exercise' ? 'Search Exercise' : 'Search Food'}</div>
 	      <ul show={ filtered.length }>
 	        <li each={ item,index in filtered }  class="{}"><img src={item.url} alt="">
 			<div class="li-content">{item.name.capitalize()},<span>{item.calorie} cals each.</span></div>
@@ -16,12 +16,21 @@
 	        </li>
 	    </ul>
 	  	</div>
+		
+	  	<div class="row">
+	  		<div class="calorie-in col-sm-45">
+	  		Calorie In
+	  		</div>
+	  		<div class="calorie-out col-sm-15">
+	  		Calorie Out
+	  		</div>
+	  	</div>
 
 		<div class="row">
 			
 			<div class="record-panel col-sm-15 " each={menuItems} onclick={toggle}>
-				<div class="meal {highlighted-top:meal==currentMenu}">{meal}</div>
-				<div class="food-list {highlighted-bottom:meal==currentMenu}">
+				<div class="meal {highlighted-top:meal==currentMenu}" id="{ex-style-top:meal=='Exercise'}">{meal}</div>
+				<div class="food-list {highlighted-bottom:meal==currentMenu}" id="{ex-style-bottom:meal=='Exercise'}" >
 				
 					<div class="food-image" each={todayRecord[meal.toLowerCase()]} no-reorder>
 						<div class="add-button " onclick={parent.increaseCount}>+</div>
@@ -49,9 +58,13 @@
 				
 				 <div class="total-come-here">TOTAL&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;&nbsp; <span>{totalCal}</span></div>
 				 <div class="button" onclick={updateToDatabase}>UPDATE</div>
+				 
 			</div>
 		</div>
+		<div if={updated} class="update-success">*your records have been updated.</div>
 	</div>
+
+	<div class="notification">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus, laudantium.</div>
 	
 
 
@@ -199,6 +212,10 @@
     	if(!that.todayRecord){
     		return
     	}
+    	else if(!that.todayRecord['breakfast']){
+    		return
+    	}
+  
     	that.breakfastCal = that.computeOneMealCalorie(that.todayRecord['breakfast'])
     	that.lunchCal = that.computeOneMealCalorie(that.todayRecord['lunch'])
     	that.dinnerCal = that.computeOneMealCalorie(that.todayRecord['dinner'])
@@ -208,6 +225,8 @@
     }
 
     that.addToRecord = function(e){
+    	//since new food added, set updated to false.
+    	that.updated = false;
     	var ind = that.currentMenu.toLowerCase();
     	//add the selected food into todayRecord array
     	var finded = false;
@@ -263,8 +282,11 @@
     	for(var i=0;i < that.todayRecord[ind].length;i++ ){
     		
     		if(_.isEqual(that.todayRecord[ind][i].fooditem,this.fooditem)){
-    			if(that.todayRecord[ind][i].count!=0){
+    			if(that.todayRecord[ind][i].count>0){
     				that.todayRecord[ind][i].count--;
+    			}
+    			else{
+    				that.todayRecord[ind].remove(that.todayRecord[ind][i])
     			}  			
     			break;
     		}
@@ -284,6 +306,7 @@
 
     	that.RawRecordData.save()
     	that.RawSearchHistory.save()
+    	that.updated = true;
 
     }
 
@@ -463,17 +486,28 @@
 	}
 	.record-panel{
 		padding: 20px 3px 8px 3px;
+		cursor: pointer;
 		
 	}
 
 	.record-panel .highlighted-top{
 		background-color: #f6b5a6;
 		box-shadow: 3px 3px 6px #E0A89B;
+		
 	}
 
 	.record-panel .highlighted-bottom{
 		background-color: #f4c8bd;
 		box-shadow: 3px 3px 6px #DDB2A8;
+
+	}
+
+	#ex-style-top{
+		background-color: rgb(128, 195, 253);
+	}
+
+	#ex-style-bottom{
+		background-color: rgb(128, 195, 253);
 	}
 
 	.meal{
@@ -595,6 +629,19 @@
 		cursor: pointer;
 	}
 
+	.compute-calorie .button:hover{
+		background-color: #BFA3B6;
+
+	}
+
+	.compute-calorie .button:active{
+		box-shadow: 3px 3px 3px grey;
+	}
+	
+	.update-success{
+		float: right;
+		color:#7E0505;
+	}
 	/*~~~~~~~~~~~~~~~*/
 	/*Here is search board*/
 	
@@ -603,6 +650,7 @@
 	  vertical-align: middle;
 	  white-space: nowrap;
 	  position: relative;
+	  margin-bottom: 20px;
 	}
 	
 	.search-container input{
@@ -635,7 +683,7 @@
 	  
 	}
 	/*button style*/
-	.search-container .button{
+	.search-container .buttonF{
 		background-color: #f79778;
 		width:160px;
 		height: 48px;
@@ -646,8 +694,26 @@
 		text-align: center;
 		padding-top: 15px;
 		font-weight: 100;
-		font-size: 18px;
+		font-size: 15px;
 	}
+
+	.search-container .buttonE{
+		background-color: rgb(128, 195, 253);
+		width:160px;
+		height: 48px;
+		position: absolute;
+		right:1px;
+		top:1px;
+		color:#fff7ed;
+		text-align: center;
+		padding-top: 15px;
+		font-weight: 100;
+		font-size: 15px;
+	}
+	.search-container .buttonF:focus{
+		outline:none;
+	}
+
 	
 	/*dropdown list style*/
 	.search-container ul{
@@ -678,11 +744,13 @@
 	
 	.search-container li:hover{
 		background-color: #f9e4d9;
+		cursor: pointer;
 	}
 
 	
 	.search-container li:hover .add-button{
 		display:inline-block;
+		cursor: pointer;
 	}
 
 	.search-container .li-content{
@@ -705,6 +773,34 @@
 		width:38px;
 		margin:5px 0px 3px -50px;
 		 
+	}
+	/*Here comes notification*/
+	.notification{
+		background-image: url('Images/dialog.png');
+		height:100%;
+		/*width: 240px;*/
+		background-size: 100% auto;
+		background-repeat: no-repeat;
+		display: inline-block;
+		position: fixed;
+		top:350px;
+		left:1040px;
+		padding:40px 10px 40px 30px;
+		margin-right: 60px;
+
+
+
+	}
+
+	.calorie-in{
+		font-size: 20px;
+		text-align: center;
+
+	}
+
+	.calorie-out{
+		font-size: 20px;
+		text-align: center;
 	}
 	/*Here are self-defined 1/5 grid system*/
 
@@ -739,6 +835,17 @@
 	        float: left;
 	    }
 	}
+	.col-xs-45 {
+	    width: 80%;
+	    float: left;
+	}
+	@media (min-width: 768px) {
+	.col-sm-45 {
+	        width: 80%;
+	        float: left;
+	    }
+	}
+
 </style>
 
 
