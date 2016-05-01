@@ -12,12 +12,12 @@
 	<div class="header">
             <div class="container">
                 <div class="logo">
-                    <a href="#" style="text-decoration:none">F4</a>
+                    <a href="#" style="text-decoration:none">WeightLoss Diary</a>
                 </div>
                 <div class="nav">
                     <ul>
-                        <li><a href="#calorieCal">Calorie Calculator</a></li>
-                        <li><a href="#dashboard">Dashboard</a></li>
+<!--                         <li><a href="#calorieCal">Calorie Calculator</a></li>
+                        <li><a href="#dashboard">Dashboard</a></li> -->
                         <li><a if={!loggedIn} href="#" onclick={showLogin}>Log In | Sign Up</a></li>
                         
 		      			<li><a if={loggedIn} href="#" onclick={logOut}>Log Out</a></li>
@@ -112,6 +112,7 @@
 
 	ul {
 /*		margin-right: 2%;*/
+		float: right;
 	}
 
 

@@ -1,219 +1,195 @@
 <homepage>
 <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
 
-    <div>
-        <img id="wierdImg" src="Images/fitness4.jpg">
-        <h1 id="slogan">EFFECTIVE, FIT AND FUN</h1>
-        <h2 id="slogan2">CHECK OUT OUR TOOLS</h2>
-        <img id="arrow" src="Images/arrow.png">
+    <div class="container" id="Ad">
+<!--         <img id="wierdImg" src="Images/fitness4.jpg"> -->
+        <h1 id="slogan">EAT, EXERCISE, TRACK, 
+        <br>
+        and REPEAT!</h1>
+        <br>
+        <h2 id="slogan2" style="line-height: 120%">WeightLoss Diarly is here to help you lose weight! 
+        <br>
+        Enter your current and desired weight, and we will help 
+        <br>
+        you track your weight losing progress.</h2>
+        <a href="#" class="button" id="join">JOIN NOW</a>
     </div>
 
-    <div class="jumbotron">
-        <h2 id="FitnessTools">FITNESS TOOLS</h2>
-        <div class="lists">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-4 col-sm-4 col-md-4">
-                        <div class="circle">
-                            <p>Check calories and keep track of what you eat everyday.</p>
-                            <div class="buttonlink"><a href="#">CALORIE CALCULATOR</a></div>
-                        </div>
-                    </div>
-                    <div class="col-xs-4 col-sm-4 col-md-4">
-                        <div class="circle">
-                            <p>Keep track of your workout and see how much you burn.</p>
-                            <div class="buttonlink"><a href="#">WORKOUT CALCULAOTR</a></div>
-                        </div>
-                    </div>
-                    <div class="col-xs-4 col-sm-4 col-md-4">
-                        <div class="circle">
-                            <p>Keep a record of your weight and see the results.</p>
-                            <div class="buttonlink"><a href="#">WEIGHT PREDICTION</a></div>
-                        </div>
-                    </div>
-                </div>
+    <div class="container" id="Intro">
+        <h1 id="title">HOW WeightLoss Diary WORKS?</h1>
+        <img id="line" src="Images/line.png">
+        <div class="row" id="step1">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <h2 id="subtitle1">1. CALORIE CALCULATOR</h2>
+                <p id="detail1">Check and track your calorie in and out everyday.</p>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <img class="icon" id="icon1" src="Images/homepage111.png">
+            </div>
+        </div>
+        <div class="row" id="step2">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <h2 id="subtitle2">2. WEIGHT TRACKING CURVE</h2>
+                <p id="detail2">Keep a record of your weight to see which stage you are.</p>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <img class="icon" id="icon2" src="Images/calendar.png">
+            </div>
+        </div>
+        <div class="row" id="step3">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <h2 id="subtitle3">3. DIARY</h2>
+                <p id="detail3">Write your emoji diary so you can see your persistence!</p>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <img class="icon" id="icon3" src="Images/homepage222.png">
             </div>
         </div>
     </div>
 
 
-    <div class="introductionNew">
-        <div class="container">
-            <div class="row no-gutter">
-                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" class="columns">
-                    <img id="ad1" src="Images/ad1.jpg">
-                </div>
-                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" class="columns">
-                    <h3>More than 1000 users choose F4 for weight control!</h3>
-                    <img id="ad11" src="Images/adwhite.jpg">
-                </div>
-                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" class="columns">
-                    <img id="ad2" src="Images/ad2.jpg">
-                </div>
-                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" class="columns">
-                    <h3>With F4, it's impossible for you to give up halfway! </h3>
-                    <img id="ad22" src="Images/adwhite.jpg">
-                </div>
-            </div>
-            <div class="row no-gutter">
-                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" class="columns">
-                    <h3>F4, the simplest way to track calorie and weight!</h3>
-                    <img id="ad33" src="Images/adwhite.jpg">
-                </div>
-                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" class="columns">
-                    <img id="ad3" src="Images/ad3.jpg">
-                </div>
-                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" class="columns">
-                    <h3>F4, check your celendar and see the results!</h3>
-                    <img id="ad44" src="Images/adwhite.jpg">
-                </div>
-                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" class="columns">
-                    <img id="ad4" src="Images/ad4.jpg">
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 
 
 <style scoped>
     :scope
-
-    #wierdImg{
-        height:auto;
-        width:100vw;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        position:relative;
+    
+    #Ad {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+        width: 100vw;
+        height: 130vh;
+        background-image: url("Images/fitness4.jpg");
+        background-size: 100vw 130vh;
     }
     
-    #arrow {
-        /*size still need to be modified*/
-    }
 
     h1#slogan{
         font-family:times;
-        font-size:2.85vw;
+        font-size:3.1vw;
         text-align:left;
         position:absolute;
-        top:27%;
+        top:25%;
         left:7%;
         color:white;
     }
     
     h2#slogan2 {
         font-family: arial;
-        font-size: 1.5vw;
+        font-size: 1.62vw;
         text-align: left;
         position: absolute;
-        top: 32%;
-        left: 17%;
+        top: 49%;
+        left: 7%;
         color: white;
     }
     
-    #arrow {
-        top: 41%;
-        left: 28%;
-        position: absolute;
-        width: 14px;
-        height: 50px;
-    }
-    
-    .container{
-        height:750px;
-        width:100%;
-        margin-left:0px;
-        margin-right:0px;
-/*        padding-top:75px;*/
-        padding-left:0px;
-        padding-right:0px;
-/*        background-image: url("Images/adback.jpg");*/
-        background-repeat: no-repeat;
-        background-size: 100% 750px;
-
-/*        width: 100%;
-        height: auto;*/
+    #Ad a {
+        top: 74%;
+        left: 7%;
+        text-align:left;
+        position:absolute;
+        font-size: 1.64vw;
     }
 
-    img {
-        width:330px;
-        height:300px;
-    }
-
-    h3{
-        padding-top: 35%;
-        padding-left: 5%;
-        padding-right: 5%;
-        font-size: 18px;
-        font-size: 1.5vw;
+    #Ad .button {
+        background-color: white;
+        border: none;
+        color: #073F8C;
+        padding: 1.1vh 2.6vw;
         text-align: center;
-        position: absolute;
-        color:black;
-        line-height: 19px
+        text-decoration: none;
+        display: inline-block;
     }
 
-    .jumbotron {
-        background-color: #424242;
-        height:400px;
-        margin-bottom:0px;
-        width:100vw;
-    }
-    
-    h2#FitnessTools{
-        text-align:center;
-        margin:0px;
-        margin-top: 30px;
-        color:white;
+    h1#title {
         font-family: times;
-        padding-bottom:50px;
+        font-size:3.25vw;
+        font-weight: bold;
+        text-align: center;
+        position: absolute;
+        top: 160%;
+        left: 26%;
     }
 
-    .jumbotron .circle {
-        background: #424242;
-        margin-left: auto;
-        margin-right: auto;
-        line-height:50px;
+    img#line {
+        position: absolute;
+        top: 181%;
+        left: 37%;
+        width: 26vw;
+    }
+
+    #Intro .row h2 {
+        font-size: 2.42vw;
+        position: absolute;
+        text-align: center;
+        font-weight:bold;
+    }
+
+    #Intro .row p {
+        font-size: 2.1vw;
+        position: absolute;
+        text-align: center;
+        left: 15%;
+    }
+
+    #Intro .row img {
         text-align: center;
     }
 
-    .jumbotron p {
-        color: white;
+    h2#subtitle1 {
+        padding-top: 46vh;
+        left: 25%;
     }
 
-    .jumbotron .buttonlink{
-        width: 200px;
-        height: 50px;
-        border-radius: 20px 20px 20px 20px;
-        border: 1px solid white;
-        margin-top: 25px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .jumbotron .circle a:hover {
-        color:white;
-        text-decoration:none;
-    }
-
-    .jumbotron .col-xs-4.col-sm-4.col-md-4 {
-        padding-left: 1.2%;
+    p#detail1 {
+        padding-top: 58vh;
     }
     
-    .introductionNew .container .row img {
-        width: 100%;
-        height: auto;
+    h2#subtitle2 {
+        padding-top: 10vh;
+        left: 20%;
     }
 
-    .introductionNew {
-        width: 100vw;
-        margin-bottom: -5%;
+    p#detail2 {
+        padding-top: 22vh;
     }
 
-/*     .introductionNew .container {
-        border-top: solid 2px grey;
-     }*/
+    h2#subtitle3 {
+        padding-top: 16vh;
+        padding-left: 18vw;
+    }
+    
+    p#detail3 {
+        padding-top: 28vh;
+    }
+    
+    img#icon1 {
+        width: 33vw;
+        height: 78vh;
+        padding-top: 38vh;
+        padding-left: 7vw;
+    }
+    
+    img#icon2 {
+        padding-top: 12vh;
+        padding-left: 15vw;
+        height: 36vh;
+        width: 25vw;
+    }
+    
+    img#icon3 {
+        width: 33vw;
+        height: 54vh;
+        padding-top: 11vh; 
+        padding-left: 7vw;       
+    }
+
+
+
 
     .row.no-gutter {
         margin-left: 0;
@@ -226,17 +202,34 @@
         padding-left: 0;
     }
 
-/*    .introductionNew .container .row.no-gutter .columns {
-        position: relative;
-    }*/
+/*
+    .Intro .circle {
+        background: #424242;
+        margin-left: auto;
+        margin-right: auto;
+        line-height:50px;
+        text-align: center;
+    }
 
-/*    .introductionNew .container .row.no-gutter .columns h3 {
-        position: relative;
-        font-size: 100%;
+    .Intro p {
+        color: black;
+    }
 
-    }*/
+    .Intro .buttonlink{
+        width: 200px;
+        height: 50px;
+        border-radius: 20px 20px 20px 20px;
+        border: 1px solid white;
+        margin-top: 25px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-
+    .Intro .circle a:hover {
+        color: white;
+        text-decoration:none;
+    } 
+*/
 </style>
 
 
