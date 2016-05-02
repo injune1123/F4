@@ -208,7 +208,7 @@
 
     #startnow a {
         top: 257%;
-        left: 42.5%;
+        left: 42.3%;
         text-align:center;
         position:absolute;
         font-size: 2.2vw;
@@ -219,12 +219,13 @@
         border-style: solid;
         border-width: thin;
         border-color: #424242;
-        padding: 2.2vh 1.35vw;
+        padding: 2.2vh 1.4vw;
         text-align: center;
         text-decoration: none;
         display: inline-block;
-        font-color: #424242;
+        color: #424242;
         font-family: times;
+        font-weight: bold;
     }
 
 </style>
