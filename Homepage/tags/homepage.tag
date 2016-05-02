@@ -58,48 +58,49 @@
     #Ad {
         margin-left: 0;
         margin-right: 0;
+        margin-top: -5vh;
         padding-left: 0;
         padding-right: 0;
         width: 100vw;
-        height: 130vh;
+        height: 88vh;
         background-image: url("Images/fitness4.jpg");
-        background-size: 100vw 130vh;
+        background-size: 100vw 88vh;
     }
     
 
     h1#slogan{
         font-family:times;
-        font-size:3.1vw;
+        font-size:2.5vw;
         text-align:left;
         position:absolute;
-        top:25%;
-        left:7%;
+        top:16%;
+        left:9%;
         color:white;
     }
     
     h2#slogan2 {
         font-family: arial;
-        font-size: 1.62vw;
+        font-size: 1.4vw;
         text-align: left;
         position: absolute;
-        top: 49%;
-        left: 7%;
+        top: 35%;
+        left: 9%;
         color: white;
     }
     
     #Ad a {
-        top: 74%;
-        left: 7%;
+        top: 54%;
+        left: 9%;
         text-align:left;
         position:absolute;
-        font-size: 1.64vw;
+        font-size: 1.33vw;
     }
 
     #Ad .button {
         background-color: white;
         border: none;
         color: #073F8C;
-        padding: 1.1vh 2.6vw;
+        padding: 0.75vh 2.55vw;
         text-align: center;
         text-decoration: none;
         display: inline-block;

@@ -18,7 +18,7 @@
                     <ul>
 <!--                         <li><a href="#calorieCal">Calorie Calculator</a></li>
                         <li><a href="#dashboard">Dashboard</a></li> -->
-                        <li><a if={!loggedIn} href="#" onclick={showLogin}>Log In | Sign Up</a></li>
+                        <li><a if={!loggedIn} href="#" onclick={showLogin}>LOG IN | SIGN UP</a></li>
                         
 		      			<li><a if={loggedIn} href="#" onclick={logOut}>Log Out</a></li>
 		      			<li><a if={loggedIn} href="#personal" > <img class="head-icon" src="https://cdn0.iconfinder.com/data/icons/superuser-web-kit/512/686909-user_people_man_human_head_person-512.png" alt=""></a></li>
@@ -55,7 +55,7 @@
 		background: #424242;
 		border-color: #e7e7e7;
 		width:100%;
-		height: 15vh;
+		height: 10vh;
 		top:0;
 		position: fixed;
 		z-index: 99;
@@ -65,15 +65,17 @@
 	.logo{
 		float:left;
 		font-family: "Helvetica";
-		font-size: 1.5vw;
+		font-size: 1.3vw;
 		color:white;
-		margin-top: 5vh;
+		margin-top: 3.3vh;
 		padding-right: 60%;
+		margin-left: 1.6%;
 	}
 
 	.logo a {
 		text-decoration: none;
 		color: white;
+		left: 60%;
 	}
 
 	.logo a:hover {
@@ -84,13 +86,13 @@
 	.nav a {
 		text-decoration: none;
 		color: white;
-		font-size: 1.1vw;
+		font-size: 1.05vw;
 	}
 
 	.nav a:hover {
         color:#f94283;
         text-decoration:none;
-        font-size: 1.1vw;
+        font-size: 1.05vw;
 	}
 
 	li {
@@ -102,7 +104,7 @@
 	.nav {
 /*		float: right;*/
 /*		height:75px;*/
-		margin-top: 5vh;
+		margin-top: 3vh;
 		margin-left: 55vw;
 		width: 35vw;
 		margin-right: 2vw;
