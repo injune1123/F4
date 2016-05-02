@@ -10,12 +10,14 @@
     </div>
     <div class='col-md-9'>
 
-    <line></line>    
+    <line></line> 
+    <p class="center">Body Weight History</p>   
     </div>
   </div> 
 
 
   <div id="FitnessDiary">
+  <div id="FitnessDiaryContent">
   <p class="center" if= {displayRecord}>
     I am feeling<i class={"em em-" + emoji }></i>
   </p>
@@ -84,7 +86,7 @@
 
   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick={saveWeightRecord}  if= {!displayRecord}>Yeah!</button>
   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick={editWeightRecord}  if= {displayRecord}>Edit</button>
-
+  </div>
 </div>
 
 <style scoped>
@@ -132,14 +134,20 @@
 
 	#Weightrecord, h2{
 		text-align: left;
-    padding-top: 10px;
     padding-bottom: 10px; 
+    height: 30px;
+    margin-bottom: 20px;
 	}
   #FitnessDiary{
+    margin-top:2%;
     width: 95%;
     margin-right: 5%;
     background-color: white;
     height: 30%;
+  }
+
+  #FitnessDiaryContent{
+    padding-top: 5% 
   }
   .mdl-button--accent.mdl-button--accent.mdl-button--raised, .mdl-button--accent.mdl-button--accent.mdl-button--fab{
     margin: 10 auto;

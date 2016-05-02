@@ -22,8 +22,8 @@
             border: 0px;        
             border-radius: 8px;         
             pointer-events: none; 
-            margin-left: -250px;          
-            margin-top: -50px;          
+            margin-left: -500px;          
+            margin-top: -200px;          
         }
         .area {
           fill: #99c4b2;
