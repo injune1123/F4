@@ -21,6 +21,7 @@
                         <li><a href="#dashboard">Dashboard</a></li> -->
                         <li><a if={!loggedIn} href="#" onclick={showLogin}>LOG IN | SIGN UP</a></li>
                         
+                        <li><a if={loggedIn} href="#dashboard">Dashboard</a></li>
 		      			<li><a if={loggedIn} href="#" onclick={logOut}>Log Out</a></li>
 		      			<li><a if={loggedIn} href="#personal" > <img class="head-icon" src="https://cdn0.iconfinder.com/data/icons/superuser-web-kit/512/686909-user_people_man_human_head_person-512.png" alt=""></a></li>
                     </ul>
