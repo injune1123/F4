@@ -1,16 +1,14 @@
 <BMI>
-  BMI: {bmiValue.toFixed(2)} 
-  <span id="bmiMessage"></span>
 
-
-	<div id="container">
+<div id="container">
   <div id="navi"></div>
 
   <div id="infoi">
-    <img src="../Images/yiyi.png" height="100" width="100" />
+    <img src="../Images/yiyi.png" height="270" width="175" />
   </div>
 </div>
-
+	BMI: {bmiValue.toFixed(2)} 
+  	<span id="bmiMessage"></span>
 <script>
 
 var that = this;
@@ -48,48 +46,43 @@ that.bmiValue = bmiValue;
 
 this.on('updated', function(){
 if (bmiValue<=18.5){
-	document.getElementById("navi").className += "grey";
-	document.getElementById("navi").style.height = "" + bmiValue/50*100 + "%";
-    document.getElementById("navi").style.marginTop =  (1- bmiValue/50)*100 + "%"; 
+	document.getElementById("navi").className += "danger";
+	document.getElementById("navi").style.height = "" + bmiValue/50*270 + "px";
+    document.getElementById("navi").style.marginTop =  (270- bmiValue/50*270) + "px"; 
     document.getElementById("bmiMessage").innerHTML =  ": Underweight"; 
-
 }
 
 if (bmiValue>18.5&&bmiValue<24.9){
 	document.getElementById("navi").className += "green";
-	document.getElementById("navi").style.height = "" + bmiValue/50*100 + "%";
-    document.getElementById("navi").style.marginTop =  (1- bmiValue/50)*100 + "%"; 
+	document.getElementById("navi").style.height = "" + bmiValue/50*270 + "px";
+    document.getElementById("navi").style.marginTop =  (270- bmiValue/50*270) + "px"; 
     document.getElementById("bmiMessage").innerHTML =  ": Healthy"; 
 
 
 }
 
 if (bmiValue>25&&bmiValue<29.9){
-	document.getElementById("navi").className += "yellow";
-	document.getElementById("navi").style.height = "" + bmiValue/50*100 + "%";
-    document.getElementById("navi").style.marginTop =  (1- bmiValue/50)*100 + "%"; 
+	document.getElementById("navi").className += "warning";
+	document.getElementById("navi").style.height = "" + bmiValue/50*270 + "px";
+    document.getElementById("navi").style.marginTop =  (270- bmiValue/50*270) + "px"; 
     document.getElementById("bmiMessage").innerHTML =  ": Overweight"; 
-
 
 }
 if (bmiValue>30){
-    that.obese = true;
 	document.getElementById("navi").className += "danger";
-	document.getElementById("navi").style.height = "" + bmiValue/50*100 + "%";
-    document.getElementById("navi").style.marginTop =  (1- bmiValue/50)*100 + "%";
+    that.obese = true;
+    if (bmiValue/50*200>200){
+    document.getElementById("navi").style.height ="270px";
+    }else{
+    document.getElementById("navi").style.height = "" + bmiValue/50*270 + "px";
+    document.getElementById("navi").style.marginTop =  (200- bmiValue/50*270) + "px";
+    }
     document.getElementById("bmiMessage").innerHTML =  ": Obese"; 
-
-
 
 }
 })
 
-
-
-
 </script>
-
-
 
 <!-- 	<div>
 
@@ -101,28 +94,25 @@ if (bmiValue>30){
 	<style scoped>
 		:scope
 		#container {
-		  width: 100px;
-		  height: 100px;
+		  width: 175px;
+		  height: 270px;
 		  position: relative;
 		}		
-		#navi {
+		#navi, #infoi {
 		  width: 100%;
-		  height: 30%;
+		  height: 100%;
 		  position: absolute;
 		  top: 0;
 		  left: 0;
 		}
-		.grey{
-			background-color:grey 
-		}
 		.danger{
-			background-color:red 
+			background-color:#e16778; 
 		}
 		.green{
-			background-color:green 
+			background-color:#99c4b2; 
 		}
-		.yellow{
-			background-color:yellow 
+		.warning{
+			background-color:#f6cabe; 
 		}
 
 
@@ -139,7 +129,7 @@ if (bmiValue>30){
 
 		/*
 		img{
-			width: 200px;
+			width: 270px;
 			display: block;
 		    margin-left: auto;
 		};

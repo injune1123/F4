@@ -26,7 +26,7 @@
             margin-top: -50px;          
         }
         .area {
-          fill: red;
+          fill: #99c4b2;
           opacity: 1;
 
         }
@@ -147,6 +147,7 @@
                 .append("svg")
                     .attr("width", width + margin.left + margin.right)
                     .attr("height", height + margin.top + margin.bottom)
+                    .style("background-color", "white")
                 .append("g")
                     .attr("transform", 
                           "translate(" + margin.left + "," + margin.top + ")");
@@ -261,8 +262,6 @@
                return (year+"-"+monthNames[monthIndex]+"-"+day);
 
             }
-
-
 
 
             // Add the X Axis
