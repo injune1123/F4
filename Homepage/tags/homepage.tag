@@ -7,7 +7,7 @@
         <br>
         and REPEAT!</h1>
         <br>
-        <h2 id="slogan2" style="line-height: 120%">WeightLoss Diarly is here to help you lose weight! 
+        <h2 id="slogan2" style="line-height: 120%">WeightLoss Journal is here to help you lose weight! 
         <br>
         Enter your current and desired weight, and we will help 
         <br>
@@ -16,12 +16,13 @@
     </div>
 
     <div class="container" id="Intro">
-        <h1 id="title">HOW WeightLoss Diary WORKS?</h1>
+        <h1 id="title">HOW WeightLoss Journal WORKS?</h1>
         <img id="line" src="Images/line.png">
+        
         <div class="row" id="step1">
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <h2 id="subtitle1">1. CALORIE CALCULATOR</h2>
-                <p id="detail1">Check and track your calorie in and out everyday.</p>
+                <p id="detail1" style="line-height: 150%">Check and keep track of your calorie in and out everyday.</p>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <img class="icon" id="icon1" src="Images/homepage111.png">
@@ -30,7 +31,7 @@
         <div class="row" id="step2">
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <h2 id="subtitle2">2. WEIGHT TRACKING CURVE</h2>
-                <p id="detail2">Keep a record of your weight to see which stage you are.</p>
+                <p id="detail2" style="line-height: 150%">Keep a record of your weight to see which stage you are.</p>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <img class="icon" id="icon2" src="Images/calendar.png">
@@ -39,11 +40,15 @@
         <div class="row" id="step3">
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <h2 id="subtitle3">3. DIARY</h2>
-                <p id="detail3">Write your emoji diary so you can see your persistence!</p>
+                <p id="detail3" style="line-height: 150%">Write your emoji diary so you can see your persistence!</p>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <img class="icon" id="icon3" src="Images/homepage222.png">
             </div>
+        </div>
+        <div class="container" id="startnow">
+            <img id="line2" src="Images/line.png">
+            <a href="#" class="button" id="start">START</a>
         </div>
     </div>
 
@@ -108,33 +113,33 @@
 
     h1#title {
         font-family: times;
-        font-size:3.25vw;
+        font-size:2.6vw;
         font-weight: bold;
         text-align: center;
         position: absolute;
-        top: 160%;
-        left: 26%;
+        top: 104%;
+        left: 29%;
     }
 
     img#line {
         position: absolute;
-        top: 181%;
+        top: 119%;
         left: 37%;
-        width: 26vw;
+        width: 20vw;
     }
 
     #Intro .row h2 {
-        font-size: 2.42vw;
+        font-size: 1.7vw;
         position: absolute;
         text-align: center;
         font-weight:bold;
     }
 
     #Intro .row p {
-        font-size: 2.1vw;
+        font-size: 1.45vw;
         position: absolute;
         text-align: center;
-        left: 15%;
+        left: 18%;
     }
 
     #Intro .row img {
@@ -142,95 +147,86 @@
     }
 
     h2#subtitle1 {
-        padding-top: 46vh;
-        left: 25%;
+        padding-top: 28vh;
+        left: 35%;
     }
 
     p#detail1 {
-        padding-top: 58vh;
+        padding-top: 43vh;
     }
     
     h2#subtitle2 {
-        padding-top: 10vh;
-        left: 20%;
+        padding-top: 5vh;
+        left: 32%;
     }
 
     p#detail2 {
-        padding-top: 22vh;
+        padding-top: 20vh;
     }
 
     h2#subtitle3 {
-        padding-top: 16vh;
-        padding-left: 18vw;
+        padding-top: 11vh;
+        padding-left: 20vw;
     }
     
     p#detail3 {
-        padding-top: 28vh;
+        padding-top: 26vh;
     }
     
     img#icon1 {
-        width: 33vw;
-        height: 78vh;
-        padding-top: 38vh;
+        width: 30vw;
+        height: 62vh;
+        padding-top: 24vh;
         padding-left: 7vw;
     }
     
     img#icon2 {
-        padding-top: 12vh;
-        padding-left: 15vw;
-        height: 36vh;
-        width: 25vw;
+        padding-top: 6vh;
+        padding-left: 13vw;
+        height: 32vh;
+        width: 24vw;
     }
     
     img#icon3 {
-        width: 33vw;
-        height: 54vh;
-        padding-top: 11vh; 
-        padding-left: 7vw;       
+        width: 30vw;
+        height: 49vh;
+        padding-top: 6vh; 
+        padding-left: 8vw;       
     }
 
-
-
-
-    .row.no-gutter {
-        margin-left: 0;
-        margin-right: 0;
+    #startnow {
+        margin-top: 15vh;
+        margin-bottom: 10vh;
     }
 
-    .row.no-gutter [class*='col-']:not(:first-child),
-    .row.no-gutter [class*='col-']:not(:last-child) {
-        padding-right: 0;
-        padding-left: 0;
+    img#line2 {
+        position: absolute;
+        top: 248%;
+        left: 37%;
+        width: 20vw;
     }
 
-/*
-    .Intro .circle {
-        background: #424242;
-        margin-left: auto;
-        margin-right: auto;
-        line-height:50px;
+    #startnow a {
+        top: 257%;
+        left: 42.5%;
+        text-align:center;
+        position:absolute;
+        font-size: 2.2vw;
+    }
+   
+    #startnow .button {
+        background-color: white;
+        border-style: solid;
+        border-width: thin;
+        border-color: #424242;
+        padding: 2.2vh 1.35vw;
         text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-color: #424242;
+        font-family: times;
     }
 
-    .Intro p {
-        color: black;
-    }
-
-    .Intro .buttonlink{
-        width: 200px;
-        height: 50px;
-        border-radius: 20px 20px 20px 20px;
-        border: 1px solid white;
-        margin-top: 25px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .Intro .circle a:hover {
-        color: white;
-        text-decoration:none;
-    } 
-*/
 </style>
 
 

@@ -12,7 +12,8 @@
 	<div class="header">
             <div class="container">
                 <div class="logo">
-                    <a href="#" style="text-decoration:none">WeightLoss Diary</a>
+                	<img src="Images/logonew.png" id="logonew">
+                    <a href="#" style="text-decoration:none">WeightLoss Journal</a>
                 </div>
                 <div class="nav">
                     <ul>
@@ -69,7 +70,8 @@
 		color:white;
 		margin-top: 3.3vh;
 		padding-right: 60%;
-		margin-left: 1.6%;
+		margin-left: 3.9%;
+		font-weight: bold;
 	}
 
 	.logo a {
@@ -124,6 +126,13 @@
 		margin-left: -20px;
 	}
 
+	img#logonew {
+		height: 6.5vh;
+		width: 2.2vw;
+		position: absolute;
+		top: 1vh;
+		left: 8.3vw;
+	}
 
   </style>
 

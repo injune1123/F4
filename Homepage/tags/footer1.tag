@@ -1,16 +1,13 @@
 <footer>
 <div class="container">
-	<div class="col-sm-3 col-md-3 col-lg3">
-		<p>Features</p>
+	<div class="col-sm-3 col-md-3 col-lg-3">
+		<p id="feature">Features</p>
 		<ul class="FeaturesSection">
-	        <li><a href="#">About</a></li>
-	        <li><a href="#">Terms</a></li>
-	        <li><a href="#">Partners</a></li>
-	        <li><a href="#">Updates</a></li>
+	        <li><a href="#">Calorie Calculator</a></li>
+	        <li><a href="#">BMI & Weight Tracker</a></li>
+	        <li><a href="#">Emoji Diary</a></li>
       	</ul>
-      	<div id="copyright">
-			<p>©Copyright 2016 F4. “WeightLoss Diary"</p>
-		</div>
+
 	</div>
 <!-- 	<div class="col-sm-2 col-md-2 col-lg-2">
 		<p>Details</p>
@@ -20,18 +17,16 @@
 	        <li><a href="#">Resources</a></li>
       	</ul>
 	</div> -->
-	<div class="col-sm-4 col-md-4 col-lg-4">
-		<p>OUT STORY</p>
+	<div class="col-sm-9 col-md-9 col-lg-9">
+		<p id="storytitle">OUT STORY</p>
 		<ul class="OurStorySection">
-	        <p>We're F4, Fitness4, founded in 2016 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro rerum, at, quis voluptatibus ipsum neque alias quia necessitatibus odio quos reiciendis. Obcaecati ad voluptates, dolore doloribus dolorum molestiae rerum iste!</p>
+	        <p id="storydetail" style="line-height: 120%">We are WeightLoss Journal, a group of young passionate professionals who care about health and weight. Like many of you, we have been trying to control our weights, trying to have a better look while keeping healthy, so we know exactly what you need. Start your tour with us, and be your best self.</p>
       	</ul>
+      	<div id="copyright">
+			<p>©Copyright 2016 F4. “WeightLoss Journal"</p>
+		</div>
 	</div>
-	<div class="col-sm-5 col-md-5 col-lg-5">
-		<p>STAY CONNECTED</p>
-		<ul class="connectSection">
-	        <p>We're F4, Fitness4, founded in 2016 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro rerum, at, quis voluptatibus ipsum neque alias quia necessitatibus odio quos reiciendis. Obcaecati ad voluptates, dolore doloribus dolorum molestiae rerum iste!</p>
-      	</ul>
-	</div>
+
 	
 
 </div>
@@ -72,7 +67,7 @@
 		a:hover {
 		color:white;
 		text-decoration:none;
-	}
+		}
 	
 		a:visited {
 			text-decoration:none;
@@ -87,10 +82,26 @@
 		}
 
 	    #copyright{
-	      color: #8f8c8c;
-	      float: left;
-/*	      margin-left: 15px;*/
+	    	color: #8f8c8c;
+	    	padding-left: 582px;
 	    }
+
+	    p#storytitle {
+			padding-right: 90px;
+	    }
+
+	    p#storydetail {
+			padding-right: 90px;
+	    }
+
+		.FeaturesSection {
+			padding-left: 90px;
+		}
+
+		p#feature {
+			padding-left: 90px;
+		}
+
 	</style>  
 
 </footer>
