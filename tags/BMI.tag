@@ -1,16 +1,20 @@
 <BMI>
-  BMI: {bmiValue.toFixed(2)} 
-  <span id="bmiMessage"></span>
 
-
-	<div id="container">
+<a class="BMI-tooltip" data-toggle="tooltip" title="Note: BMI(Body Mass Index). The Body mass index (BMI) or Quetelet index is a value derived from the mass (weight) and height of an individual. Commanly accepted BMI ranges are underweight: under 18.5, normal weight: 18.5 to 25, overweight:25 to 30, obese: over 30.">
+<div id="container">
   <div id="navi"></div>
 
   <div id="infoi">
-    <img src="../Images/yiyi.png" height="100" width="100" />
+    <img src="../Images/yiyi.png" height="270" width="175" />
   </div>
 </div>
-
+</a>
+	Recent BMI:
+	<p>
+	{bmiValue.toFixed(2)}
+	<span id="bmiMessage"></span>
+	</p> 
+  
 <script>
 
 var that = this;
@@ -48,82 +52,92 @@ that.bmiValue = bmiValue;
 
 this.on('updated', function(){
 if (bmiValue<=18.5){
-	document.getElementById("navi").className += "grey";
-	document.getElementById("navi").style.height = "" + bmiValue/50*100 + "%";
-    document.getElementById("navi").style.marginTop =  (1- bmiValue/50)*100 + "%"; 
-    document.getElementById("bmiMessage").innerHTML =  ": Underweight"; 
-
+	document.getElementById("navi").className += "danger";
+	document.getElementById("navi").style.height = "" + bmiValue/50*270 + "px";
+    document.getElementById("navi").style.marginTop =  (270- bmiValue/50*270) + "px"; 
+    document.getElementById("bmiMessage").innerHTML =  "Underweight!"; 
 }
 
 if (bmiValue>18.5&&bmiValue<24.9){
 	document.getElementById("navi").className += "green";
-	document.getElementById("navi").style.height = "" + bmiValue/50*100 + "%";
-    document.getElementById("navi").style.marginTop =  (1- bmiValue/50)*100 + "%"; 
-    document.getElementById("bmiMessage").innerHTML =  ": Healthy"; 
+	document.getElementById("navi").style.height = "" + bmiValue/50*270 + "px";
+    document.getElementById("navi").style.marginTop =  (270- bmiValue/50*270) + "px"; 
+    document.getElementById("bmiMessage").innerHTML =  "Healthy!"; 
 
 
 }
 
 if (bmiValue>25&&bmiValue<29.9){
-	document.getElementById("navi").className += "yellow";
-	document.getElementById("navi").style.height = "" + bmiValue/50*100 + "%";
-    document.getElementById("navi").style.marginTop =  (1- bmiValue/50)*100 + "%"; 
-    document.getElementById("bmiMessage").innerHTML =  ": Overweight"; 
-
+	document.getElementById("navi").className += "warning";
+	document.getElementById("navi").style.height = "" + bmiValue/50*270 + "px";
+    document.getElementById("navi").style.marginTop =  (270- bmiValue/50*270) + "px"; 
+    document.getElementById("bmiMessage").innerHTML =  "Overweight!"; 
 
 }
 if (bmiValue>30){
-    that.obese = true;
 	document.getElementById("navi").className += "danger";
-	document.getElementById("navi").style.height = "" + bmiValue/50*100 + "%";
-    document.getElementById("navi").style.marginTop =  (1- bmiValue/50)*100 + "%";
-    document.getElementById("bmiMessage").innerHTML =  ": Obese"; 
-
-
+    that.obese = true;
+    if (bmiValue/50*200>200){
+    document.getElementById("navi").style.height ="270px";
+    }else{
+    document.getElementById("navi").style.height = "" + bmiValue/50*270 + "px";
+    document.getElementById("navi").style.marginTop =  (270- bmiValue/50*270) + "px";
+    }
+    document.getElementById("bmiMessage").innerHTML =  "Obese"; 
 
 }
+
+$('a[data-toggle="tooltip"]').tooltip({
+    animated: 'fade',
+    placement: 'right',
+    html: true
+});
+
 })
-
-
-
 
 </script>
 
 
-
-<!-- 	<div>
-
-		<h5 class="text-center">BMI</h5>
-		<img src="http://www.daviddarling.info/images/body_outline.jpg" alt="">
-
-	</div> -->
-
 	<style scoped>
 		:scope
 		#container {
-		  width: 100px;
-		  height: 100px;
+		  width: 175px;
+		  height: 270px;
 		  position: relative;
 		}		
-		#navi {
+		#navi, #infoi {
 		  width: 100%;
-		  height: 30%;
+		  height: 100%;
 		  position: absolute;
 		  top: 0;
 		  left: 0;
 		}
-		.grey{
-			background-color:grey 
+		.BMI-tooltip + .tooltip > .tooltip-inner {
+			background-color:rgba(255, 255, 255, 1);
+			color:black;
+			width: 500px;
+			padding: 10 10 10 10;
+			text-align:left;
+			font-size: 14px;
+		}
+		.tooltip.in {
+		  opacity: 1;
+		  filter: alpha(opacity=100);
+		}
+		.tooltip-inner {
+	    border: groove 3px #ccc;
+	    	border-style: outset;
 		}
 		.danger{
-			background-color:red 
+			background-color:#e16778; 
 		}
 		.green{
-			background-color:green 
+			background-color:#99c4b2; 
 		}
-		.yellow{
-			background-color:yellow 
+		.warning{
+			background-color:#f6b5a6; 
 		}
+
 
 
 		#infoi {
@@ -137,15 +151,12 @@ if (bmiValue>30){
 		  z-index: 10;
 		}
 
-		/*
-		img{
-			width: 200px;
-			display: block;
-		    margin-left: auto;
-		};
-		div{
-			margin: 0 auto; 
-		};*/
+		#bmiMessage{
+		  font-size: 14px;
+          font-weight: 500;
+          padding-left: 5px;
+		}
+
 
 		
 	</style>
