@@ -22,11 +22,11 @@
             border: 0px;        
             border-radius: 8px;         
             pointer-events: none; 
-            margin-left: -250px;          
-            margin-top: -50px;          
+            margin-left: -500px;          
+            margin-top: -200px;          
         }
         .area {
-          fill: red;
+          fill: #99c4b2;
           opacity: 1;
 
         }
@@ -147,6 +147,7 @@
                 .append("svg")
                     .attr("width", width + margin.left + margin.right)
                     .attr("height", height + margin.top + margin.bottom)
+                    .style("background-color", "white")
                 .append("g")
                     .attr("transform", 
                           "translate(" + margin.left + "," + margin.top + ")");
@@ -261,8 +262,6 @@
                return (year+"-"+monthNames[monthIndex]+"-"+day);
 
             }
-
-
 
 
             // Add the X Axis
