@@ -11,19 +11,15 @@
 	      <div class="button">{currentMenu=='Exercise' ? 'Search Exercise' : 'Search Food'}</div>
 	      <ul show={ filtered.length }>
 	        <li each={ item,index in filtered }  class="{}"><img src={item.url} alt="">
-			<div class="li-content">{item.name.capitalize()},<span>{item.calorie} cals each.</span></div>
+			<div class="li-content">{item.name.capitalize()},<span>{item.calorie} &nbsp;cals each.</span></div>
 			<div class="add-button" onclick={addToRecord}>+</div>
 	        </li>
 	    </ul>
 	  	</div>
 		
-	  	<div class="row">
-	  		<div class="calorie-in col-sm-45">
-	  		Calorie In
-	  		</div>
-	  		<div class="calorie-out col-sm-15">
-	  		Calorie Out
-	  		</div>
+	  	<div class="calorie-in-out">
+	  		
+			<img src="Images/calorie in out.png" alt="">
 	  	</div>
 
 		<div class="row">
@@ -730,7 +726,7 @@
 		color:#fff7ed;
 		text-align: center;
 		padding-top: 15px;
-		font-weight: 100;
+		font-weight: 300;
 		font-size: 15px;
 	}
 
@@ -858,16 +854,13 @@
 		width: 200px;
 	}
 
-	.calorie-in{
-		font-size: 20px;
-		text-align: center;
+	.calorie-in-out img{
+		/*background-image: url();*/
+		width: 700px;
 
 	}
 
-	.calorie-out{
-		font-size: 20px;
-		text-align: center;
-	}
+	
 	/*Here are self-defined 1/5 grid system*/
 
 	.col-xs-15,
