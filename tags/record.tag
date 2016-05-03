@@ -4,7 +4,8 @@
     On <input type="date" name="dateInput" if= {!displayRecord} onChange={changeDateRecord}> <span if= {displayRecord}>{recordDate}</span>
     ,  &nbsp I am <input type="number" name="weightInput" placeholder = "target weight (lb)" if= {!displayRecord}> <span if= {displayRecord}>{recordWeight} lb</span> 
   <i class="fa fa-pencil" aria-hidden="true" onclick={editWeightRecord}  if= {displayRecord}></i>
-<i class="fa fa-check" aria-hidden="true" onclick={saveWeightRecord}  if= {!displayRecord}></i>
+<i class="fa fa-check-circle-o" aria-hidden="true" onclick={saveWeightRecord}  if= {!displayRecord}></i>
+  
   </p>
   <div class="row">
     <div class='col-md-3'>
@@ -105,7 +106,13 @@
     text-align: left !important;
     font-weight: 600;
   }
-  
+  .fa-check-circle-o{
+    font-size:24px;
+    cursor:pointer
+  }
+  .fa-check-circle-o:hover{
+    color:#f94283
+  }
 
 
 

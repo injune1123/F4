@@ -171,8 +171,6 @@
               .attr("d", area)
 
 
-
-
             // Add the goalDataForD3 path.
             svg.append("path")
                 .attr("class", "line")
@@ -217,8 +215,6 @@
                 .attr("stroke", "steelblue")
                 .attr("stroke-width", 2)
                 .attr("fill","none")
-
-
 
             // Add the scatterplot for weightLog
             svg.selectAll("dot")
