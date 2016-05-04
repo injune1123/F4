@@ -1,4 +1,5 @@
 <record>
+
 	<h1 id="dashboard-title">RECORD TO SEE YOUR PROGRESS</h1>
    <p id="Weightrecord">
     On <input type="date" name="dateInput" if= {!displayRecord} onChange={changeDateRecord}> <span if= {displayRecord}>{recordDate}</span>
