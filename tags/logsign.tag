@@ -229,7 +229,12 @@
 				//register. use deffered
 				
 				that.register().then(function(user){
-					that.moveToNext($("#step1-register-from"),$("#step2-register-from"))
+					that.unmount()
+
+					
+					window.location.href = '/#dashboard'
+					riot.mount('navbar',{loggedIn:true});
+					
 					}, function(error){
 			      		that.errorMessage = "Email address aleady exists."
 			      		that.email.value = that.pass.value = that.cpass.value = "";

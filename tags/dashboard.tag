@@ -15,7 +15,7 @@
       </a>
       <a class="mdl-navigation__link" href="" onclick={showInfo}>
         <i class="material-icons mdl-list__item-avatar">sentiment_satisfied</i>
-        <span>Information  </span>
+        <span>Profile  </span>
       </a>
     </nav>
   </div>

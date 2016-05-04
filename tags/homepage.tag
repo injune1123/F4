@@ -12,7 +12,7 @@
         Enter your current and desired weight, and we will help 
         <br>
         you track your weight losing progress.</h2>
-        <a href="#" class="button" id="join">JOIN NOW</a>
+        <a href="#" class="button" id="join" onclick={showSignup}>JOIN NOW</a>
     </div>
 
     <div class="container" id="Intro">
@@ -48,11 +48,17 @@
         </div>
         <div class="container" id="startnow">
             <img id="line2" src="Images/line.png">
-            <a href="#" class="button" id="start">START</a>
+            <a href="#" class="button" id="start" onclick={showSignup}>START</a>
         </div>
     </div>
 
-
+    
+<script>
+    var that = this;
+    that.showSignup = function(e){
+        riot.mount('#Login','logsign',{inRegister:true});
+    }
+</script>
 
 
 
