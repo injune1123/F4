@@ -17,7 +17,7 @@
 	        <li><a href="#">Resources</a></li>
       	</ul>
 	</div> -->
-	<div class="col-sm-9 col-md-9 col-lg-9">
+	<div class="col-sm-8 col-md-8 col-lg-8">
 		<p id="storytitle">OUT STORY</p>
 		<ul class="OurStorySection">
 	        <p id="storydetail" style="line-height: 120%">We are WeightLoss Journal, a group of young passionate professionals who care about health and weight. Like many of you, we have been trying to control our weights, trying to have a better look while keeping healthy, so we know exactly what you need. Start your tour with us, and be your best self.</p>
@@ -25,6 +25,9 @@
       	<div id="copyright">
 			<p>©Copyright 2016 F4. “WeightLoss Journal"</p>
 		</div>
+	</div>
+
+	<div class="col-sm-1 col-md-1 col-lg-1">
 	</div>
 
 	
@@ -35,30 +38,30 @@
 	    :scope 
 		
 		.FeaturesSection{
-			padding:0px;
+			padding:0;
 			list-style-type: none;
 			color:#8f8c8c;
-			font-size: 12px;
+			font-size: 1.05vw;
 		}
-		
+/*		
 		.DetailsSection{
 			padding:0px;
 			list-style-type: none;
 			color:#8f8c8c;
 			font-size: 12px;
-		}
+		}*/
 
 		.OurStorySection{
-			padding:0px;
+			padding:0;
 			color:#8f8c8c;
-			font-size: 12px;
+			font-size: 1.05vw;
 		}
 		
-		.connectSection{
+/*		.connectSection{
 			padding:0px;
 			color:#8f8c8c;
 			font-size: 12px;
-		}
+		}*/
 
 		a {
 			color:#8f8c8c;
@@ -77,29 +80,37 @@
 		.container {
 			width:100vw;
 			background-color: #424242;
-			padding:30px;
+			padding-top:30px;
+			padding-bottom: 30px;
+			padding-left: 2vw;
+			padding-right: 2vw;
+/*			height: 210px;*/
 			color:white;
 		}
 
 	    #copyright{
 	    	color: #8f8c8c;
-	    	padding-left: 582px;
+/*	    	padding-left: 582px;*/
+			float: right;
+			margin-right: 2vw;
 	    }
 
 	    p#storytitle {
-			padding-right: 90px;
+/*			padding-right: 90px;*/
+			margin-right: 2vw;
 	    }
 
 	    p#storydetail {
-			padding-right: 90px;
+/*			padding-right: 90px;*/
+			margin-right: 2vw;
 	    }
 
 		.FeaturesSection {
-			padding-left: 90px;
+			padding-left: 9vw;
 		}
 
 		p#feature {
-			padding-left: 90px;
+			padding-left: 9vw;
 		}
 
 	</style>  
