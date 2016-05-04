@@ -196,7 +196,7 @@
 
     #startnow {
         margin-top: 15vh;
-        margin-bottom: 10vh;
+        margin-bottom: 20vh;
     }
 
     img#line2 {
