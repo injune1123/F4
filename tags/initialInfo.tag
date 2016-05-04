@@ -117,7 +117,7 @@
 
 		that.cilckHandler = function (){
 			if (!that.currentWeight.value || !that.dateToBeFit.value || !that.objective.value){
-				that.errorMessage = "Make sure you put in current weight, ideal weight, and date to be fit"
+				that.errorMessage = "* Make sure you put in current weight, ideal weight, and date to be fit"
 				return;
 			}
 	
