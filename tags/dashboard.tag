@@ -5,13 +5,13 @@
 <!-- Side nav bar -->
   <div class="mdl-layout__drawer">
     <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href=""  onclick={showWeightTrack}>
-        <i class="material-icons mdl-list__item-avatar color-set-peach">create</i>
-        <span>Record </span>
-      </a>
       <a class="mdl-navigation__link" href="" onclick={showCalculator}>
         <i class="material-icons mdl-list__item-avatar color-set-blue">exposure</i>
         <span>Calculate  </span>
+      </a>
+      <a class="mdl-navigation__link" href=""  onclick={showWeightTrack}>
+        <i class="material-icons mdl-list__item-avatar color-set-peach">create</i>
+        <span>Record </span>
       </a>
       <a class="mdl-navigation__link" href="" onclick={showInfo}>
         <i class="material-icons mdl-list__item-avatar">sentiment_satisfied</i>
@@ -22,6 +22,12 @@
 
   <main class="mdl-layout__content">
     <div class="page-content" id="Mount-dashboard" >
+        <div class="row instruction">
+          <div class="col-sm-4"><img src="Images/instruction/both1.png" alt="" onclick={showCalculator}></div>
+          <div class="col-sm-4"><img src="Images/instruction/both2.png" alt="" onclick={showWeightTrack}></div>
+          <div class="col-sm-4"><img src="Images/instruction/both3.png" alt="" onclick={showWeightTrack}></div>
+        </div>
+        
     </div>
   </main>
 </div>
@@ -29,7 +35,7 @@
 
     <script>
           var that = this;
-          console.log("I am in the dashboard");
+          
           that.showWeightTrack = function(e){
             riot.mount('#Mount-dashboard','record');
           }
@@ -105,8 +111,16 @@
 
     .mdl-layout__drawer .mdl-navigation .mdl-navigation__link:hover {
     background-color: transparent;
-}
+    }
 
+    .instruction img{
+      width:260px;
+      margin:50px 0px 0px 20px;
+    } 
+    
+    .instruction img:hover{
+      cursor: pointer;
+    }
 
 
 

@@ -13,7 +13,7 @@
             <div class="container">
                 <div class="logo">
                 	<img src="Images/logonew.png" id="logonew">
-                    <a href="#" style="text-decoration:none">WeightLoss Journal</a>
+                    <a href="#homepage" style="text-decoration:none">WeightLoss Journal</a>
                 </div>
                 <div class="nav">
                     <ul>

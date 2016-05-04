@@ -33,7 +33,7 @@
 						<div class="minus-button {name}" onclick={parent.decreaseCount}>-</div>
 						<img src={fooditem.url} alt={fooditem.name} >
 						<div class="count-number" >{count}</div>
-						<div class="calorie-result">{computeCalorie(fooditem.calorie,count)} Cals</div>
+						<div class="calorie-result">{computeCalorie(fooditem.calorie,count)} </div>
 						
 					</div>
 					
@@ -541,7 +541,7 @@
 	
 	.food-image{
 		display: block;
-		padding: 2px 5px 0px 16px;
+		padding: 2px 5px 0px 13px;
 		margin-top: 5px;
 
 	}
@@ -551,7 +551,7 @@
 		position: relative;
 		left:60px;
 		top:7px;
-		font-size: 12px;
+		font-size: 15px;
 		font-weight: 100;
 		color:grey;
 		text-shadow: 1px 1px #D3AFAF;
@@ -565,7 +565,7 @@
 		position: relative;
 		left:-3px;
 		top:8px;
-		font-size: 18px;
+		font-size: 20px;
 		font-weight: 100;
 		color:grey;
 		text-shadow: 1px 1px #D3AFAF;
@@ -600,7 +600,7 @@
 	}
 	
 	.calorie-result{
-		font-size: 8px;
+		font-size: 15px;
 		font-weight:200;
 		position: relative;
 		top:7px;
