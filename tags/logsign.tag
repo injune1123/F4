@@ -40,7 +40,7 @@
 			<div class="panel panel-info registerPanel">	
 				<a href="/#" onclick={unmount} class="panel-close"><img src="https://cdn4.iconfinder.com/data/icons/online-menu/64/x_close_denied_delete_cross_circle-128.png" alt=""></a>
 		        <div class="panel-heading title">
-					<h1>Create your account: 1/3</h1>					
+					<h1>Create your account</h1>					
 					<h3 if={errorMessage} class="errorMessage">{errorMessage}</h3>
 	    	    </div>
 				<div class="panel-body" >
@@ -60,81 +60,19 @@
 	            	</form>
 	            	
 					<div class="registered-hint">
-	        		Already a member? <a onclick={goRegister}>Sign in</a> Now!
+	        		Already a member? <a onclick={goSignIn}>Sign in</a> Now!
 	        		</div>
 	        	</div>
 			</div>
 		</div>
-		<!-- the 2nd register form -->	
-		<div id="step2-register-from" class="register-from-steps">
-			<div class="panel panel-info registerPanel">	
-				<a href="/#" onclick={unmount} class="panel-close"><img src="https://cdn4.iconfinder.com/data/icons/online-menu/64/x_close_denied_delete_cross_circle-128.png" alt=""></a>
-		        <div class="panel-heading title">
-					<h1 class="title">Input personal info: 2/3</h2>
-			    	<h3 class="subtitle">Account created! Now let's have your personal information.</h3>
-	    	    </div>
-				<div class="panel-body" >
-	            	<form class="register form-register">
-	                	<fieldset>
-	                		<label for="Nickname" style="display:block">Nickname</label>
-							<input type="text" name="nickname" placeholder="Nickname" class="form-control"/>
-							<label for="heightFeetInch" style="display:block">height(feet.inch)</label>
-							<input type="number" name="heightFeet" placeholder="5.3" class="form-control" onChange={heightFeetInputed}/>
-							<label for="heightFeetInch" style="display:block">height(m)</label>
-							<input type="number" name="heightMeter" placeholder="1.75" class="form-control" onChange={heightMInputed}/>
-
-							<label for="Age" style="display:block">Age</label>
-						    <input type="text" name="age" placeholder="Age" class="form-control"/>
-						    <label for="Gender" style="display:block">Gender</label>
-						    <select class="form-control">
-						    	<option value="female">Female</option>
-						    	<option value="male">Male</option>
-						    	<option value="other">Other</option>
-						    </select>
-						    <br/>
-						    <input type="button" name="next" class="next action-button btn btn-info" value="Next" id="personal"/>
-	                	</fieldset>
-	            	</form>
-
-	        	</div>
-	       		<div id="registered-hint2">
-	        	Already a member? <a onclick={goRegister}>Sing in</a> Now!
-	        	</div>
-			</div>			
-		</div>
-		<!-- the 3rd register form -->	
-		<div id="step3-register-from" class="register-from-steps">
-			<div class="panel panel-info registerPanel">	
-				<a href="/#" onclick={unmount} class="panel-close"><img src="https://cdn4.iconfinder.com/data/icons/online-menu/64/x_close_denied_delete_cross_circle-128.png" alt=""></a>
-		        <div class="panel-heading title">
-					<h1 class="title">Set Goal: 3/3</h1>
-			    	<h3 class="subtitle">Now set up the objective weight and expecting period. Don't be too harsh on yourself!</h3>
-	    	    </div>
-				<div class="panel-body" >
-	            	<form class="register form-register">
-	                	<fieldset>
-	                		<label for="Current Weight" style="display:block">Current Weight</label>
-							<input type="text" name="currentWeight" placeholder="Current Weight" class="form-control"/>
-							<label for="ObjectiveWeight" style="display:block">Objective Weight</label>
-			    			<input type="text" name="objective" placeholder="Objective Weight" class="form-control"/>
-							<label for="Period" style="display:block">Date to be Fit</label>	
-							<input type="date" name="dateToBeFit" class="form-control">
-			    			<br/>
-			    			<input type="button" name="next" class="next action-button btn btn-info" value="Finish" id="setgoal"/>
-	                	</fieldset>
-	            	</form>
-	        	</div>
-	        	<div id="registered-hint3">
-	        	Already a member? <a>Sing in</a> Now!
-	        	</div>
-			</div>						
-		</div>
+		
 	</div>
 
 	<script>
 
     var that = this;
-	
+	that.inRegister = that.opts.inRegister;
+
 	if(Parse.User.current()){
 		window.location.replace("/#");
 	}
@@ -158,7 +96,8 @@
 		//1 foot = 12 inch
 	}
 
-	that.inRegister = false;
+	
+
 
 	that.checkUserExistance = function(username,callback){
 		
@@ -209,6 +148,12 @@
 	that.goRegister = function(e){
 		that.inRegister = true;
 		// this.unmount();
+		return true;
+	}
+
+	that.goSignIn = function(e){
+
+		that.inRegister = false;
 		return true;
 	}
 

@@ -19,7 +19,8 @@
                     <ul>
 <!--                         <li><a href="#calorieCal">Calorie Calculator</a></li>
                         <li><a href="#dashboard">Dashboard</a></li> -->
-                        <li><a if={!loggedIn} href="#" onclick={showLogin}>LOG IN | SIGN UP</a></li>
+                        <li><a if={!loggedIn} href="#" onclick={showLogin}>LOG IN </a>
+                        <a if={!loggedIn} href="#" onclick={showSignup}> &nbsp;&nbsp;&nbsp; SIGN UP</a></li>
                         
                         <li><a if={loggedIn} href="#dashboard">Dashboard</a></li>
 		      			<li><a if={loggedIn} href="#" onclick={logOut}>Log Out</a></li>
@@ -33,7 +34,7 @@
 	<script>
 	var that = this;
 	that.loggedIn = that.opts.loggedIn;
-	console.log(that.loggedIn)
+	
 
 	that.logOut = function(e){
 		Parse.User.logOut();
@@ -43,7 +44,11 @@
 
 	that.showLogin = function(e){
 
-		riot.mount('#Login','logsign');
+		riot.mount('#Login','logsign',{inRegister:false});
+	}
+
+	that.showSignup = function(e){
+		riot.mount('#Login','logsign',{inRegister:true});
 	}
 
 	</script>
