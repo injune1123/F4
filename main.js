@@ -12,18 +12,18 @@ riot.route('/homepage',function(){
     riot.mount('#Mount','homepage');
 })
 
-riot.route('/initialInfo',function(){
-	riot.mount('#Mount','initialInfo');
+riot.route('/initialinfo',function(){
+	riot.mount('#Mount','initialinfo');
 });
 
 riot.route(function(){
-    if(!Parse.User.current()){
-        riot.mount('#Mount','homepage');
-    }
-    else{
-        window.location.href = '/#dashboard';
-    }
-    
+    // if(!Parse.User.current()){
+    //     riot.mount('#Mount','homepage');
+    // }
+    // else{
+    //     window.location.href = '/#dashboard';
+    // }
+    riot.mount('#Mount','homepage');
 })
 
 

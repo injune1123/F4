@@ -232,7 +232,7 @@
 					that.unmount()
 
 					
-					window.location.href = '/#dashboard'
+					window.location.href = '/#initialInfo'
 					riot.mount('navbar',{loggedIn:true});
 					
 					}, function(error){
