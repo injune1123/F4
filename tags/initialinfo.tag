@@ -71,7 +71,7 @@
 
 	<div class="row">
 	<div class="col-sm-6">	
-	<label for="Period" style="display:block">Date to be Fit</label>	
+	<label for="dateToBeFit" style="display:block">Date to be Fit</label>	
 	</div>
 	<div class="col-sm-6">
 	<input type="date" name="dateToBeFit" class="form-control">
@@ -140,7 +140,7 @@
 				//redirect to dashboard
 				currentUser.save().then(function(){
 					window.location.href = '/#dashboard';
-					that.unmount();
+					window.location.reload();
 				});
 
 		}

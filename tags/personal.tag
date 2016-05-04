@@ -4,59 +4,64 @@
 		<h2>Basic Information</h2>
 		<form>
 			<div class="form-group">
-				<label for="user-name">Name</label>
-				<input type="text" class="form-control" name="nickname" placeholder={data.nickname}>
 				<label for="age">Age</label>
-				<input type="text" class="form-control" name="age" placeholder="{data.age} years old">
-				<label>Sex</label>
+				<input type="text" class="form-control" name="age" value={data.infos.age}>years old
+				<label>Gender</label>
 				<div class="radio">
 					<label>
-						<input type="radio" name="sexradio" value="male" id="radio1" checked={data.sex==radio1.value}>
+						<input type="radio" name="genderradio" value="male" id="radio1" checked={data.infos.sex==radio1.value}>
 						Male
 					</label>
 					
 				</div>
 				<div class="radio">
 					<label>
-						<input type="radio" name="sexradio" value="female" id="radio2" checked={data.sex==radio2.value}>
+						<input type="radio" name="genderradio" value="female" id="radio2" checked={data.infos.sex==radio2.value}>
 						Female
 					</label>
 				</div>
 				<div class="radio">
 					<label>
-						<input type="radio" name="sexradio" value="other" id="radio3" checked={data.sex==radio3.value}>
+						<input type="radio" name="genderradio" value="other" id="radio3" checked={data.infos.sex==radio3.value}>
 						Other
 					</label>
 				</div>
-				<label for="current">Current Weight</label>
-				<input type="text" class="form-control" name="current" placeholder="{data.current} pound">
-				<label for="objective">Objective Weight</label>
-				<input type="text" class="form-control" name="objective" placeholder="{data.objective} pound">
-				<label for="period">Losing Period</label>
-				<input type="text" class="form-control" name="period" placeholder="{data.period} months">
+				
+				<label for="weight">Objective Weight</label>
+				<input type="text" class="form-control" name="weight" value={data.Goal.weight}>lb
+				<label for="date">Ideal Time</label>
+				<input type="date" class="form-control" name="date" value={data.Goal.date} >
 			</div>
 			<input type="button" class="btn btn-default" value="Update" onclick={updateInfo}>
+			<div class="success-message" if={successMessage}>{successMessage}</div>
 		</form>
 	</div>
 
 	<script>	
 		var that = this;
-		that.data = Parse.User.current().toJSON().infos;
+		that.data = Parse.User.current().toJSON();
+		
 		
 		that.updateInfo = function(e){
-			Parse.User.current().set('infos',{
-				nickname:that.nickname.value || that.data.nickname,
-				age:that.age.value || that.data.age, 
-				objective:that.objective.value || that.data.objective,
-				period:that.period.value || that.data.period,
-				sex:$('input[name=sexradio]:checked').val() || that.data.sex
-			}).save().then(function(){
-				that.data = Parse.User.current().toJSON().infos;
+			var promises = [];
+
+			promises.push(Parse.User.current().set('infos',{
+				
+				age:that.age.value, 
+				sex:$('input[name=sexradio]:checked').val()
+			}).save())
+
+			promises.push(Parse.User.current().set('Goal',{
+				date:that.date.value,
+				weight:that.weight.value
+			}));
+
+			Parse.Promise.when(promises).then(function(){
+				that.successMessage = "Your records have been updated."
 				that.update();
 			})
 
-
-			console.log(that.nickname.value || that.data.nickname )
+			
 		}
 
 	</script>
@@ -88,6 +93,11 @@
 		.main-wrapper{
 			width:500px;
 			float: left;
+		}
+
+		.success-message{
+			color:green;
+			font-size: 12px;
 		}
 
 	</style>
