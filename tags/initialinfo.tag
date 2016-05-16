@@ -1,4 +1,4 @@
-<initialinfo>
+<initialInfo>
 	<h2>Welcome to our site!</h2> 
 
 	<p>Before we can help you, we need some more information. 
@@ -71,7 +71,7 @@
 
 	<div class="row">
 	<div class="col-sm-6">	
-	<label for="dateToBeFit" style="display:block">Date to be Fit</label>	
+	<label for="Period" style="display:block">Date to be Fit</label>	
 	</div>
 	<div class="col-sm-6">
 	<input type="date" name="dateToBeFit" class="form-control">
@@ -140,7 +140,7 @@
 				//redirect to dashboard
 				currentUser.save().then(function(){
 					window.location.href = '/#dashboard';
-					window.location.reload();
+					that.unmount();
 				});
 
 		}
@@ -207,4 +207,4 @@
 
 
 
-</initialinfo>
+</initialInfo>
